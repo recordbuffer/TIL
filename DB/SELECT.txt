@@ -1,0 +1,44 @@
+--SELECT : 데이터 조회하는 SQL
+
+--[사용법]
+--SELECT * (조회할 컬럼) : 조회하고자 하는 내용
+--FROM 테이블명 : 조회하고자 하는 테이블명
+--[WHERE 조건] : 특정 조건
+--[ORDER BY 컬럼] : 정렬
+--;
+
+--현재 계정이 가진 모든 테이블 정보 출력하기
+SELECT * FROM TABS;
+
+--특정 테이블 정보 확인하기
+SELECT * FROM EMPLOYEE;
+
+--특정 컬럼만 출력하기
+SELECT EID, ENAME FROM EMPLOYEE;
+
+--WHERE
+--테이블에서 조건 만족하는 값을 가진 행을 선택해 조회하는 조건절
+--여러 조건을 AND / OR 함께 사용 가능
+
+--컬럼에 별칭달기
+--[1] AS
+SELECT EID AS 사원번호 FROM EMPLOYEE;
+
+--[2] AS 생략 
+SELECT EID 사원번호 FROM EMPLOYEE;
+
+-- 띄어 쓰기 있는 경우에는 "" 사용, ''는 생략가능
+
+--NVL(컬럼명, 기본값) : 조회한 값이 NULL인 경우 별도로 지정한 값으로 변경
+SELECT ENAME, NVL(BONUS,0) FROM EMPLOYEE;
+
+--[ALL | DISTINCT] : 기본은 ALL 
+--DISTINCT는 값을 중복 제거해 출력
+SELECT DISTINCT DEPTNO FROM EMPLOYEE;
+
+--연산자
+--연결 연산자 '||'
+--비교 연산자 '=', '!=', '<>', BETWEEN A AND B
+--LIKE 연산자 + NOT LIKE
+--IN 연산자 + NOT IN
+--IS NULL + IS NOT NULL
