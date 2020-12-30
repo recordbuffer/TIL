@@ -1,0 +1,74 @@
+--함수 Function
+
+--[문자처리 함수]
+--LENGTH : 문자열 길이 반환
+--LENGTHB : 문자열 바이트 크기 반환
+--INSTR(주어진 값, 찾는 문자) : 주어진 값에서 원하는 문자 몇번째인지 위치 찾아 반환
+
+--SUBSTR(주어진값, 시작 위치, 끝 위치) : 주어진 문자열에서 특정 부분만 반환
+--이메일에서 아이디 부분만 조회하기
+SELECT SUBSTR(EMAIL,1,INSTR(EMAIL,'@')-1) FROM EMPLOYEE;
+
+--LPAD / RPAD(주어진 값, 전체길이, 문자) : 빈칸을 특정 문자로 채워 반환
+
+--LTRIM / RTRIM / TRIM(주어진 값, 문자) : 특정 문자 찾아 지워주는 함수
+--LTRIM = LEADING 문자 FROM 주어진 값 
+--RTRIM = TRAILING 문자 FROM 주어진 값
+--TRIM = TRIM(BOTH 문자 FROM 주어진 값)
+
+--LOWER / UPPER : 대문자를 소문자로 소문자를 대문자로 바꿔주는 함수
+--INITCAP : 앞글자를 대문자로 바꿔주는 함수
+
+--CONCAT : 여러 문자열을 하나로 합치는 함수
+
+--REPLACE(주어진 값, 바꾸고 싶은 문자, 바꿀 문자)
+
+
+
+--[숫자 처리 함수]
+--ABS : 절대값 
+--MOD : 나머지 값
+--ROUND : 반올림한 값
+--CEIL : 올림한 값 
+--FLOOER : 버림한 값
+--TRUNC(주어진값, 지정 위치) : 지정한 자릿수에서 잘라 반환
+
+--[날짜 처리 함수]
+--SYSDATE : 현재 날짜 반환하는 함수
+--SYSTIMESTAMP : 현재 날짜 + 시간까지 반환하는 함수
+--MONTHS_BETWEEN(날짜, 날짜) : 두 날짜 사이의 개월 수
+--ADD MONTHS(날짜, 더할 수 ) : 개월 수 더해 반환
+--NEXT_DAY(날짜, 요일) : 가장 가까운 (다음) 요일 반환
+--LAST_DAT(날짜) : 특정 날자 속한 달의 마지막 날짜 반환
+--EXTRACT(YEAR/MONTH/DAY FROM 날짜) : 지정한 날짜로부터 날짜 값을 추출하는 함수
+
+--[형변환 함수]
+--TO_CHAR(숫자/날짜, 형식)
+--20201231 -> '20-12-31'
+SELECT TO_CHAR(20201231,'YY-MM-DD') FROM DUAL;
+
+--35000000 -> 3,500,000
+SELECT TO_CHAR(35000000.'L999,999,999') FROM DUAL;
+
+--TO_DATE(숫자, 형식)
+--TO_NUMBER(숫자, 형식)
+
+
+--[그룹함수]
+--SUM 
+--AVG
+--MAX
+--MIN
+--COUNT
+
+
+--[선택 함수]
+--DECODE(컬럼, 조건1, 결과1, 조건2, 결과2, .... , 기본값)
+-- = JAVA의 3항 연산자
+
+--CASE 
+	WHEN 조건1 THEN 결과1,
+	WHEN 조건2 THEN 결과2
+	ELSE 결과3
+  END 컬럼명
+-- = JAVA의 IF문 / SWITCH문
