@@ -1,0 +1,43 @@
+--JOIN 
+--두개 이상의 테이블을 하나로 합쳐 사용하는 명령어
+
+--JOIN - [오라클 전용 구문] 
+--SELECT 컬럼명, 컬럼명, ..
+--FROM 테이블명1, 테이블명2	--합칠 테이블 명 ','로 구분해 기술
+--WHERE 컬럼명1 = 컬럼명2;		--합치기에 사용할 컬럼 명 명시
+
+--연결 컬럼명이 같을 때는 그냥 사용해도 되지만 컬럼명이 다를 경우 구분을 해줘야 함
+--WHERE 테이블명1.컬럼명1 = 테이블명1.컬럼명2
+--ex) 	SELECT E_ID, E_NAME, D_ID, D_TITLE
+	FROM EMPLOYEE, DEPARTMENT
+	WHERE EMPLOYEE.D_ID = DEPARTMENT.D_CODE;
+
+--테이블명에 별칭을 지정해 구분해주는 것도 가능
+--ex) 	SELECT E_ID, E_NAME, D_ID, D_TITLE
+	FROM EMPLOYEE e, DEPARTMENT d
+	WHERE e.D_ID = d.D_CODE;
+ 
+
+
+--JOIN - [ANSI 표준 구문]
+--연결 컬럼명 같은 경우 USING( )
+--SELECT 컬럼명, 컬럼명, ...
+--FROM 테이블명1
+--JOIN 테이블명2 USING(컬럼명);
+
+--ex) EMPLOYEE 테이블의 D_ID와 DEPARTMENT 테이블의 D_ID 조인
+ 	SELECT E_ID, E_NAME, D_ID, D_TITLE
+	FROM EMPLOYEE
+	JOIN DEPARTMENT USING(D_ID);
+
+
+--연결 컬럼명 같은 경우 ON( )
+--SELECT 컬럼명, 컬럼명, ...
+--FROM 테이블명1
+--JOIN 테이블명2 ON(컬럼명1 = 컬럼명2);
+
+--ex) EMPLOYEE 테이블의 D_ID와 DEPARTMENT 테이블의 D_CODE 조인
+	SELECT E_ID, E_NAME, D_ID, D_TITLE
+	FROM EMPLOYEE
+	JOIN DEPARTMENT ON(D_ID = D_CODE);
+	
