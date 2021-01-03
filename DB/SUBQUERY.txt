@@ -3,6 +3,12 @@
 --추가되는 메인 쿼리 안에서 조건이나 하나의 검색을 위한 또 하나의 쿼리 추가하는 기법
 --서브쿼리와 비교할 항목은 반드시 서브쿼리의 SELECT한 항목의 개수와 자료형 일치시킴
 
+--서브쿼리 사용 위치 
+--SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY, JOIN
+--DML : INSERT, UPDATE, DELETE
+--DDL : CREATE TABLE, CREATE VIEW
+
+
 --단일 행 서브쿼리 : 조회 결과 값의 개수가 1개인 서브쿼리
 --ex) 최소 급여 받는 사원의 정보 조회
 	SELECT *
@@ -29,14 +35,57 @@
 
 
 
---상관 (상호연관) 서브쿼리 : 서브쿼리가 만든 결과 값을 메인 쿼리가 비교 연산할 때 
---			메인 쿼리 테이블 값 변경되면 서브쿼리 결과 값도 바뀌는 서브쿼리 
+--상관 (상호연관) 서브쿼리 : 메인쿼리가 사용하는 컬럼, 계산식 등을 서브쿼리에 적용해 
+--			서브쿼리 실행 시 메인쿼리의 값도 함께 사용하는 방식
+
 
 --스칼라 서브쿼리 : 상관쿼리면서 결과 값 한개인 서브쿼리
+--		단일행 + 상관쿼리
+--SELECT, WHERE, ORDER BY절에서 사용 + 보통은 SELECT절에 많이 쓰임
 
 
+--인라인 뷰 INLINE VIEW : FROM 위치에 사용되는 서브쿼리
+--테이블명으로 직접 조회하는 대신 서브쿼리의 RESULTSET을 활용해 데이터를 조회할 때 사용
+--ex) 	SELECT * 
+	FROM (
+		SELECT E_ID, E_NANE, D_TITLE, J_NAME
+		FROM EMPLOYEE
+		JOIN DEPARTMENT ON(D_CODE = D_ID)
+		JOIN JOB USING(J_CODE)
+		);
 
 
+--TON-N 분석 조회 : 조건에 맞는 것을 순위화해 특정 순번까지 조회하는 방식
+--ROWNUM : 데이터를 조회할 때 각 행의 번호 매겨주는 함수
+--ROWNUM은 무조건 1부터 값 증가, 1초과한 순서 먼저 계산할 수 없음
+--e) 5명만 조회
+	SELECT ROWNUM, E_NAME, SALARY
+	FROM EMPLOYEE
+	WHERE ROWNUM<6;
+
+
+--RANK( ) OVER  : 동일한 순번 있을 경우 건너뛰고 순번 매김 + 자동으로 정렬, 순위 생성
+--ex) 급여 순위 3위까지 조회
+	SELECT *
+	FROM (
+		SELECT E_NAME, SALARY, RANK() OVER (ORDER BY SALARY DESC) 순위
+		FROM EMPLOYEE
+		)
+	WHERE 순위<4;
+
+----1등 2등 2등 4등 -> 2등이 2명이니 3등 없이 4등으로 순번 매김
+
+
+--DENSE_RANK( ) OVER : 동일한 순번 있는 경우 이후 순번에 영향 미치지 않음
+--ex) 급여 순위 3등까지 조회
+	SELECT *
+	FROM (
+		SELECT E_NAME, SALARY, DENSE_RANK() OVER (ORDER BY SALARY DESC) 순위
+		FROM EMPLOYEE
+		)
+	WHERE 순위<4;	
+
+--1등 2등 2등 3등 -> 2등이 2명이라도 3등으로 순번 매김
 
 
 
