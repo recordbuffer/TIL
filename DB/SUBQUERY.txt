@@ -1,0 +1,43 @@
+--SUBQUERY 
+--SELECT 문장 안에 포함된 또 다른 SELECT 문장
+--추가되는 메인 쿼리 안에서 조건이나 하나의 검색을 위한 또 하나의 쿼리 추가하는 기법
+--서브쿼리와 비교할 항목은 반드시 서브쿼리의 SELECT한 항목의 개수와 자료형 일치시킴
+
+--단일 행 서브쿼리 : 조회 결과 값의 개수가 1개인 서브쿼리
+--ex) 최소 급여 받는 사원의 정보 조회
+	SELECT *
+	FROM EMPLOYEE
+	WHERE SALARY = (SELECT MIN(SALARY)
+			FROM EMPLOYEE);
+
+
+--다중 행 서브쿼리 : 조회 결과 값의 행이 여러개인 서브쿼리
+--다중 행 서브쿼리 앞에는 일반 비교 연산자 사용 불가
+--사용 가능 (IN/NOT IN, EXIST/NOT EXIST 등)
+
+
+--다중 열 서브쿼리 : 조회 결과 컬럼의 개수 여러개인 서브쿼리
+
+
+--다중 행 다중 열 서브쿼리 : 조회 결과 행의 개수와 컬럼의 개수가 여러개인 서브쿼리
+--ex) 직급별 최소 급여 받는 사원의 사번, 이름, 직급, 급여 조회
+	SELECT E_ID, E_NAME, J_CODE, SALARY
+	FROM EMPLOYEE
+	WHERE (J_CODE, SALARY) IN (SELECT J_CODE, MIN(SALARY)
+				 FROM EMPLOYEE
+				 GROUP BY J_CODE);
+
+
+
+--상관 (상호연관) 서브쿼리 : 서브쿼리가 만든 결과 값을 메인 쿼리가 비교 연산할 때 
+--			메인 쿼리 테이블 값 변경되면 서브쿼리 결과 값도 바뀌는 서브쿼리 
+
+--스칼라 서브쿼리 : 상관쿼리면서 결과 값 한개인 서브쿼리
+
+
+
+
+
+
+
+
