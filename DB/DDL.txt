@@ -1,0 +1,48 @@
+--DDL
+--데이터 정의 언어
+--객체 CREATE, ALTER, DROP하는 구문
+
+
+--CREATE : 객체 생성하는 구문
+--CREATE TABLE 테이블명 (
+	컬럼명 자료형,
+	컬럼명 자료형
+);
+
+
+--컬럼 주석 : 테이블의 컬럼에 주석을 다는 구문
+--COMMENT ON COLUMN 테이블명.컬럼명 IS '주석 내용';
+
+
+--제약조건 CONSTRAINTS : 테이블 생성시 각 컬럼에 값을 기록하는 것에 대한 제약사항 설정
+--			데이터 무결성 보장을 목적으로 함
+
+--유저가 소유한 모든 제약조건 확인
+SELECT * FROM USER_CONSTRAINTS;
+--어떤 컬럼에 어떤 제약조건 부여되어 있는지 확인
+SELECT * FROM USER_CONS_COLUMNS;
+
+--NOT NULL : 데이터에 NULL 허용하지 않음
+
+--UNIQUE : 중복된 값 허용하지 않음
+
+--PRIMARY KEY : 컬럼의 고유 식별자로서 NULL값과 중복 값 허용하지 않음
+
+--FOREIGN KEY (적용할 컬럼) REFERENCES 참조할 테이블명 [(참조할 컬럼명)] [삭제옵션]
+--	        :  다른 테이블의 컬럼값 참조
+--	          참조되는 테이블의 컬럼 값이 존재하면 허용
+
+--[삭제옵션]
+--1. ON DELETE SET NULL : 부모 컬럼 삭제할때 자식 컬럼 값 NULL로 변경
+--2. ON DELETE CASCADE : 부모 컬럼 삭제할때 자식 컬럼 값 함께 삭제
+
+--CHECK (컬럼명 비교연산자 값)
+--	 저장 가능한 데이터 값의 범위나 조건 지정하여 설정한 값만 허용
+--	 비교 연산자로 조건 설정, 비교값을 리터럴만 가능 / 함수, 변하는 값 불가능
+
+
+--테이블 생성 후 제약조건 추가
+--ALTER TABLE 테이블명 ADD 제약조건;
+--ALTER TABLE 테이블명 MODIFY 컬럼명 NOT NULL;
+
+
