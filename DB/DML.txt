@@ -1,0 +1,11 @@
+--DML
+--데이터 조작 언어
+--테이블에 값을 INSERT, UPDATE, DELETE 하는 구문
+
+--INSERT : 데이터 추가
+--INSERT INTO 테이블명 (컬럼명) VALUES (값);
+--INSERT INTO 테이블명 ( 서브쿼리 );
+
+--INSERT ALL : INSERT시 서브쿼리가 사용하는 테이블이 같은 경우
+	       두개 이상의 테이블에 INSERT ALL 이용해 한번에 삽입 가능
+	        각 서브쿼리의 조건절 같을 시에만 가능
