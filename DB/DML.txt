@@ -9,3 +9,37 @@
 --INSERT ALL : INSERT시 서브쿼리가 사용하는 테이블이 같은 경우
 	       두개 이상의 테이블에 INSERT ALL 이용해 한번에 삽입 가능
 	        각 서브쿼리의 조건절 같을 시에만 가능
+
+--ex) EMPLOYEE 테이블에서 D1부서에 근무하는 사원의 사번, 이름, 부서코드, 관리자번호를 MANAGER테이블에 추가
+INSERT ALL 
+	INTO EMP_DCODE_D1 VALUES(E_ID, E_NAME, D_CODE, HIRE_DATE)
+	INTO MANAGER VALUES(E_ID, E_NAME, D_CODE, HIRE_DATE)
+SELECT E_ID, E_NAME, D_CODE, HIRE_DATE, MANAGER_CODE
+FROM EMPLOYEE
+WHERE D_CODE='D1';
+
+
+--UPDATE : 데이터 수정
+--UPDATE 테이블명 SET 컬럼명 = 바꿀값 [WHERE 조건절];
+
+--UPDATE + SUBQUERY : 여러행 여러 컬럼 변경할때 사용
+--UPDATE 테이블명 SET 컬럼명 = (서브쿼리);
+
+
+--MERGE : 구조 같은 테이블 두개 하나로 합치는 기능 
+--	  지정하는 조건의 값이 존재하면 UPDATE, 조건의 값 없으면 INSERT
+
+
+--DELETE : 데이터 삭제
+--DISABLE CONSTRAINT : FOREIGN KEY 제약조건으로 컬럼 삭제 불가능한 경우 제약조건 비활성화할 수 있음
+--ENABLE CONSTRAINT : 비활성화된 제약조건을 다시 활성화
+
+
+--TCL 
+--COMMIT / ROLLBACK / SAVEPOINT / ROLLBACK TO
+--ROLLBACK TO 임시저장소명 : 트랜잭션 수행 중 임시저장된 SAVEPOINT로 복구
+
+
+
+--TRUNCATE : 테이블 전체 행 삭제 -> 테이블 구조는 남음
+-- ROLLBACK 불가능
