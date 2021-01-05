@@ -41,8 +41,24 @@ SELECT * FROM USER_CONS_COLUMNS;
 --	 비교 연산자로 조건 설정, 비교값을 리터럴만 가능 / 함수, 변하는 값 불가능
 
 
+--ALTER : 객체 수정하는 구문
+
 --테이블 생성 후 제약조건 추가
 --ALTER TABLE 테이블명 ADD 제약조건;
 --ALTER TABLE 테이블명 MODIFY 컬럼명 NOT NULL;
 
+--컬럼의 자료형 수정
+ALTER TABLE 테이블명 MODIFY 컬럼명 자료형;
 
+--컬럼의 이름 변경
+ALTER TABLE 테이블명 RENAME COLUMN 원래 컬럼명 TO 바꿀 컬럼명;
+
+--여러 컬럼 삭제
+ALTER TABLE 테이블명 DROP (컬럼명, 컬럼명, ..);
+
+
+--DROP : 객체를 삭제하는 구문
+--DROP 객체 객체명
+
+--제약조건 삭제
+ALTER TABLE 제약조건명 DROP CONSTRAINT 컬럼명;
