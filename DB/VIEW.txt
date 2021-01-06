@@ -1,0 +1,36 @@
+--VIEW 
+--가상의 테이블
+--SELECT를 실행한 결과 화면을 담은 객체
+
+--CREATE [OR REPLACE] VIEW 뷰이름 (컬럼의 별칭, , ..)
+--AS 서브쿼리 (뷰에서 확인할 SELECT)
+
+--ex)
+ 	CREATE OR REPLACE VIEW JOB_V(사번, 사원명, 부서코드, 직급)
+	AS SELECT JOB_CODE, JOB_NAME
+	FROM JOB
+	JOIN JOB USING(JOB_CODE);
+
+--생성한 뷰로 DML 사용 가능
+--ex)
+	INSERT INTO JOB_V VALUES('J1','부장');
+
+	UPDATE JOB_V SET JOB_NAME = '인턴' WHERE JOB_CODE = 'J9';
+
+	DELETE JOB_V WHERE JOB_CODE = 'J9';
+
+--DML로 VIEW 조작 불가능한 경우
+--1. 뷰 정의에 포함되지 않은 컬럼 조작하는 경우
+--2. 뷰에 포함되지 않는 컬럼 중 베이스가 되는 컬럼에 NOT NULL 제약조건이	지정된 경우
+--3. 산술 표현식으로 정의된 경우
+--4. 그룹함수나 GROUP BY절 포함한 경우
+--5. DISTINCT 포함한 경우
+--6. JOIN 이용해 여러 테이블 연결한 경우
+
+
+--뷰 옵션
+--1. OR REPLACE 옵션 : 같은 이름으로 생성된 뷰가 존재하면 뷰 갱신하라
+--2. FORCE / NOFORCE 옵션 : FORCE옵션은 기본 테이블(서브 쿼리에서 사용되는 테이블) 존재하지 않더래도 뷰 생성함
+			  -> NOFORCE옵션이 기본 값 = 존재하지 않는 테이블이면 뷰도 생성 안함
+--3. WITH CHECK OPTION 옵션 : 옵션 설정한 컬럼의 값 수정 불가능하게 함
+--4. WITH READ ONLY 옵션 : 뷰에 대해 조회만 가능 / 수정, 삽입, 삭제 불가능
