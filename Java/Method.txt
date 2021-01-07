@@ -1,0 +1,22 @@
+package com.test01;
+
+
+//Method
+//메소드 : 멤버 변수에 대한 기능, 동작 정의 (연산)
+//인스턴스 메소드 Non-static Method : 클래스에 소속된 일반 메소드
+//클래스 메소드 static Method 
+
+public class MethodTest01 {
+	public static void main(String[] arge) {
+	//non-static method 
+	//1. 준비
+	MethodTest01 mt01 = new MethodTest01();
+	
+	//2. 실행
+	mt01.NonStaticMethod();
+
+	
+
+	//static method
+	//클래스명.메소드명();
+
