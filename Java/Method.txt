@@ -1,22 +1,76 @@
-package com.test01;
 
+public class Method01 {
 
-//Method
-//메소드 : 멤버 변수에 대한 기능, 동작 정의 (연산)
-//인스턴스 메소드 Non-static Method : 클래스에 소속된 일반 메소드
-//클래스 메소드 static Method 
+	public static void main(String[] args) {
 
-public class MethodTest01 {
-	public static void main(String[] arge) {
+		/*method : 멤버 변수에 대한 기능, 동작 정의 (연산)
+		 * 인스턴스 메소드 Non-static Method : 클래스에 소속된 일반 메소드
+		 * 클래스 메소드 static Method 
+		 */
+
 	//non-static method 
-	//1. 준비
-	MethodTest01 mt01 = new MethodTest01();
-	
-	//2. 실행
-	mt01.NonStaticMethod();
+		//1. 준비
+		Method01 mt01 = new Method01();
+		
+		//2. 실행
+		mt01.NonStaticMethod();
 
 	
-
 	//static method
-	//클래스명.메소드명();
+		//클래스명.메소드명();
+	}
+	
+	//접근 제한자
 
+	//public : 어디에서나 접근, 참조 가능 (+)
+	public static void publicMethod() {
+		System.out.println("public method");
+	}
+	
+	//protected : 상속일 경우 상속된 곳에서 
+	//			    상속 아닌 경우 같은 패키지에서 접근, 참조 (#)
+	protected static void protectedMethod() {
+		System.out.println("protected method");
+	}
+	
+	//default : 같은 패키지 내에서 접근, 참조 
+	static void defaultMethod() {
+		System.out.println("default method");
+	}
+	
+	//private : 현재 클래스 내에서만 접근, 참조 (-)
+	private static void privateMethod() {
+		System.out.println("private method");
+	}
+	
+	//static 메소드는 오직 static메소드만 접근 가능
+	public void NonStaticMethod() {
+		System.out.println("non static method");
+	}
+	
+}
+
+
+
+// + 같은 패키지 다른 클래스 Method02 -------------------------------------------------------------
+
+public class Method02 {
+
+	public static void main(String[] args) {
+	//static method 호출 
+		//class.method();
+		Method01.publicMethod();
+		Method01.protectedMethod();
+		Method01.defaultMethod();
+		
+		//Method01.privateMethod();
+		//같은 클래스가 아니라 오류 발생
+		
+	//non static method 호출 
+		//class 변수명 = new class();
+		//변수명.method();
+		Method01 mt01 = new Method01();
+		mt01.NonStaticMethod();
+
+	}
+}
