@@ -1,9 +1,16 @@
-//if문 
 
 import java.util.Scanner;
 
 public class if_Test {
 	public static void main(String[] args) {
+		if_Test.if_test01();
+		if_Test.if_test02();
+		if_Test.if_test03();
+		
+		
+	}
+	
+	public static void if_test01() {
 		
 		//if문 : 만약 (조건식)이 true라면 코드 출력하라
 		/*	if (조건식) {
@@ -23,15 +30,8 @@ public class if_Test {
 		}
 		System.out.println("프로그램을 종료합니다.");
 	}
-}
-
-//------------------------------------------------------------------------------------------------
-//if-else문
-
-import java.util.Scanner;
-
-public class if_else_Test {
-	public static void main(String[] args) {
+	
+	public static void if_test02() {
 		
 		/* if-else문 : 만약 (조건식)이 true면 코드1 출력, false라면 코드2 출력
 		 * if (조건식) {
@@ -54,15 +54,8 @@ public class if_else_Test {
 		System.out.println("프로그램을 종료합니다.");
 		
 	}
-}
-
-//-----------------------------------------------------------------------------------------------------
-//if-else-if문
-
-import java.util.Scanner;
-
-public class if_else_if_Test {
-	public static void main(String[] args) {
+	
+	public static void if_test03() {
 		
 		/* if-else-if문 :  만약 (조건식1)이 true면 코드1 출력,
 		 * 				  false고 만약 (조건식2)이 true라면 코드2 출력,
@@ -91,6 +84,5 @@ public class if_else_if_Test {
 		} else {
 			System.out.println(i+"와 "+j+"가 같습니다.");
 		}
-
 	}
 }
