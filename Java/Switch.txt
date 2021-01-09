@@ -1,0 +1,38 @@
+
+import java.util.Scanner;
+
+public class Switch_Test {
+	public static void main(String[] args) {
+		
+		/* switch문 : 선택 조건 많을 때 사용, 선택한 조건 없으면 default코드 출력
+		 * switch (선택표현식) {
+		 * case 선택1 : 코드
+		 * 			   break;
+		 * case 선택2 : 코드
+		 *			   break;
+		 * case 선택3 : 코드
+		 * 			   break;
+		 * default :코드
+		 *  }
+		 */
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.print("1~5 중 숫자 하나 입력: ");
+		int i = sc.nextInt();
+		
+		switch (i) {
+		case 1:
+			System.out.println("1입니다.");
+			break;
+		case 2: 
+			System.out.println("2입니다.");
+			break;
+		case 3:
+			System.out.println("3입니다.");
+			break;
+		default:
+			System.out.println("다른 숫자입니다.");
+		}
+	}
+
+}
