@@ -1,0 +1,111 @@
+
+public class Book {
+	private String title;
+	private String author;
+	private String publisher;
+	private int price;
+	
+	public Book() {
+		super();
+	}
+
+	public Book(String title, String author, String publisher, int price) {
+		super();
+		this.title = title;
+		this.author = author;
+		this.publisher = publisher;
+		this.price = price;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Book [title=" + title + ", author=" + author + ", publisher=" + publisher + ", price=" + price + "]";
+	}
+}
+
+
+//---------------------------------------------------------------------------------------------------------------
+
+
+import java.util.Scanner;
+
+public class Book_oaTest {
+	public static void main(String[] args) {
+	
+	/* 객체 배열
+	 * 
+	 * 1.
+	 * 선언 및 할당
+	 * Book[] bk = new Book[3];
+	 * 
+	 * + 초기화
+	 * bk[0]=new Book("오만과 편견","제인 에어","민음사",16000);
+	 * bk[1]=new Book("더블린 사람들","제임스 조이스","문학동네",12000);
+	 * bk[2]=new Book("노인과 바다","어니스트 헤밍웨이","창비",9800);
+	 */
+	
+	 // 2.선언 및 할당 초기화 한번에 
+	  Book[] bk= {
+			  new Book("오만과 편견","제인 오스틴","민음사",16000),
+			  new Book("더블린 사람들","제임스 조이스","문학동네",12000),
+			  new Book("노인과 바다","어니스트 헤밍웨이","창비",9800)
+	  };
+	
+	 
+	  System.out.println(bk);	//객체 배열이라 주소값으로 나옴
+	  System.out.println(bk[0]); //객체배열 인덱스 0번 출력
+	  System.out.println(bk[0].getTitle()); //객체 배열 인덱스 0번의 제목만 출력
+	  System.out.println();
+		
+	  //도서출력
+	  for (int i=0; i<bk.length; i++) {
+		  System.out.println(bk[i].toString());
+	  }
+
+	  System.out.println();
+
+	  
+	  //도서검색
+	  Scanner sc = new Scanner(System.in);
+	  System.out.println("검색할 책 제목: ");
+	  String search = sc.nextLine();
+	  
+	  for (int i=0; i<bk.length; i++) {
+		  if(bk[i].getTitle().equals(search)) {
+			  System.out.println(bk[i].toString());
+		  }
+	  }
+	}
+}
