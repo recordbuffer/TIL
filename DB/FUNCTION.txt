@@ -23,6 +23,10 @@ SELECT SUBSTR(EMAIL,1,INSTR(EMAIL,'@')-1) FROM EMPLOYEE;
 
 --REPLACE(주어진 값, 바꾸고 싶은 문자, 바꿀 문자)
 
+--정규식 함수 REGEXP_REPLACE
+-- + 월급의 숫자 0~3까지를 *로 출력
+SELECT ENAME, REGEXP_REPLACE(SAL,'[0-3]','*') AS SALARY
+FROM EMPLOYEE;
 
 
 --[숫자 처리 함수]
@@ -38,8 +42,27 @@ SELECT SUBSTR(EMAIL,1,INSTR(EMAIL,'@')-1) FROM EMPLOYEE;
 --SYSTIMESTAMP : 현재 날짜 + 시간까지 반환하는 함수
 --MONTHS_BETWEEN(날짜, 날짜) : 두 날짜 사이의 개월 수
 --ADD MONTHS(날짜, 더할 수 ) : 개월 수 더해 반환
+
+-- + 달의 기준 30일로 할지 31일로 할지 고민이라면 : INTERVAL 함수
+SELECT TO_DATE('2019-05-01','RRRR-MM-DD') + INTERVAL '100' MONTH
+FROM DUAL;
+
+--INTERVAL은 YEAR, MONTH, DAY, HOUR, MINUTE, SECOND 지정할 수 있음
+--INTERVAL '10' YEAR
+--INTERVAL '10' HOUR
+
+-- + 3년 5개월 후 날짜 출력
+SELECT TO_DATE('2016-04-16','RRRR-MM-DD') + TO_YMINTERVAL('03-05') AS 날짜
+FROM DUAL;
+
+
 --NEXT_DAY(날짜, 요일) : 가장 가까운 (다음) 요일 반환
 --LAST_DAT(날짜) : 특정 날자 속한 달의 마지막 날짜 반환
+
+-- + 오늘부터 이번달 말일까지 며칠 남았는지 출력
+SELECT LAST_DAY(SYSDATE) - SYSDATE AS "남은 날짜"
+FROM DUAL;
+
 --EXTRACT(YEAR/MONTH/DAY FROM 날짜) : 지정한 날짜로부터 날짜 값을 추출하는 함수
 
 --[형변환 함수]
