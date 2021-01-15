@@ -20,6 +20,20 @@ SELECT EID, ENAME FROM EMPLOYEE;
 --테이블에서 조건 만족하는 값을 가진 행을 선택해 조회하는 조건절
 --여러 조건을 AND / OR 함께 사용 가능
 
+-- + 현재 접속한 세션의 날짜 형식 확인하기 -> 'NLS_SESSION_PARAMETERS'
+SELECT *
+FROM NLS_SESSION_PARAMETERS
+WHERE PARAMETER = 'NLS_DATE_FORMAT';
+
+-- + 내가 접속한 세션의 파라미터 변경하는 명령어 -> 'ALTER SESSION SET'
+ ALTER SESSION SET NLS_DATE_FORMAT ='YY/MM/DD';
+
+SELECT ENAME, SAL
+FROM EMPLOYEE
+WHERE HIREDATE='81/11/17'; --YY는 2081년으로 인식함
+
+
+
 --컬럼에 별칭달기
 --[1] AS
 SELECT EID AS 사원번호 FROM EMPLOYEE;
@@ -27,7 +41,11 @@ SELECT EID AS 사원번호 FROM EMPLOYEE;
 --[2] AS 생략 
 SELECT EID 사원번호 FROM EMPLOYEE;
 
--- 띄어 쓰기 있는 경우에는 "" 사용, ''는 생략가능
+-- + 별칭에서 "" 써야 할 경우
+--(1) 대소문자 구분하여 출력할때
+--(2) 공백문자 출력할때
+--(3) 특수문자 출력할때 ($,_,#만 가능)
+
 
 --NVL(컬럼명, 기본값) : 조회한 값이 NULL인 경우 별도로 지정한 값으로 변경
 SELECT ENAME, NVL(BONUS,0) FROM EMPLOYEE;
@@ -35,6 +53,14 @@ SELECT ENAME, NVL(BONUS,0) FROM EMPLOYEE;
 --[ALL | DISTINCT] : 기본은 ALL 
 --DISTINCT는 값을 중복 제거해 출력
 SELECT DISTINCT DEPTNO FROM EMPLOYEE;
+
+-- + DISTINCT대신 UNIQUE 써도 됨
+SELECT DISTINCT JOB
+FROM EMPLOYEE;
+
+SELECT UNIQUE JOB
+FROM EMPLOYEE;
+
 
 --연산자
 --연결 연산자 '||'
