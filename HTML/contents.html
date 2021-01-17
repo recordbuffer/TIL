@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내용</title>
+</head>
+<body>
+    <p>
+        <h2 style="background-color: lemonchiffon;">1. 테이블 </h2>
+        &lt;table&gt;: 표 생성해주는 태그 <br>
+        &lt;tr&gt; : 표의 행 태그 <br>
+        &lt;th&gt; : 표의 제목셀 태그 <br>
+        &lt;td&gt; : 표의 일반셀 태그 <br>
+        <br>
+
+        <h4>테이블 만들기</h4>
+        <table border="1" style="width: 300px;">
+            <tr>
+                <th>th1</th>
+                <th>th2</th>
+            </tr>
+            <tr>
+                <td>td1</td>
+                <td>td2</td>
+            </tr>
+            <tr>
+                <td>td3</td>
+                <td>td4</td>
+            </tr>
+        </table>
+
+        <h4>테이블 만들기 2</h4>
+        <table border="1">
+            <caption>테이블 제목</caption>
+            <colgroup>
+                <col width="50px">
+                <col width="100px">
+                <col width="150px">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>50px_th1</th>
+                    <th>100px_th2</th>
+                    <th>150px_th3</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>f1</td>
+                    <td>f2</td>
+                    <td>f3</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <h4>테이블 셸 병합하기</h4>
+        &lt;td&gt; 태그 속성 사용해 행,열 병합 가능<br>
+        colspan : 열을 합친다. <br>
+        rowspan : 행을 합친다. <br>
+
+        <table border="1"> 
+            <caption>테이블 셸 병합</caption>
+            <thead style="background-color: lightblue;">
+                <tr>
+                    <td>td1</td>
+                    <td>td2</td>
+                    <td>td3</td>
+                    <td>td4</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2">1(세로(열) 합치기</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td colspan="2">6</td>
+                    <td>7</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4"> 8 가로 합치기</td>
+                </tr>
+            </tfoot>
+        </table>
+    </p>
+    
+    
+    <p>
+        <h2 style="background-color: lemonchiffon;"> 2. &lt;img태그&gt; : 사진 넣어주기 </h2>
+        &lt;img태그 src="이미지 주소"&gt; <br><br>
+
+        <img src="https://images.mypetlife.co.kr/content/uploads/2019/09/04222847/dog-panting-1024x683.jpg" width="500">
+
+    </p>
+
+    <p>
+        <h2 style="background-color: lemonchiffon;">오디오, 비디오 넣어주기</h2>
+        <h4>오디오</h4>
+        &lt;audio태그 src="오디오 주소"&gt; <br><br>
+        <audio src="sample/audio/major.mp3" controls="controls"></audio>
+        <br><br>
+
+        <h4>비디오</h4>
+        &lt;video태그 src="비디오 주소"&gt; <br><br>
+        <video src="sample/video/video1.mp4" controls="controls"></video>
+        <br>
+    </p>
+</body>
+</html>

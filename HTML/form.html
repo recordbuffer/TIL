@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼 태그</title>
+</head> 
+<body>
+    <p>
+        <h2 style="background-color: lemonchiffon;">폼 관련 태그</h2>
+        &lt;폼 태그&gt;는 HTML에서 사용자가 입력할 수 있는 양식 제공하는 태그 <br><br>
+        
+        <form>
+            <label>검색할 내용&nbsp;</label><input type="text" size="20">&nbsp;<input type="submit" value="검색">
+        </form>
+     
+        <hr>
+        <h4>필드셋 fieldset</h4>
+        <form>
+            <fieldset>
+                <legend>필드셋의 제목</legend>
+                <label>입력 1: </label><input type="text"><br>
+                <label>입력 2: </label><input type="text"><br>
+                <label>입력 3: </label><input type="text"><br>
+                <label>입력 4: </label><input type="text"><br>
+            </fieldset>
+        </form>
+
+        <hr>
+        <form>
+            <h4>텍스트 관련 input태그</h4>
+            <p>*텍스트 상자</p>
+            <label>아이디 : </label><input type="text" name="userid" size="20"
+                                        placeholder="아이디를 입력하세요" maxlength="15"
+                                        value="userid999">
+            
+            <br>
+            <p>*텍스트 상자2</p>
+            <label>비밀번호 : </label><input type="password" size="20"
+                                            maxlength="15" placeholder="비밀번호를 입력하세요">
+    
+            <br>
+            <p>*텍스트 상자3</p>
+            <label>홈페이지</label><input type="url" name="homepage" value="https://">
+            
+            <br>
+            <p>*전송 취소 버튼</p>
+            <input type="submit" value="전송">&nbsp;<input type="reset" value="취소">
+            
+        </form>
+        
+        <hr>
+        <form>
+            <h4>숫자 관련 input태그</h4>
+            수량 : <input type="number" name="amount" min="0" max="100" value="50" step="5">
+            <br>
+            점수 : <input type="range" min="0" max="100" value="40" step="10">
+        </form>
+
+        <hr>
+        <form>
+            <h4>날짜, 시간 관련 input태그</h4>
+            date : <input type="date"><br>
+            month : <input type="month"><br>
+            week : <input type="week"><br>
+            time : <input type="time">
+        </form>
+
+        <hr>
+        <form>
+            <h4>라디오 버튼과 체크박스</h4>
+            성별 : <input type="radio" id="male" name="gender" value="M"><label>남자</label>
+                   <input type="radio" id="female" name="gender" value="F" checked><label>여자</label>
+            <br>
+            좋아하는 과목 : <input type="checkbox" id="Java" name="subject" value="Java">자바
+                            <input type="checkbox" id="DB" name="subject" value="DB">데이터베이스
+                            <input type="checkbox" id="HTML" name="subject" value="HTML">HTML
+            
+        </form>
+
+        <hr>
+        <form>
+            <h4>select 태그, option 태그</h4>
+            도시 : 
+            <select>
+                <option value="서울">서울</option>
+                <option value="경기">경기</option>
+                <option value="충청">충청</option>
+                <option value="제주">제주</option>
+            </select>
+        </form>
+
+        <hr>
+        <form>
+            <h4>색상 선택 태그</h4>
+            색상 선택 : <input type="color" name="color">
+
+        </form>
+
+        <hr>
+        <form>
+            <h4>파일 선택 태그</h4>
+            파일 선택 : <input type="file" name="upload">
+        </form>
+
+        <hr>
+        <form>
+            <h4> 자유 텍스트 태그</h4>
+            <textarea cols="50" rows="10" style="resize: none;"></textarea>
+        </form>
+
+       
+    </p>
+    
+</body>
+</html>
