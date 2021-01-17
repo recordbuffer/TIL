@@ -6,27 +6,52 @@
     <title>HTML 기초</title>
 </head>
 <body>
-    <h2 style="background-color: lemonchiffon;"> 1. HTML 구성요소 </h2>
-    &lt;시작태그 속성='속성값'&gt; 화면에 출력될 내부 문자 &lt;/종료태그 &gt;
+    <p>
+        <h2 style="background-color: lemonchiffon;"> 1. HTML 구성요소 </h2>
+        &lt;시작태그 속성='속성값'&gt; 화면에 출력될 내부 문자 &lt;/종료태그 &gt; <br>
+        <strong>태그 tag </strong> : &lt; &gt;로 묶인 명령어로 시작태그와 종료태그가 한 세트 <br>
+        <strong>요소 element</strong> : 시작태그와 종료태그로 이루어진 명령어 <br>
+        <strong>속성</strong> : 명령어 구체화하는 역할 <br>
+        <strong>속성값</strong> : 속성이 가지는 값 <br>
 
-    <br>
+    </p>
     
-    <h2 style="background-color: lemonchiffon;">2. HTML 구조 </h2>
-    &lt;!DOCTYPE&gt; : 문서유형, 형식을 알려주는 태그 <br>
-    &lt;html&gt; : 문서의 시작과 끝 표시 <br> 
-    + &lt;html lang="en"&gt; 이 페이지가 어느 나라 언어로 되어있는지 의미한다. -> 검색 엔진이 참고 <br>
-    &lt;head&gt; : 문서의 정보 <br>
-    &lt;body&gt; : 화면에 출력해서 보여주는 내용 <br>
+    <p>
+        <h2 style="background-color: lemonchiffon;">2. HTML 구조 </h2>
+        &lt;!DOCTYPE&gt; : 문서유형, 형식을 알려주는 태그 <br>
+        &lt;html&gt; : 문서의 시작과 끝 표시 <br> 
+        + &lt;html lang="en"&gt; 이 페이지가 어느 나라 언어로 되어있는지 의미한다. -> 검색 엔진이 참고 <br>
+        &lt;head&gt; : 문서의 정보 <br>
+        &lt;body&gt; : 화면에 출력해서 보여주는 내용 <br>
 
-    <br>
+    </p>
 
-    <h2 style="background-color: lemonchiffon;"> 3. h태그 </h2>
-    <h1>h1 태그입니다.</h1>
-    <h2>h2 태그입니다.</h2>
-    <h3>h3 태그입니다.</h3>
-    <h4>h4 태그입니다.</h4>
-    <h5>h5 태그입니다.</h5>
-    <h6>h6 태그입니다.</h6>
+    <p>
+        <h2 style="background-color: lemonchiffon;"> block & inline </h2>
+        HTML 태그는 블록요소와 인라인요소로 이루어져 있다. <br><br>
 
+        블록요소 block element
+        <ul>
+            <li>내용 길이 상관 없이 요소 자체가 전체 </li>
+            <li>기본 줄바꿈</li>
+            <li>텍스트, 인라인 요소 포함되어 있음</li>
+            <li>블록 요소 안에 블록 요소 가능</li>
+            <li>기본 직사각형 형태 + width, height, margin, padding 등으로 변형을 줘서 사용 가능</li>
+            <li>예시)</li>
+            <div style="background-color: rgb(198, 238, 171);">
+            이것이 block 요소다.<br>
+            요소 전체가 바뀐다.<br>
+            줄바꿈에도 가능하다.
+            </div>
+        </ul>
+
+        인라인요소 inline element
+        <ul>
+            <li>내용 길이에 따라 요소의 너비 결정 </li>
+            <li>줄바꿈X</li>
+            <li>예시)</li>
+            이것이 <q style="background-color: rgb(201, 245, 166);">inline </q>요소다.
+        </ul>
+    </p>
 </body>
 </html>
