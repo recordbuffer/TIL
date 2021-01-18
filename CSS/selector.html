@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자</title>
+<link href="resources/css02.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <h1>선택자</h1>
+
+<article>
+    <h3>선택자란?</h3>
+    <p>선택자란 CSS효과를 적용할 대상 가리켜 선택해주는 것</p>
+
+    [사용 방법]<br>
+    &lt;head&gt;에서 CSS 파일 불러옴 <br>
+    &lt;link href="CSS 파일" rel="stylesheet" type="text/css"&gt; <br><br>
+    <strong>선택자</strong> <mark>{</mark> 선언(속성=속성값); 선언(속성=속성값); 선언(속성=속성값); <mark>}</mark>
+    <br><br>
+
+    [우선순위]<br>
+    <p>기본적으로는 css속성은 위에서 부터 아래로 적용, 같은 태그에 여러개의 css속성이 설정된 경우에는 
+        우선순위에 따라 스타일이 적용된다.
+    </p>
+    <pre> 태그선택자 < 크래스선택자 < 아이디선택자 < 인라인스타일 < !important</pre>
+
+</article>
+<hr>
+
+<article>
+    <h3>전체 선택자 * </h3>
+    HTML 페이지 내부의 모든 태그 선택 <br>
+</article>
+<hr>
+
+<article>
+    <h3>타입 선택자</h3>
+    HTML 태그를 직접 선택하는 선택자
+</article>
+<hr>
+
+<article>
+    <h3>id 선택자 # </h3>
+    <ol>
+        <li id="s_id01">id는 유일한 식별자</li>
+        <li id="s_id02">어떤 요소에 대한 유일한 속성값이다.</li>
+        <li id="s_id03">속성에 id를 지정하고 style에서 지정된 id값을 사용한다.</li>
+        <li id="s_id04">#으로 아이디를 구분한다.</li>
+    </ol>
+</article>
+<hr>
+
+<article>
+    <h3>class 선택자 . </h3>
+    <ol>
+        <li class="s_cl">여러 요소에 공통적으로 적용한다.</li>
+        <li class="s_cl">한 페이지에 여러번 나오는 속성값을 class로 지정해 관리한다.</li>
+        <li class="s_cl">.으로 클래스를 구분한다.</li>
+        <li class="s_cl" id="s_cl_id">클래스와 id같이 사용도 가능 -> id는 유일한 값으로 우선순위 높음</li>
+    </ol>
+</article>
+<hr>
+
+<article id="ale">
+    <h3>자식 선택자 > </h3>
+    한단계 아래 하위 요소를 칭할 때 자식 선택자라고 함<br>
+    <div>
+        <p>자식1</p>
+    </div>
+    <p>자식인가?</p>
+</article>
+<hr>
+
+
+<article>
+    <h3>하위 선택자 ></h3>
+    특정 요소의의 하위 요소 지정할 때 사용 <br><br>
+
+    <div>
+        <span>div>span특정 요소의의 하위 요소 지정할 때 사용
+        <p>
+            <span>div>p>span특정 요소의의 하위 요소 지정할 때 사용
+                <p>
+                    <span>div>p>span>p>span특정 요소의의 하위 요소 지정할 때 사용</span>
+                </p>
+            </span>
+        </p>
+        </span>
+    </div>
+</article>
+<hr>
+
+<article>
+    <h3>인접 선택자 + </h3>
+    인접하는 선택자, 뒤따르는 선택자다 <br>
+    <b>지정한 요소</b>
+    <span>다음 요소 선택한다 </span>
+    <b>인접인가?</b>
+</article>
+<hr>
+
+<article>
+    <h3>속성 선택자 [ ] </h3>
+    <p title="a">속성이 정의된 태그만 선택하는 선택자</p>
+    <p title="b">속성이 정의된 태그만 선택하는 선택자</p>
+    <p>속성이 정의된 태그만 선택하는 선택자</p>
+    <p name="c">name 속성 정의</p>
+</article>
+<hr>
+
+<article>
+    <h3 class>종속 선택자</h3>
+        <p class="cidt1">타입선택자와 id선택자, class선택자 등이 혼합된 형태이다.</p>
+
+        <p class="cidt2" id="cidt">타입선택자와 id선택자, class선택자 등이 혼합된 형태이다.</p>
+
+</article>
+<hr>
+
+<article>
+    <h3>그룹 선택자 , </h3>
+    여러 요소에 각각 같은 속성을 적용하는 것 <br>
+    <strong>여러 요소에 각각 같은 속성을 적용하는 것</strong> <br>
+    <i>여러 요소에 각각 같은 속성을 적용하는 것</i> <br>
+    <s>여러 요소에 각각 같은 속성을 적용하는 것</s> <br>
+</article>
+<hr>
+
+<article>
+    <h3>가상 클래스 선택자 : </h3>
+    특정 이벤트가 발생되는 태그 <br>
+    <ul>
+        <li>link : 방문전 링크 선택하는 선택자</li>
+        <li>visited : 방문후 링크 선택하는 선택자</li>
+        <li>hover : 마우스를 요소에 올린 동안 선택하는 선택자</li>
+        <li>active : 마우스를 클릭할 때 선택하는 선택자</li>
+    </ul>
+
+    <br>
+    <a href="http://www.naver.com">네이버</a><br>
+    <a href="http://www.daum.net">다음</a><br>
+    <a href="http://www.google.com">구글</a><br>
+</article>
+
+
+</body>
+</html>
