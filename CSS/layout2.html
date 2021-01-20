@@ -35,6 +35,84 @@
         height: 150px;
         overflow: hidden;
     }
+
+
+
+    #fixed{
+        width: 200px;
+        background-color: silver;
+        position: fixed;
+        right: 50px;
+        top: 200px;
+    }
+    #box{
+        width: 800px;
+        height: 600px;
+        border: 1px dotted black;
+        position: relative;
+    }
+    .red{
+        width: 100px;
+        background-color: red;
+        position: relative;
+    }
+    .green{
+        width: 100px;
+        background-color: greenyellow;
+        position: relative;
+        left: 30px;
+        top: -30px;
+    }
+    .yellow{
+        width: 300px;
+        background-color: yellow;
+        position:absolute;
+        left: 100px;
+        top:50px;
+    }
+    .pink{
+        width: 200px;
+        background-color: pink;
+        position: relative;
+        top: -70px;
+    }
+    .blue{
+        width: 400px;
+        background-color: lightskyblue;
+        position: relative;
+        top: -350px;
+        left: 50px;
+    }
+    /*잘 보이는지 확인하기 위한 모션 추가*/
+    .red:hover{z-index: 100;}
+    .green:hover{z-index: 100;}
+    .pink:hover{z-index: 100;}
+    .yellow:hover{z-index: 100;}
+
+
+
+
+    .bd{
+        border: 1px double black;
+        width: 200px;
+        text-align: center;
+        float: left;
+        margin: 5px;
+    }
+    #c1{
+        background-color: orange;
+        border-radius: 20px 20px 20px 20px;
+    }
+    #c2{
+        background-color:tomato;
+        border-radius: 100px 0px 100px 0px;
+    }
+    #c3{
+        background-color: salmon;
+        border-radius: 500px 500px 0px 0px;
+    }
+
+
 </style>
 </head>
 <body>
@@ -72,13 +150,51 @@
 
     <h2>position</h2>
     <br>
-    <div>
-        <h1>[Book review] 백년동안의 고독 </h1>
+    <div id="fixed">
+        <h4>position : fixed</h4>
+        <h4>[Book review] 백년동안의 고독 </h4>
         <p><b>가브리엘 가르시아 마르케스</b></p>
     </div>
+    <div id="box">
+        <p class="red">1982년 노벨문학상 수상작! 마술적 리얼리즘의 극치</p>
+        <p class="green">'책이 생긴 이래 모든 인류가 읽어야 할 첫 번째 문학 작품'- 뉴욕타임즈</p>
+        <p class="yellow">
+            position: absoulte<br>
+            우편물을 실어 나르는 노새가 보름에 한번밖에 오지 않는다는 사실을 알고 있었으면서도, 노새가 착오를 일으켜 어느 날 갑자기 올지도 모른다고 생각하고서 날마다 기다리곤 했다. 
+            그러나 모든 게 기대와는 반대로 일어났다. 오히려 노새가 와야 할 날에 오지 않은 날도 있었다. <br>
+            한번은 노새가 예정된 날짜에 도착하지 않았다. 
+        </p>
+        <p class="pink">    
+            절망감으로 정신이 돌아버린 레베까는 한밤중에 일어나 고통과 분노에 휩사여 흐느껴 우는 가운데 말랑말랑한 지렁이를 씹어먹고 달팽이 껍질을 어금니로 아삭아삭 깨물어대면서 죽어도 좋다는 듯이 게걸스럽게 마당 흙을 몇 주먹 퍼먹었다. <br>
+            그리고 동이 틀 때까지 먹은 것을 토해냈다.
+        </p>
+        <p class="blue">
+            기차에 부딪치지 않으려고 페르난다에게 한쪽 팔을 의지한 채 점점 속도가 빨라지고 있는 기차를 좇아가던 아우렐리아노 세군도는 딸이 손가락 끝으로 키스를 보냈을 때 손으로 간신히 응답할 수 있었다. <br>
+            부부는 타는 듯한 태양 아래서 결혼식 날 이후로 처음으로 팔짱을 낀 채 열차가 지평선에 있는 까만 점 속으로 사라져가는 모습을 바라보면서 꼼짝도 않고 서 있었다.
+        </p>
+    </div>
 
-
-
-
+    <hr>
+    
+    <h2>border</h2>
+    <br>
+    <div class="bd" id="c1">
+        <h4>[Book review] 백년동안의 고독 </h4>
+        <p><b>가브리엘 가르시아 마르케스</b></p>
+    </div>
+    <div class="bd" id="c2">
+        <p>
+            우편물을 실어 나르는 노새가 보름에 한번밖에 오지 않는다는 사실을 알고 있었으면서도, 노새가 착오를 일으켜 어느 날 갑자기 올지도 모른다고 생각하고서 날마다 기다리곤 했다. 
+            그러나 모든 게 기대와는 반대로 일어났다. 오히려 노새가 와야 할 날에 오지 않은 날도 있었다. <br>
+            한번은 노새가 예정된 날짜에 도착하지 않았다. 절망감으로 정신이 돌아버린 레베까는 한밤중에 일어나 고통과 분노에 휩사여 흐느껴 우는 가운데 말랑말랑한 지렁이를 씹어먹고 달팽이 껍질을 어금니로 아삭아삭 깨물어대면서 죽어도 좋다는 듯이 게걸스럽게 마당 흙을 몇 주먹 퍼먹었다. <br>
+            그리고 동이 틀 때까지 먹은 것을 토해냈다.
+        </p>
+    </div>
+    <div class="bd" id="c3">
+        <p>
+            기차에 부딪치지 않으려고 페르난다에게 한쪽 팔을 의지한 채 점점 속도가 빨라지고 있는 기차를 좇아가던 아우렐리아노 세군도는 딸이 손가락 끝으로 키스를 보냈을 때 손으로 간신히 응답할 수 있었다. <br>
+            부부는 타는 듯한 태양 아래서 결혼식 날 이후로 처음으로 팔짱을 낀 채 열차가 지평선에 있는 까만 점 속으로 사라져가는 모습을 바라보면서 꼼짝도 않고 서 있었다.
+        </p>
+    </div>
 </body>
 </html>
