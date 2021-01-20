@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js</title>
+<style typ="text/css">
+    h2{
+        background-color: lemonchiffon;
+    }
+</style>
+<script type="text/javascript" src="js/test.js"></script>
+
+<script type="text/javascript">
+    function test(){
+        var doc = document.getElementsByTagName("li")[1];
+        doc.style.color="red";
+        doc.innerHTML="<u>내부작성 방식으로 사용중</u>";
+    }
+</script>
+</head>
+<body>
+    <h2>javascript 작성방법</h2>
+    <br>
+    <b>기본 inline 방식</b>
+    <ol> 
+        <li onclick="alert('inline');">inline 방식</li>
+        <li onclick="test();">내부작성 방식</li>
+        <li onclick="test2();">외부 링크 방식(.js)</li>
+    </ol>
+
+</body>
+</html>
