@@ -5,49 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>네비게이션 메뉴 구현하기</title>
 <style type="text/css">
+    /*메뉴 설정*/
     .navi{
         list-style-type: none;
+        height: 30px;
+
     }
     .navi li{
-        background-color: pink;
+        background-color:lemonchiffon;
         position: relative;
+        font-weight: bold;
+        line-height: 30px;
+        float: left;    /*메뉴 정렬*/
     }
     .navi li a{
         display:block;
+        text-decoration: none;
+        padding: 5px 30px;
         
     }
+    .navi li a:hover{
+        color:red;
+    }
+    /*하위메뉴 설정*/
+    .navi li ul{
+        list-style-type: none;
+    }
+    .navi li ul li{
+        position: static;
+
+    }
+    .navi li:hover ul li{
+        height: 30px;
+        line-height: 30px;
 
 </style>
 </head>
 <body>
     <h2>네비게이션 메뉴</h2>
     <ul class="navi">
-        <li><a href="">블로그 관리 홈</a></li>
-        <li><a href="">콘텐츠</a>
+        <li><a href="">CGV</a></li>
+        <li><a href="">영화</a>
             <ul>
-                <li><a href="">글 관리</a></li>
-                <li><a href="">페이지 관리</a></li>
-                <li><a href="">카테고리 관리</a></li>
-                <li><a href="">공지 관리</a></li>
-                <li><a href="">서식 관리</a></li>
-                <li><a href="">설정</a></li>
+                <li><a href="">무비 차트</a></li>
+                <li><a href="">HD 트레일러</a></li>
+                <li><a href="">무비 파인더</a></li>
+                <li><hr></li>
+                <li><a href="">CGV 아트하우스</a></li>
             </ul>
         </li>
-        <li><a href="">댓글/방명록</a>
+        <li><a href="">예매</a>
             <ul>
-                <li><a href="">댓글 관리</a></li>
-                <li><a href="">방명록 관리</a></li>
-                <li><a href="">설정</a></li>
+                <li><a href="">빠른예매</a></li>
+                <li><a href="">상영시간표</a></li>
             </ul>
         </li>
-        <li><a href="통계"></a>
+        <li><a href="">극장</a>
             <ul>
-                <li><a href="">방문 통계</a></li>                
-                <li><a href="">유입 경로</a></li>
+                <li><a href="">CGV 극장</a></li>                
+                <li><a href="">특별관</a></li>
+                <li><hr></li>
+                <li><a href="">CLUB 서비스</a></li>
             </ul>
         </li>
-        <li><a href="">수익</a></li>
-        <li><a href="">관리</a></li>
+        <li><a href="">이벤트 & 컬처</a>
+            <ul>
+                <li><a href="">이벤트</a></li>                
+                <li><a href="">기프트샵</a></li>
+                <li><a href="">매거진</a></li>
+            </ul>
+        </li>
     </ul>
 </body>
 </html>
