@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네비게이션 메뉴 구현하기</title>
+<style type="text/css">
+    .navi{
+        list-style-type: none;
+    }
+    .navi li{
+        background-color: pink;
+        position: relative;
+    }
+    .navi li a{
+        display:block;
+        
+    }
+
+</style>
+</head>
+<body>
+    <h2>네비게이션 메뉴</h2>
+    <ul class="navi">
+        <li><a href="">블로그 관리 홈</a></li>
+        <li><a href="">콘텐츠</a>
+            <ul>
+                <li><a href="">글 관리</a></li>
+                <li><a href="">페이지 관리</a></li>
+                <li><a href="">카테고리 관리</a></li>
+                <li><a href="">공지 관리</a></li>
+                <li><a href="">서식 관리</a></li>
+                <li><a href="">설정</a></li>
+            </ul>
+        </li>
+        <li><a href="">댓글/방명록</a>
+            <ul>
+                <li><a href="">댓글 관리</a></li>
+                <li><a href="">방명록 관리</a></li>
+                <li><a href="">설정</a></li>
+            </ul>
+        </li>
+        <li><a href="통계"></a>
+            <ul>
+                <li><a href="">방문 통계</a></li>                
+                <li><a href="">유입 경로</a></li>
+            </ul>
+        </li>
+        <li><a href="">수익</a></li>
+        <li><a href="">관리</a></li>
+    </ul>
+</body>
+</html>
