@@ -9,7 +9,6 @@
     .navi{
         list-style-type: none;
         height: 30px;
-
     }
     .navi li{
         background-color:lemonchiffon;
@@ -22,23 +21,41 @@
         display:block;
         text-decoration: none;
         padding: 5px 30px;
-        
+        color: rgb(36, 36, 36);
     }
-    .navi li a:hover{
-        color:red;
-    }
+    /*.navi li a:hover{}*/
+
     /*하위메뉴 설정*/
     .navi li ul{
         list-style-type: none;
+        position:absolute;
+        width: 200px;
+        margin: 0;
+        padding: 0;
+        opacity: 0;     /*메뉴 숨기기*/
+    }
+    .navi li:hover ul{
+        opacity: 1;     /*메뉴 보이기*/
     }
     .navi li ul li{
+        float:none;
         position: static;
-
     }
-    .navi li:hover ul li{
-        height: 30px;
-        line-height: 30px;
+    .navi li ul li a:hover{
+        color: red;
+        border: 3px dotted red;
+    }
 
+    /*세부 애니메이션 효과*/
+    .navi li a{
+        transition: all 0.5s;
+    }
+    .navi li ul{
+        transition: all 1s;
+    }
+    .navi li ul li{
+        transition: height 0.5s;
+    }
 </style>
 </head>
 <body>
@@ -50,7 +67,6 @@
                 <li><a href="">무비 차트</a></li>
                 <li><a href="">HD 트레일러</a></li>
                 <li><a href="">무비 파인더</a></li>
-                <li><hr></li>
                 <li><a href="">CGV 아트하우스</a></li>
             </ul>
         </li>
@@ -64,7 +80,6 @@
             <ul>
                 <li><a href="">CGV 극장</a></li>                
                 <li><a href="">특별관</a></li>
-                <li><hr></li>
                 <li><a href="">CLUB 서비스</a></li>
             </ul>
         </li>
