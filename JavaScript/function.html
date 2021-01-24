@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style typ="text/css">
+    h2{
+        background-color: lemonchiffon;
+    }
+</style>
+<script type="text/javascript">
+    function parargu(){
+        var arg="";
+        for(var i=0; i<arguments.length; i++){
+            arg+=arguments[i]+"";
+        }
+        alert(arg);
+    }
+    
+    function func01(){
+        alert("함수 선언 / function 함수명(){}")
+    }
+    var func02 = function(){
+        alert("데이터 타입을 함수로 선언 / var 함수명 = function(){}")
+    }
+    function func03(){
+        literalfunc(function(message){alert(message)});
+    }
+    function literalfunc(literal){
+        literal("함수 안에 함수 ");
+    }
+</script>
+</head>
+<body>
+    <h2>함수</h2>
+    <dl>
+        <dt>함수의 입력 Parameter 매개변수 & Argument 인자
+        <button onclick="parargu('parameter','매개변수','argument','인자');">테스트 출력</dt>
+        <br>
+        <dt>함수의 출력 Return</dt>
+        <br>
+        <dt>함수의 종류</dt>
+        <dd>1. 명시적 함수
+            <button onclick="func01();">확인</button></dd>
+        <dd>2. 익명 함수
+            <button onclick="func02();">확인</button></dd>
+        <dd>3. 리터럴 함수
+            <button onclick="func03();">확인</button></dd>
+    </dl>
+
+</body>
+</html>
