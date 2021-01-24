@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js 데이터타입</title>
+<style typ="text/css">
+    h2{
+        background-color: lemonchiffon;
+    }
+    .tab{
+        margin: 10px;
+        padding-left: 70px;
+    }
+
+</style>
+<script type="text/javascript">
+    var variable=10; //전역변수
+
+    function vartest01(){
+        variable = variable+5;
+        document.getElementById("v01").innerHTML= "<b style='background:pink;'> "+variable +"</b>"
+    }
+    function vartest02(){
+        var locvar = variable+5; //지역변수
+        document.getElementById("v02").innerHTML= "<b style='background:yellow;'>"+locvar+"</b>";
+    }
+
+    function str(){
+        var varstr="문자";
+        alert(varstr+" : "+typeof varstr+"타입");
+    }
+    function num(){
+        var varnum=5;
+        alert(varnum+" : "+typeof varnum+"타입");
+    }
+    function bool(){
+        var varbool=true;
+        alert(varbool+" : "+typeof varbool+"타입");
+    }
+    function func(){
+        var varfunc=function(){
+            alert("함수타입");
+        }
+        alert(varfunc+" : "+typeof varfunc+"타입");
+    }
+    function obj(){
+        var varobj=[1,2,3,4,5,6,7]
+        alert(varobj+" : "+typeof varobj+"타입");
+    }
+</script>
+</head>
+<body>
+    <h2>Data Type</h2>
+    <ul>
+        <li>매개변수값 있는 타입</li>
+        <ul>
+            <li>Boolean</li>
+            <li>Null</li>
+            <li>Undefined</li>
+            <li>Number</li>
+            <li>String</li>
+            <li>symbol</li>
+        </ul>
+        <li>object</li>
+    </ul>
+    <hr>
+    <h2>변수</h2>
+    <dl>
+        <dt>변수 사용 이유</dt>
+            <dd>변할 수 있는 값들을 쉽게 관리,처리 하기 위해</dd>
+
+        <dt>변수 선언</dt>
+            <dd>1. 대소문자를 구분한다.</dd>
+            <dd>2. 영문, $, _로 시작해야 한다.</dd>
+            <dd>3. 영문, $, _, 숫자를 포함할 수 있다.</dd>
+            <dd>4. 키워드나 예약어를 사용할 수 없다.</dd>
+    
+        <dt>변수의 범위</dt>
+            <dd>1. 전역변수 : window 객체에 포함되는 변수, 어디에서나 값 유지해서 공용으로 사용 가능하다.
+                <button onclick="vartest01();">전역변수 테스트</button></dd>
+            <dd class="tab">전역변수 테스트 :+ 5 는??</dd>
+            <dd id="v01" class="tab">누를때마다 +5 됨</dd>
+
+            <dd>2. 지역변수 : 함수나 객체 내부에 선언되고 실행이 종료되면 사라진다.
+                <button onclick="vartest02();">지역변수 테스트</button></dd>
+            <dd class="tab">지역변수 테스트 : + 5 는?</dd>
+            <dd id="v02" class="tab">실행 종료되면 사라짐</dd>    
+
+            <dt>변수의 선언과 저장</dt>
+            <dd>1. var 키워드를 사용해 변수 선언</dd>
+            <dd class="tab"><b>var</b> variable=10;</dd>
+            <dd>2. 저장되는 데이터 타입에 따라 변수 타입 결정</dd>
+            <dd class="tab">문자?
+                <button onclick="str();">확인</button></dd>
+            <dd class="tab">숫자?
+                <button onclick="num();">확인</button></dd>    
+            <dd class="tab">논리값?
+                <button onclick="bool();">확인</button></dd>
+            <dd class="tab">함수?
+                <button onclick="func();">확인</button></dd>
+            <dd class="tab">객체?
+                <button onclick="obj();">확인</button></dd>
+    </dl>
+</body>
+</html>
