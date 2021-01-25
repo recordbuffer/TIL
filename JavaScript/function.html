@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JS 함수</title>
 <style typ="text/css">
     h2{
         background-color: lemonchiffon;
@@ -30,6 +30,41 @@
     function literalfunc(literal){
         literal("함수 안에 함수 ");
     }
+
+
+    //메세지 박스
+    function alertTest(){
+        alert("단순 대화창 / 경고, 코드 디버깅용");
+    }
+    function confirmTest(){
+        if(confirm("확인,취소 버튼 제공(T/F) \n\n배경을 분홍으로 바꿀거니?")){
+            document.body.style.backgroundColor="pink";
+        }else{
+            alert("변경안함");
+        }
+    }
+    function promptTest(){
+        var txt = prompt("텍스트박스 / 확인,취소 버튼 제공 \n\n좋아하는 과일 번호 선택\n[1.딸기 2.복숭아 3.자두 4.사과 5.수박]");
+        switch(txt){
+            case "1":
+                alert("딸기를 좋아하군요");
+                break;
+            case "2":
+                alert("복숭아를 좋아하군요");
+                break;
+            case "3":
+                alert("자두를 좋아하군요");
+                break;
+            case "4":
+                alert("사과를 좋아하군요");
+                break;
+            case "5":
+                alert("수박를 좋아하군요");
+                break;
+            default:
+                alert("1~5 중에 하나를 선택하세요");
+        }
+    }
 </script>
 </head>
 <body>
@@ -39,6 +74,7 @@
         <button onclick="parargu('parameter','매개변수','argument','인자');">테스트 출력</dt>
         <br>
         <dt>함수의 출력 Return</dt>
+        <dd>매개변수를 리턴을 통해 출력하며 다양한 함수로 출력 가능</dd>
         <br>
         <dt>함수의 종류</dt>
         <dd>1. 명시적 함수
@@ -49,5 +85,12 @@
             <button onclick="func03();">확인</button></dd>
     </dl>
 
+    <h2>대화형 함수 : 메세지 박스</h2>
+    <dl>
+        <dt>종류</dt>
+        <dd>1. alert()<button onclick="alertTest();">확인</button></dd>
+        <dd>2. confirm()<button onclick="confirmTest();">확인</button></dd>
+        <dd>3. prompt()<button onclick="promptTest();">확인</button></dd>
+    </dl>
 </body>
 </html>
