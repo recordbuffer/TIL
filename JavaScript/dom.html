@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+<style type="text/css">
+    h1{
+        background-color: lemonchiffon;
+        text-align: center;
+    }
+    h2{
+        color: orange;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+    <h1>DOM 문서객체</h1>
+    <ol type="I">
+        <li>DOM (document Object Model)</li>
+        <li>BOM (browser Object Model)</li>
+    </ol>
+    DOM  : 자바스크립트가 HTML을 문서의 모든 요소에 엑세스하여 변경 사용 가능 <br>
+    
+    <h2>HTML DOM 속성 & 메서드</h2>
+    <ul>
+        <li>DOM 탐색 메소드 (1) 선택 하나 -> <b style="color: blue;">document.querySelctor("css선택자표현식")</b></li>
+        <li>DOM 탐색 메소드 (2) 선택 여러개 -> <b style="color: blue;">document.querySelctor<mark>All</mark>("css선택자표현식")</b></li>
+        <li>요소로 탐색</li>
+            <ul>
+                <li>요소의 id로 탐색 -> <b style="color: red;">document.getElementByID("요소의 아이디")</b></li>
+                <li>요소의 name으로 탐색 (1) 선택 하나 -> <b style="color: red">document.getElementsByName("요소의 이름")</b></li>
+                <li>요소의 name으로 탐색 (2) 선택 여러개 -> <b style="color: red">document.getElementsBy<mark>Tag</mark>Name("요소의 태그이름")</b></li>
+                <li>요소의 class으로 탐색 -> <b style="color: red">document.getElementsBy<mark>Class</mark>Name("요소의 class이름")</b></li>
+            </ul>
+            
+    </ul>
+</body> 
+</html>
