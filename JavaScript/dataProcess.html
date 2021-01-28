@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 처리</title>
+<style type="text/css">
+    h2{
+        text-align: center;
+        background-color: lemonchiffon;
+    }
+    h3{
+        color: orange;
+    }
+    .test{
+        padding:10px;
+        border:1px solid red;
+    }
+</style>
+<script type="text/javascript"> 
+    function strMethod01(){
+        var str1 = "Apple iPhone & Samsung Galaxy";
+
+        var doc = document.getElementById("str01");
+        doc.innerHTML += " -> "+str1.toUpperCase()+"<br>";
+
+        var str1 = "Apple iPhone & Samsung Galaxy";
+        var doc = document.getElementById("str02");
+        doc.innerHTML += " -> "+str1.toLowerCase()+"<br>";
+
+    }
+
+    function strMethod02(){
+        var str2 ="김수한무 거북이와 두루미 삼천갑자 동방삭 치치카포 사리사리센타 워리워리 세브리깡 무두셀라 구름이 허리케인에 담벼락 담벼락에 서생원 서생원에 고양이 고양이엔 바둑이 바둑이는 돌돌이";
+        
+        var doc = document.getElementById("str03");
+        doc.innerHTML += " -> "+str2.length+"<br>";
+    }
+
+    function strMethod03(){
+        var str1 = "Apple iPhone & Samsung Galaxy";
+
+        var doc = document.getElementById("str04");
+        doc.innerHTML += " -> "+(str1.indexOf('e')+1)+"번째 위치<br>";
+
+        var doc = document.getElementById("str05");
+        doc.innerHTML += " -> "+"뒤에서 "+(str1.lastIndexOf('e')+1)+"번째에 위치<br>";
+    }
+
+    function strMethod04(){
+        var str3 = "ipad pro 5th generation";
+        
+        var doc = document.getElementById("str06");
+        
+        for(var i=0; i<str3.length; i++){
+            doc.innerHTML += i +"번째 인덱스 : " +str3.charAt(i)+"<br>";
+        }
+    }
+
+    function strMethod05(){
+        var str3 = "ipad pro 5th generation";
+
+        var doc = document.getElementById("str07");
+        doc.innerHTML += "인덱스 5~12까지만 가져오기 -> "+str3.substring(5,12)+"<br>";
+    }
+
+    function mathMethod01(){
+        var num1 = 1234.5678;
+        
+        var doc = document.getElementById("math01");
+        doc.innerHTML += " -> "+Math.round(num1)+"<br>";
+
+        var doc = document.getElementById("math02");
+        doc.innerHTML += " -> "+Math.ceil(num1)+"<br>";
+        
+        var doc = document.getElementById("math03");
+        doc.innerHTML += " -> "+Math.floor(num1)+"<br>";
+    }
+
+    function mathMethod02(){
+        var num2 = -1234;
+
+        var doc = document.getElementById("math04");
+        doc.innerHTML += " -> "+Math.abs(num2)+"<br>";
+
+    }
+
+    function mathMethod03(){
+
+        var doc = document.getElementById("math05");
+        doc.innerHTML += " -> "+Math.random()+"<br>";
+    }
+</script>
+</head>
+<body>
+    <h2>데이터 처리</h2>
+    <h3>String 문자열 처리 메소드</h3>
+    <p>1. 소문자->대문자 : <b>toUpperCase</b> </p>
+    <p>2. 대문자->소문자 : <b>toLowerCase</b> <button onclick="strMethod01();">확인</button></p>
+    <div class="test">
+        <span style="background-color: pink;">Apple iPhone & Samsung Galaxy</span>
+        <p id="str01">toUpperCase( )</p>
+        <p id="str02">toLowerCase( )</p>
+    </div>
+    
+    <p>3. 길이 : <b>length</b> <button onclick="strMethod02();">확인</button></p>
+    <div class="test">
+        <p id="str03">김수한무 거북이와 두루미 삼천갑자 동방삭 치치카포 사리사리센타 워리워리 세브리깡 무두셀라 구름이 허리케인에 담벼락 담벼락에 서생원 서생원에 고양이 고양이엔 바둑이 바둑이는 돌돌이</p>
+    </div>
+
+    <p>4. 인덱스 (1) 문자 위치 찾기 : <b>indexOf</b></p>
+    <p>5. 인덱스 (2) 문자 위치 뒤에서부터 찾기 : <b>lastIndexOf</b> <button onclick="strMethod03();">확인</button></p>
+    <div class="test">
+        <span style="background-color: pink;">Apple iPhone & Samsung Galaxy</span>
+        <p id="str04">indexOf('e')</p>
+        <p id="str05">lastIndexOf('e')</p>
+    </div>
+
+    <p>6. 인덱스 (3) 특정 인덱스에 주어진 값 : <b>charAt</b> <button onclick="strMethod04();">확인</button> </p>
+    <div class="test">
+        <span style="background-color: pink;">ipad pro 5th generationy</span>
+        <p id="str06"></p>
+    </div>
+
+    <p>7. 인덱스 (4) 특정 인덱스 일부만 가져오기 : <b>substring</b> <button onclick="strMethod05();">확인</button></p>
+    <div class="test"> 
+        <span style="background-color: pink;">ipad pro 5th generationy</span>
+        <p id="str07"></p>
+    </div>
+
+<br><hr>
+    <h3>Math 숫자 처리 메소드</h3>
+    <p>1. 반올림 : <b>round</b></p>
+    <p>2. 올림 : <b>floor</b></p>
+    <p>3. 내림 : <b>ceil</b> <button onclick="mathMethod01();">확인</button></p>
+    <div class="test">
+        <span style="background-color: pink;">1234.5678</span>
+        <p id="math01">반올림</p>
+        <p id="math02">올림</p>
+        <p id="math03">내림</p>
+
+    </div>
+
+    <p>4. 절대값 : <b>abs</b> <button onclick="mathMethod02();">확인</button></p>
+    <div class="test">
+        <span style="background-color: pink;">-1234</span>
+        <p id="math04">절대값</p>
+
+    </div>
+
+    
+    <p>5. 임의의 난수 : <b>random</b> <button onclick="mathMethod03();">확인</button></p>
+    <div class="test">
+        <p id="math05">랜덤</p>
+    </div>
+</body>
+</html>
