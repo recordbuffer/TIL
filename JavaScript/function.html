@@ -8,6 +8,10 @@
     h2{
         background-color: lemonchiffon;
     }
+    .test{
+        padding:10px;
+        border:1px solid red;
+    }
 </style>
 <script type="text/javascript">
     function parargu(){
@@ -22,7 +26,7 @@
         alert("함수 선언 / function 함수명(){}")
     }
     var func02 = function(){
-        alert("데이터 타입을 함수로 선언 / var 함수명 = function(){}")
+        alert("함수를 변수에 할당하듯 선언 / var 함수명 = function(){}")
     }
     function func03(){
         literalfunc(function(message){alert(message)});
@@ -65,6 +69,24 @@
                 alert("1~5 중에 하나를 선택하세요");
         }
     }
+    function esTest(){
+        var URI="http://www.google.com??js_lang=eng영어";
+
+        var doc = document.getElementById("esTest");
+
+        doc.innerHTML += "escape() -> "+escape(URI)+"<br>";
+        doc.innerHTML += "unescape() -> "+unescape(URI)+"<br>";
+    }
+
+    function ppTest01(){
+        window.open("https://naver.com","_blank","width=400px","height=400px");
+    }
+    function ppTest02(){
+        window.open("hello_js.html","_blank");
+    }
+    function ppTest03(){
+        window.open("https://google.com","_self");
+    }
 </script>
 </head>
 <body>
@@ -77,20 +99,44 @@
         <dd>매개변수를 리턴을 통해 출력하며 다양한 함수로 출력 가능</dd>
         <br>
         <dt>함수의 종류</dt>
-        <dd>1. 명시적 함수
-            <button onclick="func01();">확인</button></dd>
-        <dd>2. 익명 함수
-            <button onclick="func02();">확인</button></dd>
-        <dd>3. 리터럴 함수
-            <button onclick="func03();">확인</button></dd>
+        <dd>1. 명시적 함수 <button onclick="func01();">확인</button></dd>
+        <dd>2. 무명 함수 <button onclick="func02();">확인</button></dd>
+        <dd>3. 리터럴 함수 <button onclick="func03();">확인</button></dd>
     </dl>
 
     <h2>대화형 함수 : 메세지 박스</h2>
     <dl>
         <dt>종류</dt>
-        <dd>1. alert()<button onclick="alertTest();">확인</button></dd>
-        <dd>2. confirm()<button onclick="confirmTest();">확인</button></dd>
-        <dd>3. prompt()<button onclick="promptTest();">확인</button></dd>
+        <dd>1. alert() <button onclick="alertTest();">확인</button></dd>
+        <dd>2. confirm() <button onclick="confirmTest();">확인</button></dd>
+        <dd>3. prompt() <button onclick="promptTest();">확인</button></dd>
     </dl>
+
+    <h2>형변환 함수</h2>
+    <dl>
+        <dd>1. parseInt('n') : 입력된 'n'의 숫자부분만 지정한 진법으로 반환해주는 함수 </dd>
+        <dd>2. parseFloat() : 숫자형 문자열 입력받아 소수점으로 변환해 반환해주는 함수</dd>
+    </dl>
+    
+    <h2>판단 함수</h2>
+    <dl>
+        <dd>isFinite() : 유리수인지 아닌지 판단하는 함수 (T/F)</dd>
+        <dd>isNaN() : 숫자인지 아닌지 판단하는 함수 (T/F)</dd>
+    </dl>
+
+    <h2>인코딩/디코딩 함수</h2>
+    <dl> 
+        <dd>escape() : 문자 인코딩하는 함수 -> 영문 알파벳, 숫자, 특수문자(@,*,-,_,.,/)제외</dd>
+        <dd>unescape() : 인코딩한 문자를 디코딩하는 함수</dd>
+    </dl>
+    <button onclick="esTest();">확인</button>
+    <div class="test" id="esTest">
+        <span style="background-color: pink;">URI="http://www.google.com??js_lang=eng영어";</span><br>
+    </div>
+
+    <h2>팝업창 함수</h2>
+    <p>네이버 실행시키기 <button onclick="ppTest01();">확인</button></p>
+    <p>다른 html 파일 실행시키기 <button onclick="ppTest02();">확인</button></p>
+    <p>아예 다른 창으로 바꾸기 <button onclick="ppTest03();">확인</button></p>
 </body>
 </html>
