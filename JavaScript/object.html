@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체</title>
+<style type="text/css">
+    *{margin-left: 10px;}
+    h2{background-color: lemonchiffon;}
+    .bd{
+        padding:10px;
+        border:1px solid red;
+        width: 200px;
+    }
+</style>
+</head>
+<body>
+    <h2>객체</h2>
+    <p>자바스크립트는 객체지향 언어이다.</p>
+
+    <p>객체 : 연관된 데이터와 함수들의 집합 (관련 있는 것들을 정리하는 폴더 개념)</p>
+    <p>객체의 구성</p>
+        <ul>
+            <li>속성 : 객체의 고유의 값 (데이터)</li>
+            <li>메소드 : 객체의 고유 기능 (동작 / 함수)</li>
+        </ul>
+    <p>객체 선언</p>
+    <ol>
+        <li>변수와 같이 선언됨</li>
+        <li>script 안에서 선언됨</li>
+        <li>{} 중괄호 안에 내용 정의</li>
+    </ol>
+    <div class="bd"> 
+        var 객체명 = { <br>
+            &nbsp; 속성명 :  속성값 <br>
+            &nbsp; 메서드명 : 메서드 <br>
+        }
+    </div>
+    <br>
+    <p>객체 사용</p>
+    <div class="bd">
+        객체명<mark>.속성명</mark> <br>
+        객체명<mark>.메소드명</mark>
+    </div>
+    <br>
+    <script>
+        var coworkers = {
+            //속성명 : 속성값
+            "programmer" : "홍길동",
+            "designer" : "허균",
+        };
+        //객체 사용
+        document.write("programmer: "+coworkers.programmer+"<br>");
+        document.write("designer: "+coworkers.designer+"<br>");
+
+        //객체 추가
+        coworkers["FE programmer"]="이이"
+        document.write("FE programmer: "+coworkers["FE programmer"]+"<br>");
+    </script>
+</body>
+</html>
