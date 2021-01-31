@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selector</title>
+<style type="text/css">
+    h2{background-color: lemonchiffon;}
+    h3{color: magenta;}
+</style>
+<script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+</head>
+<body>
+    <h2>jQuery 선택자</h2>
+    <p>jQuery 선택자는 HTML DOM을 탐색해 요소를 선택 조작할 수 있다.</p>
+    
+    <h3>선택자</h3>
+    <table border="1">
+        <colgroup>
+            <col width="150px">
+            <col width="150px">
+            <col width="300px">
+        </colgroup>
+        <thead style="background-color: lightpink;">
+            <tr>
+                <th>선택자</th>
+                <th colspan="2">설명</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>$("*")</td>
+                <td>전체 선택자</td>
+                <td>모든 요소 선택</td>
+            </tr>
+            <tr>
+                <td>$("tag")</td>
+                <td>태그 이름 선택자</td>
+                <td>태그 이름으로 요소 선택</td>
+            </tr>
+            <tr>
+                <td>$("#id")</td>
+                <td>태그 id 선택자</td>
+                <td>태그 id로 요소 선택</td>
+            </tr>
+            <tr>
+                <td>$(".class")</td>
+                <td>태그 class 선택자</td>
+                <td>태그 class로 요소 선택</td>
+            </tr>
+            <tr>
+                <td>$("groupA,groupB")</td>
+                <td>그룹 선택자</td>
+                <td>그룹으로 요소 선택</td>
+            </tr>
+            <tr>
+                <td>$(".eq()")</td>
+                <td>인덱스 선택자</td>
+                <td>특정 인덱스 번호 갖는 요소 선택</td>
+            </tr>
+            <tr>
+                <td>$("[attribut]")</td>
+                <td>속성 선택자</td>
+                <td>지정된 속성을 가진 요소 선택</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>노드 선택자</h3>
+    <table border="2">
+        <colgroup>
+            <col width="150px">
+            <col width="150px">
+            <col width="300px">
+        </colgroup>
+        <thead style="background-color: lightpink;">
+            <tr>
+                <th>선택자</th>
+                <th colspan="2">설명</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>$("p c")</td>
+                <td>부모 자식 선택자</td>
+                <td>모든 자식인 하위 요소 선택</td>
+            </tr>
+            <tr>
+                <td>$("p > c")</td>
+                <td>하위 선택자</td>
+                <td>자식인 바로 하위 요소만 선택</td>
+            </tr>
+            <tr>
+                <td>$("s + b")</td>
+                <td>인접 형제 선택자</td>
+                <td>동일한 레벨의 형제 요소 하나 선택</td>
+            </tr>
+            <tr>
+                <td>$("s ~ b")</td>
+                <td>형제 선택자</td>
+                <td>동일한 레벨의 모든 형제 요소 선택</td>
+            </tr>
+            <tr>
+                <td>$(":p")</td>
+                <td>부모 선택자</td>
+                <td>부모인 모든 요소 선택</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>순서 선택자</h3>
+    <table border="3">
+        <colgroup>
+            <col width="150px">
+            <col width="150px">
+            <col width="300px">
+        </colgroup>
+        <thead style="background-color: lightpink;">
+            <tr>
+                <th>선택자</th>
+                <th colspan="2">설명</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>$(":nth-child")</td>
+                <td>형제 선택자</td>
+                <td>형제 요소들 중 n번째 요소 선택</td>
+            </tr>
+            <tr>
+                <td>$(":first-child")</td>
+                <td>형제 선택자</td>
+                <td>형제 요소들 중 첫번째 요소 선택</td>
+            </tr>
+            <tr>
+                <td>$(":last-child")</td>
+                <td>형제 선택자</td>
+                <td>형제 요소들 중 마지막 요소 선택</td>
+            </tr>
+            <tr>
+                <td>$(":even")</td>
+                <td>짝수 선택자</td>
+                <td>짝수 요소들만 선택</td>
+            </tr>
+            <tr>
+                <td>$(":odd")</td>
+                <td>홀수 선택자</td>
+                <td>홀수 요소들만 선택</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <hr>
+    <br>
+<script type="text/javascript">
+    //문서 준비 메소드 -> 문서 로드될때 함수 실행  
+    $(document).ready(function(){
+        $("div:eq(0)").css({"border":"1px solid red","width":"400px","height":"200px"});
+        $("#view").css({"border":"1px solid red","width":"400px","height":"50px","padding":"15px"});
+    });
+
+    //tag 선택자
+    function bt1(){
+        document.getElementsByTagName("span");
+        $("span").css("color","red");
+        $("#view").text('$("span").css("color","red");');
+    }
+    //id 선택자
+    function bt2(){
+        $("#t1").css("color","orange");
+        $("#view").text('$("#t1").css("color","orange");');
+    }
+    //class 선택자
+    function bt3(){
+        $(".t2").css("color","yellow");
+        $("#view").text('$(".t2").css("color","yellow");');
+    }
+    //부모 자식 선택자
+    function bt4(){
+        $("li span").css("color","green");
+        $("#view").text('$("li span").css("color","green");');
+    }
+    //nth-child 선택자
+    function bt5(){
+        $("li:nth-child(3)").css("color","blue");
+        $("#view").text('$("li:nth-child(3)").css("color","blue");');
+    }
+    function bt5_1(){
+        $("li:nth-child(even)").css("background-color","skyblue");
+        $("#view").text('$("li:nth-child(even)").css("background-color","skyblue");');
+    }
+    //first-child 선택자
+    function bt6(){
+        $("li:first-child").css("background-color","indigo");
+        $("#view").text('$("li:first-child").css("background-color","indigo");');
+    }
+    //last-child 선택자
+    function bt7(){
+        $("li:last-child").css("background-color","purple");
+        $("#view").text('$("li:last-child").css("color","purple");');
+    }
+</script>
+    <h2>선택자 실습</h2>
+    <div>
+        <ul>
+            <li><span>tag 선택자</span></li>
+            <li id="t1">id 선택자</li>
+            <li class="t2">class 선택자</li>
+            <li><span>부모 자식 선택자</span></li>
+            <li>:nth-child 형제 선택자</li>
+            <li>:first-child 형제 선택자</li>
+            <li>:last-child 형제 선택자</li>
+        </ul>
+    </div>
+    <br>
+    <div>
+        <button onclick="bt1();">tag 선택자</button>
+        <button onclick="bt2();">id 선택자</button>
+        <button onclick="bt3();">class 선택자</button>
+        <button onclick="bt4();">부모 자식 선택자</button>
+        <button onclick="bt5();">nth-child 선택자</button>
+        <button onclick="bt5_1();">nth-child 선택자 + odd 선택자</button>        
+        <button onclick="bt6();">first-child 선택자</button>
+        <button onclick="bt7();">last-child 선택자</button>
+    </div>
+    <h3>코드 내용</h3>
+    <div id="view"></div>
+</body>
+</html>
