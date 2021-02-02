@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery dom</title>
+<style type="text/css">
+    h2{background-color: lemonchiffon;}
+    h3{
+        color:orange;
+        font-weight: bold;
+        }
+    .test{
+        padding: 15px;
+        border: 1px solid red;
+    }
+</style>
+<script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+</head>
+<body>
+    <h2>Dom 탐색법 (1) 인덱스 및 순서</h2>
+    <ul>
+        <li>eq() : 선택한 요소 중 인덱스로 탐색</li>
+        <li>slice() : 선택한 요소 중 인덱스 길이로 탐색</li>
+        <li>first() : 선택한 요소 중 첫번째 요소 탐색</li>
+        <li>last() : 선택한 요소 중 마지막 요소 탐색</li>
+        <li>prev() : 선택한 요소의 이전 요소 탐색</li>
+        <li>next() : 선택한 요소의 다음 요소 탐색</li>
+    </ul>
+
+    <h3>DOM TEST (1)</h3>
+    <div>
+        <p>1. eq() <button id="eq">확인</button></p>
+        <p>2. slice() <button id="slice">확인</button></p>
+        <p>3. first() <button id="first">확인</button></p>    
+        <p>4. last() <button id="last">확인</button></p>
+        <p>4. prev() <button id="prev">확인</button></p>
+        <p>4. next() <button id="next">확인</button></p>
+    </div>
+    <div class="test" id="test01">
+        <p>eq()는 인덱스로 탐색 </p>
+        <p>slice()는 인덱스 길이로 탐색</p>
+        <p>first()는 첫번째 요소 탐색</p>
+        <p>last()는 마지막 요소 탐색</p>
+        <p>prev()는 이전 요소 탐색</p>
+        <p>next()는 다음 요소 탐색</p>
+    </div>
+
+<script type="text/javascript">
+    $(function(){
+        $("#eq").click(function(){
+            $("#test01 p").eq(0).toggle();
+        });
+        $("#slice").click(function(){
+            $("#test01 p").slice(1,2).toggle();
+        });
+        $("#first").click(function(){
+            $("#test01 p").first().css("color","pink");
+        });
+        $("#last").click(function(){
+            $("#test01 p").last().css("color","skyblue");
+        });
+        $("#prev").click(function(){
+            $("#test01 p").eq(5).prev().css("background-color","lime");
+        });
+        $("#next").click(function(){
+            $("#test01 p").eq(4).next().css("background-color","yellow");
+        });
+
+    });
+</script>
+
+    <h2>Dom 탐색법 (2) 부모 자식 </h2>
+    <ul>
+        <li>children() : 선택한 요소의 자식요소 탐색</li>
+        <li>parent() & parents() : 선택한 요소의 부모요소 탐색 </li>
+    </ul>
+
+    <h3>DOM TEST (2)</h3>
+    <div>
+        <p>1. children() <button id="children">확인</button></p>
+        <p>2. parent() <button id="parent">확인</button></p>
+        <p>3. parents() <button id="parents">확인</button></p>
+    </div>
+    <div class="test" id="test02">
+        <p>children()은 자식요소 탐색</p>
+        <p><span id="ptest">parent()는 부모요소 탐색</span></p>
+        <p><span>parents()는 부모요소 모두 탐색</span></p>
+    </div>
+
+<script type="text/javascript">
+    $(function(){
+        $("#children").click(function(){
+            $("#test02").children().css("background-color","lightgray");
+        });
+        $("#parent").click(function(){
+            $("#ptest").parent().css("font-weight","bold");
+        });
+        $("#parents").click(function(){
+            $("span").parents().css("color","blue");
+        });
+    });
+</script>
+
+    <h2>Dom 탐색법 (3) 기타 </h2>
+    <ul>
+        <li>add() : 선택한 요소에 추가적으로 탐색할 선택자 표현식 추가 </li>
+        <li>is() : 선택한 요소 중 구하는 요소 있는지 확인 </li>
+    </ul>
+
+    <h3>DOM TEST (3)</h3>
+    <div>
+        <p>1. add() <button id="add">확인</button></p>
+        <p>1. is() <button id="is">확인</button></p>
+    </div>
+        
+    <div class="test" id="test03">
+        <p><span>add()는 탐색할 선택 표현식 추가 -> eq(0) </span></p>
+        <p><span id="atest">add()는 탐색할 선택 표현식 추가 ->eq(0).add(span)</span></p>
+        <p id="istest">is()는 선택한 요소 있는지 확인</p>
+    </div>
+
+<script type="text/javascript">
+    $(function(){
+        $("#add").click(function(){
+            $("#test03 p:eq(0)").add("#atest").css("color","violet");
+        });
+        $("#is").click(function(){
+            if($("#test03 p:eq(2)").is("#istest")){
+                alert("p:eq(2)이 맞습니다  'is()'");
+            }
+        });
+    });
+</script>
+</body>
+</html>
