@@ -131,6 +131,7 @@ public class BoardDao {
 		
 		String sql = " INSERT INTO BOARD VALUES(BD_SEQ.NEXTVAL, ?, ?, ?, SYSDATE) ";
 
+		//sql 쿼리 실행
 		try {
 			pstm = con.prepareStatement(sql);
 			pstm.setString(1, dto.getBd_name());
@@ -155,11 +156,73 @@ public class BoardDao {
 	
 	//글 수정
 	public int update(BoardDto dto) {
-		return 0;
+		//db 계정 연결
+				try {
+					con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","scott","tiger");
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+		
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " UPDATE BOARD SET BD_TITLE=?, BD_CONTENT=? WHERE BD_NO=? ";
+		
+		//sql 쿼리 실행
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, dto.getBd_title());
+			pstm.setString(2, dto.getBd_content());
+			pstm.setInt(3, dto.getBd_no());
+			
+			res = pstm.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstm.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+				
+		return res;
 	}
 	
 	//글 삭제
 	public int delete(int bd_no) {
-		return 0;
+		//db 계정 연결
+		try {
+			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","scott","tiger");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		PreparedStatement pstm = null;
+		int res = 0; 
+		
+		String sql = " DELETE FROM BOARD WHERE BD_NO=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, bd_no);
+			
+			res = pstm.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstm.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return res;
 	}
 }
+

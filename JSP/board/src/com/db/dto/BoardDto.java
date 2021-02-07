@@ -34,6 +34,14 @@ public class BoardDto {
 		this.bd_content = bd_content;
 		this.bd_date = bd_date;
 	}
+	
+	//update_alert.jsp에서 사용할 매개변수 생성자
+	public BoardDto(int bd_no, String bd_title, String bd_content) {
+		super();
+		this.bd_no = bd_no;
+		this.bd_title = bd_title;
+		this.bd_content = bd_content;
+	}
 
 	//getter&setter
 	public int getBd_no() {

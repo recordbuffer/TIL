@@ -42,8 +42,8 @@
 		<td><%=list.get(i).getBd_name()%></td>
 		<td><a href="selectone.jsp?bd_no=<%=list.get(i).getBd_no()%>"><%=list.get(i).getBd_title()%></a></td>
 		<td><%=list.get(i).getBd_date()%></td>
-		<td><a href="">수정</a></td>
-		<td><a href="">삭제</a></td>
+		<td><a href="update.jsp?bd_no=<%=list.get(i).getBd_no()%>">수정</a></td>
+		<td><a href="delete.jsp?bd_no=<%=list.get(i).getBd_no()%>">삭제</a></td>
 	</tr>
 <% 
 	}

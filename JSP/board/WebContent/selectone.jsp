@@ -15,7 +15,7 @@
 <%
 	int bd_no = Integer.parseInt(request.getParameter("bd_no"));
 	BoardDao dao = new BoardDao();
-	BoardDto dto = dao.selectOne(bd_no);	
+	BoardDto dto = dao.selectOne(bd_no);
 %>
 	<table border="1">
 		<tr>
