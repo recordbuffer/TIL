@@ -17,6 +17,9 @@
 	BoardDao dao = new BoardDao();
 	BoardDto dto = dao.selectOne(bd_no);
 %>
+
+<%@ include file="./fix/header.jsp" %>
+
 	<table border="1">
 		<tr>
 			<th>NAME:</th>
@@ -38,5 +41,8 @@
 			</td>
 		</tr>
 	</table>
+<%@ include file="./fix/footer.jsp" %>
+
+
 </body>
 </html>

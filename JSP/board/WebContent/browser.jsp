@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="main.jsp">게시판</a>
+	<jsp:forward page="main.jsp"></jsp:forward>
 </body>
 </html>

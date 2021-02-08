@@ -19,6 +19,8 @@
 	BoardDao dao = new BoardDao();
 	BoardDto dto = dao.selectOne(bd_no);
 %>
+<%@ include file="./fix/header.jsp" %>
+
 	<form action="update_alert.jsp" method="post">
 		<input type="hidden" name="bd_no" value="<%=dto.getBd_no() %>">
 		<table border="1">
@@ -41,5 +43,9 @@
 			</tr>
 		</table>
 	</form>
+
+<%@ include file="./fix/footer.jsp" %>
+	
+	
 </body>
 </html>

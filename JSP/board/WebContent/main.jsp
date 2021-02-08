@@ -57,5 +57,8 @@
 	</tr>
 	</table>
 	
+<%@ include file="./fix/footer.jsp" %>
+	
+	
 </body>
 </html>
