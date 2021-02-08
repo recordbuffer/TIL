@@ -19,6 +19,8 @@
 	List<BoardDto> list = dao.selectAll();
 %>
 <body>
+<%@ include file="./fix/header.jsp" %>
+
 	<h1>게시판 목록</h1>
 	<table border="1">
 		<col width="50px">
