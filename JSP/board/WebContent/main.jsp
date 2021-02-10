@@ -23,11 +23,13 @@
 
 	<h1>게시판 목록</h1>
 	<table border="1">
+		<col width="30px">
 		<col width="50px">
 		<col width="100px">
 		<col width="200px">
 		<col width="100px">
 		<tr>
+			<th><input type="checkbox" name="all" onclick="allChk(this.checked);"></th>
 			<th>No</th>
 			<th>Name</th>
 			<th>Title</th>
@@ -40,6 +42,7 @@
 	for(int i=0; i<list.size(); i++){
 %>
 	<tr>
+		<td><input type="checkbox" name="chk" value="<%=list.get(i).getBd_no()%>"></td>
 		<td><%=list.get(i).getBd_no()%></td>
 		<td><%=list.get(i).getBd_name()%></td>
 		<td><a href="selectone.jsp?bd_no=<%=list.get(i).getBd_no()%>"><%=list.get(i).getBd_title()%></a></td>
@@ -51,7 +54,8 @@
 	}
 %>	
 	<tr>
-		<td colspan="6" align="right">
+		<td colspan="7">
+			<input type="submit" value="삭제">
 			<button onclick="location.href='insert.jsp'">글쓰기</button>
 		</td>
 	</tr>
