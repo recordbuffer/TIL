@@ -13,6 +13,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	function allChk(bool){
+		var chks = document.getElementsByName("chk");
+		for(var i=0; i<chks.length; i++){
+			chks[i].checked = bool;
+		}
+	}
+	//체크한 글 없다면 submit 이벤트 취소시키기 -> multidel.jsp로 이동 취소
+	$(function(){
+		$("#multidelete").submit(function(){
+			if($("#multidelete input:checked").length==0){
+				alert("하나 이상 체크하세요");
+				return false;
+			}
+		});
+	});
+</script>
 </head>
 <%
 	BoardDao dao = new BoardDao();
@@ -22,6 +40,7 @@
 <%@ include file="./fix/header.jsp" %>
 
 	<h1>게시판 목록</h1>
+	<form action="multidel.jsp" method="post" id="multidelete">
 	<table border="1">
 		<col width="30px">
 		<col width="50px">
@@ -56,10 +75,11 @@
 	<tr>
 		<td colspan="7">
 			<input type="submit" value="삭제">
-			<button onclick="location.href='insert.jsp'">글쓰기</button>
+			<input type="button" value="글쓰기" onclick="location.href='insert.jsp'">
 		</td>
 	</tr>
 	</table>
+	</form>
 	
 <%@ include file="./fix/footer.jsp" %>
 	

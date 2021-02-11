@@ -224,5 +224,60 @@ public class BoardDao {
 		
 		return res;
 	}
+	
+	//글 여러개 삭제
+	public int multiDelete(String[] bd_no) {
+		//db 계정 연결
+		try {
+			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","scott","tiger");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		
+		PreparedStatement pstm = null;
+		int res = 0; 
+		int[] cnt = null;
+		
+		String sql = " DELETE FROM BOARD WHERE BD_NO=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			
+			for(int i=0; i<bd_no.length; i++) {
+				pstm.setString(1, bd_no[i]);
+				
+				//쿼리문 pstm에 모두 쌓아 한번에 처리
+				pstm.addBatch();
+			}
+			
+			cnt = pstm.executeBatch();
+			
+			//쿼리 성공 : -2
+			for(int i=0; i<cnt.length; i++) {
+				if(cnt[i]==-2) {
+					res++;
+				}
+			}
+			
+			//모아둔 쿼리 실행 끝나면 커밋
+			if(bd_no.length==res) {
+				con.commit();
+			} else {
+				con.rollback();
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstm.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return res;
+	}
 }
 

@@ -14,6 +14,25 @@
 <body>
 <%
 	String[] bd_no = request.getParameterValues("chk");
+
+	BoardDao dao = new BoardDao();
+	int res = dao.multiDelete(bd_no);
+	
+	if(res==bd_no.length){
+%>
+	<script type="text/javascript">
+		alert("체크된 글 모두 삭제 성공");
+		location.href="main.jsp";
+	</script>
+<%
+	}else {
+%>		
+	<script type="text/javascript">
+		alert("체크된 글 모두 삭제 실패");
+		location.href="main.jsp";
+	</script>
+<%
+	}
 %>
 </body>
 </html>
