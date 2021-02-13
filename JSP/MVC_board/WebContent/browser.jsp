@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="controller.jsp?command=main"></jsp:forward>
+	<h3><a href="controller.jsp?command=main">글 목록</a></h3>
 </body>
 </html>
