@@ -39,7 +39,7 @@
 		<tr>
 			<td><%=dto.getBd_no()%></td>
 			<td><%=dto.getBd_name()%></td>
-			<td><a href=""><%=dto.getBd_title()%></a></td>
+			<td><a href="controller.jsp?command=selectone&bd_no=<%=dto.getBd_no()%>"><%=dto.getBd_title()%></a></td>
 			<td><%=dto.getBd_date()%></td>
 			<td><a href="">수정</a></td>
 			<td><a href="">삭제</a></td>

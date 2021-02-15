@@ -1,8 +1,10 @@
 package com.mvc.dao;
 
 import static com.jdbc.JDBCTemplate.*;
+import static com.jdbc.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -53,8 +55,40 @@ public class MVCBoardDao {
 	
 	//게시글하나 출력
 	public MVCBoardDto selectOne(int bd_no) {
-		return null;
+		//db연결
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		MVCBoardDto res = new MVCBoardDto();
+		
+		//쿼리 실행 준비
+		String sql = " SELECT * FROM MVCBOARD WHERE BD_NO=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, bd_no);
+			
+			rs = pstm.executeQuery();
+			
+			while(rs.next()) {
+				res.setBd_no(rs.getInt(1));
+				res.setBd_name(rs.getString(2));
+				res.setBd_title(rs.getString(3));
+				res.setBd_content(rs.getString(4));
+				res.setBd_date(rs.getDate(5));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstm);
+			close(con);
+		}
+		
+		return res;
 	}
+	
 	//글쓰기
 	public int insert(MVCBoardDto dto) {
 		return 0;

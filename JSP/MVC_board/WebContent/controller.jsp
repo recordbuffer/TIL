@@ -26,6 +26,15 @@
 		request.setAttribute("boardlist", list);
 		
 		pageContext.forward("main.jsp");
+	
+		//만약 요청이 selectone이면? 
+	} else if(command.equals("selectone")){
+		int bd_no = Integer.parseInt(request.getParameter("bd_no"));
+		
+		MVCBoardDto dto = dao.selectOne(bd_no);
+		request.setAttribute("dto", dto);
+		
+		pageContext.forward("selectone.jsp");
 	}
 %>
 </body>
