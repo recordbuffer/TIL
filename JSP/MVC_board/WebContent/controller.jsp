@@ -35,7 +35,81 @@
 		request.setAttribute("dto", dto);
 		
 		pageContext.forward("selectone.jsp");
+	
+		//만약 요청이 bd_insert라면?
+	} else if(command.equals("bd_insert")){
+		response.sendRedirect("bd_insert.jsp");
+		
+		//만약 요청이 insert라면?
+	} else if(command.equals("insert")){
+		String name = request.getParameter("name");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		
+		MVCBoardDto dto = new MVCBoardDto();
+		dto.setBd_name(name);
+		dto.setBd_title(title);
+		dto.setBd_content(content);
+		
+		int res = dao.insert(dto);
+		
+		if(res>0){
+%>
+		<script type="text/javascript">
+			alert("글 작성 성공");
+			location.href="controller.jsp?command=main";
+		</script>
+<%			
+		} else {
+%>
+		<script type="text/javascript">
+			alert("글 작성 실패");
+			location.href="controller.jsp?command=bd_insert";
+		</script>
+<%			
+		}
+		//만약 요청이 bd_update라면?
+	} else if(command.equals("bd_update")){
+		//요청과 같이 넘어온 bd_no 값 받아줌
+		int bd_no = Integer.parseInt(request.getParameter("bd_no"));
+		
+		MVCBoardDto dto = dao.selectOne(bd_no);
+		request.setAttribute("dto", dto);
+		
+		pageContext.forward("bd_update.jsp");
+		
+		//만약 요청이 update라면?
+	} else if(command.equals("update")){
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		
+		//요청과 같이 넘어온 bd_no 값 받아줌
+		int bd_no = Integer.parseInt(request.getParameter("bd_no"));
+		
+		MVCBoardDto dto = new MVCBoardDto();
+		dto.setBd_title(title);
+		dto.setBd_content(content);
+		dto.setBd_no(bd_no);
+		
+		int res = dao.update(dto);
+		
+		if(res>0){
+%>
+		<script type="text/javascript">
+			alert("글 수정 성공");
+			location.href="controller.jsp?command=selectone&bd_no="+<%=bd_no%>;
+		</script>
+<%
+		} else {
+%>
+		<script type="text/javascript">
+			alert("글 수정 실패");
+			location.href="controller.jsp?command=bd_update&bd_no="+<%=bd_no%>;
+		</script>
+<%
+		}
 	}
+	
 %>
 </body>
 </html>

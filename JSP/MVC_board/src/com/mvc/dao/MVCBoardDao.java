@@ -91,12 +91,66 @@ public class MVCBoardDao {
 	
 	//글쓰기
 	public int insert(MVCBoardDto dto) {
-		return 0;
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " INSERT INTO MVCBOARD VALUES(MVCBD_SEQ.NEXTVAL,?,?,?,SYSDATE) ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, dto.getBd_name());
+			pstm.setString(2, dto.getBd_title());
+			pstm.setString(3, dto.getBd_content());
+			
+			res = pstm.executeUpdate();
+			
+			if(res>0) {
+				commit(con);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+			close(con);
+		}
+		
+		return res;
 	}
+	
+	
 	//글 수정
 	public int update(MVCBoardDto dto) {
-		return 0;
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		int res = 0; 
+		
+		String sql = " UPDATE MVCBOARD SET BD_TITLE=?, BD_CONTENT=? WHERE BD_NO=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, dto.getBd_title());
+			pstm.setString(2, dto.getBd_content());
+			pstm.setInt(3, dto.getBd_no());
+			
+			res = pstm.executeUpdate();
+			
+			if(res>0) {
+				commit(con);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+			close(con);
+		}
+		
+		return res;
 	}
+	
+	
 	//글 삭제
 	public int delete(int bd_no) {
 		return 0;

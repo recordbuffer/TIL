@@ -41,7 +41,7 @@
 			<td><%=dto.getBd_name()%></td>
 			<td><a href="controller.jsp?command=selectone&bd_no=<%=dto.getBd_no()%>"><%=dto.getBd_title()%></a></td>
 			<td><%=dto.getBd_date()%></td>
-			<td><a href="">수정</a></td>
+			<td><a href="controller.jsp?command=bd_update&bd_no=<%=dto.getBd_no()%>">수정</a></td>
 			<td><a href="">삭제</a></td>
 		</tr>
 <% 
@@ -50,7 +50,7 @@
 		<tr>
 			<td colspan="6">
 				<input type="submit" value="삭제">
-				<input type="button" value="글쓰기">
+				<input type="button" value="글쓰기" onclick="location.href='controller.jsp?command=bd_insert'">
 			</td>
 		</tr>
 		</table>
