@@ -1,4 +1,4 @@
-package com.mvc.dao;
+  package com.mvc.dao;
 
 import static com.jdbc.JDBCTemplate.*;
 import static com.jdbc.JDBCTemplate.getConnection;
@@ -151,12 +151,49 @@ public class MVCBoardDao {
 	}
 	
 	
-	//글 삭제
-	public int delete(int bd_no) {
-		return 0;
-	}
+	//글 삭제 -> 글 여러개 삭제에서 한개만 선택해 삭제해주기로 함
+	//public int delete(int bd_no) {
+	//	return 0;
+	//}
+	
 	//글 여러개 삭제 (멀티삭제)
 	public int multiDelete(String[] bd_no) {
-		return 0;
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		int res= 0;
+		int[] cnt = null;
+		
+		String sql = " DELETE FROM MVCBOARD WHERE BD_NO=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+
+			for(int i=0; i<bd_no.length; i++) {
+				pstm.setString(1, bd_no[i]);
+				pstm.addBatch();
+			}
+			cnt = pstm.executeBatch();
+			
+			for(int i=0; i<cnt.length; i++) {
+				//-2는 true
+				if(cnt[i]==-2) {
+					res++;
+				}
+			}
+			
+			if(bd_no.length==res) {
+				commit(con);
+			} else {
+				rollback(con);
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+			close(con);
+		}
+		
+		return res;
 	}
 }

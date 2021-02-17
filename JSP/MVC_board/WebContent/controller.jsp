@@ -108,6 +108,49 @@
 		</script>
 <%
 		}
+		//만약 요청이 bd_delete라면?
+	} else if(command.equals("bd_delete")){
+	//값 여러개 삭제 하는 dao 메소드 활용해서 하나만 선택 삭제하기
+		String[] noArr = new String[1];
+		noArr[0] = request.getParameter("bd_no");
+		
+		int res = dao.multiDelete(noArr);
+		
+		if(res>0){
+%>
+		<script type="text/javascript">
+			alert("글 삭제 성공");
+			location.href="controller.jsp?command=main";
+		</script>
+<%			
+		} else{
+%>
+		<script type="text/javascript">
+			alert("글 삭제 실패");
+			location.href="controller.jsp?command=selectone&bd_no="+<%=noArr[0]%>;
+		</script>
+<%			
+		}
+		//만약 요청이 multidel라면?
+	} else if(command.equals("multidel")){
+		String[] bd_no = request.getParameterValues("chk");
+		int res = dao.multiDelete(bd_no);
+		
+		if(res==bd_no.length){
+%>
+		<script type="text/javascript">
+			alert("글 삭제 성공");
+			location.href="controller.jsp?command=main";
+		</script>
+<%
+		} else {
+%>
+		<script type="text/javascript">
+			alert("글 삭제 실패");
+			location.href="controller.jsp?command=main";
+		</script>
+<%			
+		}
 	}
 	
 %>
