@@ -111,6 +111,8 @@
 		//만약 요청이 bd_delete라면?
 	} else if(command.equals("bd_delete")){
 	//값 여러개 삭제 하는 dao 메소드 활용해서 하나만 선택 삭제하기
+		int bd_no = Integer.parseInt(request.getParameter("bd_no"));
+
 		String[] noArr = new String[1];
 		noArr[0] = request.getParameter("bd_no");
 		

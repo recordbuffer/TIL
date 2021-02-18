@@ -11,12 +11,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	function allChk(bool){
+		var chks = document.getElementsByName("chk");
+		for(var i=0; i<chks.length; i++){
+			chks[i].checked = bool;
+		}
+	}
+	//체크한 글 없으면 submit 이벤트 취소 
+	$(function(){
+			$("#multidelete").submit(function(){
+				if($("#multidelete input:checked").length==0){
+					alert("하나 이상 체크하세요");
+					return false;
+				}
+		});
+	});
+</script>
 </head>
 <body>
 <% List<MVCBoardDto> list = (List<MVCBoardDto>)request.getAttribute("boardlist"); %>
 
 	<h1>게시판 목록</h1>
-	<form action="controller.jsp" method="post">
+	<form action="controller.jsp" method="post" id="multidelete">
 		<input type="hidden" name="command" value="multidel">
 		<table border="1">
 			<col width="30px">

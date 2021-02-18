@@ -30,7 +30,7 @@
 		<tr>
 			<td colspan="2">
 				<input type="button" value="수정" onclick="location.href='controller.jsp?command=bd_update&bd_no=<%=dto.getBd_no()%>'">
-				<input type="button" value="삭제" onclick="">
+				<input type="button" value="삭제" onclick="location.href='controller.jsp?command=bd_delete&bd_no=<%=dto.getBd_no()%>'">
 				<input type="button" value="목록" onclick="location.href='controller.jsp?command=main'">				
 			</td>
 		</tr>
