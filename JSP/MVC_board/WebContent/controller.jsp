@@ -153,10 +153,7 @@
 		</script>
 <%			
 		}
-	} else if(command.equals("login_page")){
-		
-		pageContext.forward("login.jsp");
-	}
+	} 
 	
 %>
 </body>

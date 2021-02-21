@@ -12,9 +12,8 @@
 </head>
 <body>
 <div style="width:300px">
-<h1 stlye="text-align:center;">로그인</h1>
-	<form action="controller.jsp" method="post">
-		<input type="hidden" name="command" value="login">
+<h1 style="text-align:center;">로그인</h1>
+	<form action="">
 		<table border="1">
 			<col width="100"><col width="100">
 			<tr>

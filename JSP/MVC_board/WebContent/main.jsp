@@ -32,7 +32,7 @@
 </head>
 <body>
 <% List<MVCBoardDto> list = (List<MVCBoardDto>)request.getAttribute("boardlist"); %>
-
+	<h4 style="text-align:right; margin-right:30px;"><a href="login.jsp">로그인</a></h4>
 	<h1>게시판 목록</h1>
 	<form action="controller.jsp" method="post" id="multidelete">
 		<input type="hidden" name="command" value="multidel">
