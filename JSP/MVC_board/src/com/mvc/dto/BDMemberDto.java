@@ -7,7 +7,7 @@ public class BDMemberDto {
 	private String bm_name;
 	private String bm_addr;
 	private String bm_phone;
-	private String bm_emial;
+	private String bm_email;
 	private String bm_enabled;
 	private String bm_role;
 	
@@ -16,7 +16,7 @@ public class BDMemberDto {
 	}
 
 	public BDMemberDto(int bm_no, String bm_id, String bm_pw, String bm_name, String bm_addr, String bm_phone,
-			String bm_emial, String bm_enabled, String bm_role) {
+			String bm_email, String bm_enabled, String bm_role) {
 		super();
 		this.bm_no = bm_no;
 		this.bm_id = bm_id;
@@ -24,7 +24,7 @@ public class BDMemberDto {
 		this.bm_name = bm_name;
 		this.bm_addr = bm_addr;
 		this.bm_phone = bm_phone;
-		this.bm_emial = bm_emial;
+		this.bm_email = bm_email;
 		this.bm_enabled = bm_enabled;
 		this.bm_role = bm_role;
 	}
@@ -77,12 +77,12 @@ public class BDMemberDto {
 		this.bm_phone = bm_phone;
 	}
 
-	public String getBm_emial() {
-		return bm_emial;
+	public String getBm_email() {
+		return bm_email;
 	}
 
-	public void setBm_emial(String bm_emial) {
-		this.bm_emial = bm_emial;
+	public void setBm_email(String bm_email) {
+		this.bm_email = bm_email;
 	}
 
 	public String getBm_enabled() {
@@ -100,6 +100,8 @@ public class BDMemberDto {
 	public void setBm_role(String bm_role) {
 		this.bm_role = bm_role;
 	}
+
+	
 	
 	
 }

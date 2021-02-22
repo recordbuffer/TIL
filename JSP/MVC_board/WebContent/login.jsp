@@ -13,7 +13,8 @@
 <body>
 <div style="width:300px">
 <h1 style="text-align:center;">로그인</h1>
-	<form action="">
+	<form action="logincontroller.jsp" method="post">
+		<input type="hidden" name="command" value="login">
 		<table border="1">
 			<col width="100"><col width="100">
 			<tr>
@@ -25,7 +26,7 @@
 				<td><input type="text" name="pw"></td>
 			</tr>
 			<tr>
-				<td colspan="2">
+				<td colspan="2" align="right">
 					<input type="submit" value="login">
 					<input type="button" value="regist" onclick="">
 				</td>
