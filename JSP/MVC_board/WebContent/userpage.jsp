@@ -21,7 +21,7 @@
 <br>
 <div>
 	<div>
-		<a href="">내 정보</a>
+		<a href="logincontroller.jsp?command=userinfo&bm_no=<%=dto.getBm_no()%>">내 정보</a>
 	</div>
 </div>
 </body>
