@@ -77,7 +77,42 @@ public class BDMemberDao {
 	
 	//정보조회
 	public BDMemberDto selectUser(int bm_no) {
-		return null;
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		BDMemberDto res = null;
+		
+		String sql = " SELECT * FROM BDMEMBER WHERE BM_NO=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, bm_no);
+			
+			rs = pstm.executeQuery();
+			
+			while(rs.next()) {
+				res = new BDMemberDto();
+				res.setBm_no(rs.getInt(1));
+				res.setBm_id(rs.getString(2));
+				res.setBm_pw(rs.getString(3));
+				res.setBm_name(rs.getString(4));
+				res.setBm_addr(rs.getString(5));
+				res.setBm_phone(rs.getString(6));
+				res.setBm_email(rs.getString(7));
+				res.setBm_enabled(rs.getString(8));
+				res.setBm_role(rs.getString(9));
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstm);
+			close(con);
+		}
+		
+		return res;
 	}
 	
 	//수정

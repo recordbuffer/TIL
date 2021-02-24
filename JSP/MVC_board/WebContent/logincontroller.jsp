@@ -46,8 +46,22 @@
 			location.href="browser.html";
 		</script>
 <%
-		}
+		}	
+		//만약 요청이 userinfo라면?
+	} else if(command.equals("userinfo")){
+		int bm_no = Integer.parseInt(request.getParameter("bm_no"));
+		BDMemberDto dto = dao.selectUser(bm_no);
 		
+		request.setAttribute("dto", dto);
+		pageContext.forward("userinfo.jsp");
+	
+		//만약 요청이 updatepage라면?
+	} else if(command.equals("updatepage")){
+		int bm_no = Integer.parseInt(request.getParameter("bm_no"));
+		BDMemberDto dto = dao.selectUser(bm_no);
+		
+		request.setAttribute("dto", dto);
+		pageContext.forward("updateuser.jsp");
 	}
 	
 	
