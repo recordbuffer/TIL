@@ -10,11 +10,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#updateform').submit(function(){
+			var count = 0;
+		});
+		if(count>0){
+			return false;
+		}
+	});
+</script>
 </head>
 <body>
 <% BDMemberDto dto = (BDMemberDto)request.getAttribute("dto"); %>
 <h1>내 정보 수정</h1>
-<form action="">
+<form action="logincontroller.jsp" method="post" id="updateform">
+	<input type="hidden" name="command" value="updateuser">
+	<input type="hidden" name="bm_no" value="<%=dto.getBm_no() %>">
 	<table border="1">
 		<tr>
 			<th>I D</th>

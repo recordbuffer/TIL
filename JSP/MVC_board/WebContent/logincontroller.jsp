@@ -62,6 +62,39 @@
 		
 		request.setAttribute("dto", dto);
 		pageContext.forward("updateuser.jsp");
+	
+		//만약 요청이 updateuser라면?
+	} else if(command.equals("updateuser")){
+		String newaddr = request.getParameter("bm_addr");
+		String newemail = request.getParameter("bm_email");
+		String newphone = request.getParameter("bm_phone");
+	
+		int bm_no = Integer.parseInt(request.getParameter("bm_no"));
+		
+		BDMemberDto dto = new BDMemberDto();
+		dto.setBm_addr(newaddr);
+		dto.setBm_email(newemail);
+		dto.setBm_phone(newphone);
+		dto.setBm_no(bm_no);
+		
+		boolean res = dao.updateUser(dto);
+		
+		if(res){
+%>
+		<script type="text/javascript">
+			alert("수정 성공");
+			location.href="logincontroller.jsp?command=userinfo&bm_no=<%=bm_no%>";
+		</script>
+<%		
+		} else{
+%>
+		<script type="text/javascript">
+			alert("수정 실패");
+			location.href="logincontroller.jsp?command=userinfo&bm_no=<%=bm_no%>";
+		</script>
+<%			
+		}
+		
 	}
 	
 	

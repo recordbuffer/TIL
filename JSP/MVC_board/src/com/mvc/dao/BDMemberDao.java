@@ -117,7 +117,32 @@ public class BDMemberDao {
 	
 	//수정
 	public boolean updateUser(BDMemberDto dto) {
-		return false;
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " UPDATE BDMEMBER SET BM_ADDR=?, BM_EMAIL=?, BM_PHONE=? WHERE BM_NO=? ";
+
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, dto.getBm_addr());
+			pstm.setString(2, dto.getBm_email());
+			pstm.setString(3, dto.getBm_phone());
+			
+			res = pstm.executeUpdate();
+			
+			if(res>0) {
+				commit(con);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+			close(con);
+		}
+		
+		return (res>0)?true:false;
 	}
 	
 	//탈퇴
