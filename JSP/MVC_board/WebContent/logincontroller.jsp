@@ -65,16 +65,16 @@
 	
 		//만약 요청이 updateuser라면?
 	} else if(command.equals("updateuser")){
-		String newaddr = request.getParameter("bm_addr");
-		String newemail = request.getParameter("bm_email");
-		String newphone = request.getParameter("bm_phone");
+		String bm_addr = request.getParameter("bm_addr");
+		String bm_email = request.getParameter("bm_email");
+		String bm_phone = request.getParameter("bm_phone");
 	
 		int bm_no = Integer.parseInt(request.getParameter("bm_no"));
 		
 		BDMemberDto dto = new BDMemberDto();
-		dto.setBm_addr(newaddr);
-		dto.setBm_email(newemail);
-		dto.setBm_phone(newphone);
+		dto.setBm_addr(bm_addr);
+		dto.setBm_email(bm_email);
+		dto.setBm_phone(bm_phone);
 		dto.setBm_no(bm_no);
 		
 		boolean res = dao.updateUser(dto);

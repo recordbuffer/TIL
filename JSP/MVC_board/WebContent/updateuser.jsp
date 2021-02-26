@@ -12,14 +12,22 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-	$(function(){
-		$('#updateform').submit(function(){
-			var count = 0;
+$(function(){
+	$("#updateform").submit(function(){
+		var count = 0;
+		$(".updateval").each(function(){
+			if($(this).val()==""||$(this).val()==null){
+				alert($(this).parent().prev("th").text()+" 입력하세요");
+				$(this).focus();
+				count++;
+				return;
+			}
 		});
 		if(count>0){
 			return false;
 		}
 	});
+});
 </script>
 </head>
 <body>
@@ -39,15 +47,15 @@
 		</tr>
 		<tr>
 			<th>ADDR</th>
-			<td><input type="text" name="newaddr" value="<%=dto.getBm_addr()%>"></td>
+			<td><input type="text" class="updatedata" name="bm_addr" value="<%=dto.getBm_addr()%>"></td>
 		</tr>
 		<tr>
 			<th>EMAIL</th>
-			<td><input type="text" name="newemail" value="<%=dto.getBm_email() %>"></td>
+			<td><input type="text" class="updatedata" name="bm_email" value="<%=dto.getBm_email() %>"></td>
 		</tr>
 		<tr>
 			<th>PHONE</th>
-			<td><input type="text" name="newphone" value="<%=dto.getBm_phone() %>"></td>
+			<td><input type="text" class="updatedata" name="bm_phone" value="<%=dto.getBm_phone() %>"></td>
 		</tr>
 		<tr>
 			<th>ROLE</th>

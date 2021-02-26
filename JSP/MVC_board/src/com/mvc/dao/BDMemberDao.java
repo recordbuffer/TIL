@@ -128,6 +128,7 @@ public class BDMemberDao {
 			pstm.setString(1, dto.getBm_addr());
 			pstm.setString(2, dto.getBm_email());
 			pstm.setString(3, dto.getBm_phone());
+			pstm.setInt(4, dto.getBm_no());
 			
 			res = pstm.executeUpdate();
 			
