@@ -46,7 +46,13 @@
 			location.href="browser.html";
 		</script>
 <%
-		}	
+		}
+		//만약 요청이 logout라면?
+	} else if(command.equals("logout")){
+		//login시 설정한 session 정보 삭제함
+		session.invalidate();
+		response.sendRedirect("login.jsp");
+		
 		//만약 요청이 userinfo라면?
 	} else if(command.equals("userinfo")){
 		int bm_no = Integer.parseInt(request.getParameter("bm_no"));

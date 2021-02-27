@@ -15,7 +15,7 @@
 $(function(){
 	$("#updateform").submit(function(){
 		var count = 0;
-		$(".updateval").each(function(){
+		$(".updatedata").each(function(){
 			if($(this).val()==""||$(this).val()==null){
 				alert($(this).parent().prev("th").text()+" 입력하세요");
 				$(this).focus();

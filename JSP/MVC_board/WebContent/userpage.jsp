@@ -16,7 +16,7 @@
 <h1>메인화면</h1>
 <div>
 	<span><%=dto.getBm_name() %>님 환영합니다. [등급: <%=dto.getBm_role() %>]</span>
-	<a href="">로그아웃</a>
+	<a href="logincontroller.jsp?command=logout">로그아웃</a>
 </div>
 <br>
 <div>
