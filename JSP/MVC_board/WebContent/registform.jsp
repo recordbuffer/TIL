@@ -10,17 +10,22 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	function idChk(){
-		var doc = document.getElementsByName("id")[0];
+		var doc = document.getElementsByName("bm_id")[0]; 	//입력한 id 가져옴
 		if(doc.value.trim()=="" || doc.value==null){
 			alert("아이디를 입력하세요.");
 		} else{
-			var target = "logincontroller.jsp?command=idchk&id="+doc.value.trim();
+			//입력한 id 중복 체크하기 위해 logincontroller.jsp로 idchk 요청
+			var target = "logincontroller.jsp?command=idchk&bm_id="+doc.value.trim();
 			window.open(target,"","width=500, height=500");
 		}
 	}
 	//id 중복체크 안했을시 pw 입력 불가
 	function idChkOk(){
-		var chkok = document.getElementsByName("id")[0].
+		var chkid = document.getElementsByName("bm_id")[0].title; //id의 title 속성 가져옴 n? y?
+		if(chkid=="n"){
+			alert("아이디 중복체크를 해주세요.");
+			document.getElementsByName("bm_id")[0].focus();	//강제로 focus를 id로 가게 함
+		}
 	}
 </script>
 </head>
@@ -31,7 +36,7 @@
 	<table border="1">
 			<tr>
 				<th>I D</th>
-				<td><input type="text" name="bm_id" required="required">
+				<td><input type="text" name="bm_id" required="required" title="n">
 				<input type="button" value="중복체크" onclick="idChk();"></td>
 			</tr>		
 			<tr>

@@ -11,11 +11,11 @@
 <script type="text/javascript">
 	onload=function(){
 		var id = opener.document.getElementsByName("bm_id")[0].value;	
-		document.getElementsByName("id")[0].value=id;
+		document.getElementsByName("bm_id")[0].value=id;
 	}
 	function idok(bool){
 		if(bool=="true"){
-			opener.document.getElementsByName("bm_pw")
+			opener.document.getElementsByName("bm_id")[0].title="y"; //id 중복 체크 했으니 title 속성 'y'로 변경
 		} self.close();
 	}
 </script>
