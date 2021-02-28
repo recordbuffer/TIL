@@ -60,7 +60,39 @@
 		
 		request.setAttribute("dto", dto);
 		pageContext.forward("userinfo.jsp");
-	
+		
+		//만약 요청이 insertuser라면?
+	} else if(command.equals("insertuser")){
+		String bm_id = request.getParameter("bm_id");
+		String bm_pw = request.getParameter("bm_pw");
+		String bm_name = request.getParameter("bm_name");
+		String bm_addr = request.getParameter("bm_addr");
+		String bm_email = request.getParameter("bm_email");
+		String bm_phone = request.getParameter("bm_phone");
+		
+		BDMemberDto dto = new BDMemberDto();
+		dto.setBm_id(bm_id);
+		dto.setBm_pw(bm_pw);
+		dto.setBm_name(bm_name);
+		dto.setBm_addr(bm_addr);
+		dto.setBm_email(bm_email);
+		dto.setBm_phone(bm_phone);
+		
+		int res = dao.insertUser(dto);
+		
+		//만약 요청이 idchk라면?
+	} else if(command.equals("idchk")){
+		String bm_id = request.getParameter("id");
+		String res = dao.idChk(bm_id);
+		
+		boolean chk = true;	
+		
+		if(res != null){
+			chk = false;
+		}
+		
+		response.sendRedirect("idchk.jsp?chk="+chk);
+		
 		//만약 요청이 updatepage라면?
 	} else if(command.equals("updatepage")){
 		int bm_no = Integer.parseInt(request.getParameter("bm_no"));

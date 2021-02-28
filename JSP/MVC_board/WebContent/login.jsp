@@ -28,7 +28,7 @@
 			<tr>
 				<td colspan="2" align="right">
 					<input type="submit" value="login">
-					<input type="button" value="regist" onclick="">
+					<input type="button" value="regist" onclick="location.href='registform.jsp'">
 				</td>
 			</tr>
 		</table>

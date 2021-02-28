@@ -75,6 +75,36 @@ public class BDMemberDao {
 		return 0;
 	}
 	
+	//아이디 중복체크
+	public String idChk(String bm_id) {
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		String res = null;
+		
+		//id 검색하는 쿼리문 
+		String sql = " SELECT * FROM BDMEMBER WHERE BM_ID=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, bm_id);
+			
+			rs = pstm.executeQuery();
+			
+			while(rs.next()) {
+				res = rs.getString(2);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstm);
+			close(con);
+		}
+		
+		return res;
+	}
+	
 	//정보조회
 	public BDMemberDto selectUser(int bm_no) {
 		Connection con = getConnection();
