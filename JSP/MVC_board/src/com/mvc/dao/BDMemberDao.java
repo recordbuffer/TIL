@@ -72,7 +72,35 @@ public class BDMemberDao {
 	
 	//회원가입
 	public int insertUser(BDMemberDto dto) {
-		return 0;
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " INSERT INTO BDMEMBER VALUES(BDNO_SEQ.NEXTVAL, ?, ?, ?, ?, ?, ?,'Y','USER') ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, dto.getBm_id());
+			pstm.setString(2, dto.getBm_pw());
+			pstm.setString(3, dto.getBm_name());
+			pstm.setString(4, dto.getBm_addr());
+			pstm.setString(5, dto.getBm_phone());
+			pstm.setString(6, dto.getBm_email());
+			
+			res = pstm.executeUpdate();
+			
+			if(res>0) {
+				commit(con);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+			close(con);
+		}
+		
+		return res;
 	}
 	
 	//아이디 중복체크

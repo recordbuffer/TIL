@@ -80,18 +80,34 @@
 		
 		int res = dao.insertUser(dto);
 		
-		//만약 요청이 idchk라면?
-	} else if(command.equals("idchk")){
-		String bm_id = request.getParameter("id");
-		String res = dao.idChk(bm_id);
-		
-		boolean chk = true;	
-		
-		if(res != null){
-			chk = false;
+		if(res>0){
+%>
+		<script type="text/javascript">
+			alert("회원가입 성공");
+			location.href="login.jsp";
+		</script>
+<%			
+		} else {
+%>
+		<script type="text/javascript">
+			alert("회원가입 실패");
+			location.href="registform.jsp";
+		</script>
+<%			
 		}
 		
-		response.sendRedirect("idchk.jsp?chk="+chk);
+		//만약 요청이 idchk라면?
+	} else if(command.equals("idchk")){
+		String bm_id = request.getParameter("bm_id");
+		String res = dao.idChk(bm_id);
+		
+		boolean idnotused = true;	
+		
+		if(res != null){
+			idnotused = false;
+		}
+		
+		response.sendRedirect("idchk.jsp?idnotused="+idnotused);
 		
 		//만약 요청이 updatepage라면?
 	} else if(command.equals("updatepage")){

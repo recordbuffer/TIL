@@ -53,7 +53,7 @@
 			</tr>
 			<tr>
 				<th>EMAIL</th>
-				<td><input type="text" name="bm_addr" placeholder="@MEMBER.COM" required="required"></td>
+				<td><input type="text" name="bm_email" placeholder="@MEMBER.COM" required="required"></td>
 			</tr>
 			<tr>
 				<th>PHONE</th>
