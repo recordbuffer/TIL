@@ -6,6 +6,7 @@
 
 <%@ page import="com.mvc.dao.BDMemberDao" %>
 <%@ page import="com.mvc.dto.BDMemberDto" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -148,7 +149,17 @@
 		</script>
 <%			
 		}
-		
+		//만약 요청이 userlist라면?
+	} else if(command.equals("userlist")){
+		List<BDMemberDto> list = dao.selectAll();
+		request.setAttribute("list", list);
+		pageContext.forward("userlist.jsp");
+	
+		//만약 요청이 userlistenabled라면?
+	} else if(command.equals("userlistenabled")){
+		List<BDMemberDto> list = dao.selectEnabled();
+		request.setAttribute("list", list);
+		pageContext.forward("userlistenabled.jsp");
 	}
 	
 	

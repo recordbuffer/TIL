@@ -1,11 +1,14 @@
 package com.mvc.dao;
 
-import static com.jdbc.JDBCTemplate.*;
+import static com.jdbc.JDBCTemplate.close;
+import static com.jdbc.JDBCTemplate.commit;
+import static com.jdbc.JDBCTemplate.getConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.mvc.dto.BDMemberDto;
@@ -15,12 +18,79 @@ public class BDMemberDao {
 	//관리자기능 admin
 	//회원 전체 정보 출력 (탈퇴회원 포함)
 	public List<BDMemberDto> selectAll(){
-		return null;
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<BDMemberDto> res = new ArrayList<BDMemberDto>();
+		
+		String  sql = " SELECT * FROM BDMEMBER ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			
+			rs = pstm.executeQuery();
+			
+			while(rs.next()) {
+				BDMemberDto tmp = new BDMemberDto();
+				tmp.setBm_no(rs.getInt(1));
+				tmp.setBm_id(rs.getString(2));
+				tmp.setBm_pw(rs.getString(3));
+				tmp.setBm_name(rs.getString(4));
+				tmp.setBm_addr(rs.getString(5));
+				tmp.setBm_phone(rs.getString(6));
+				tmp.setBm_email(rs.getString(7));
+				tmp.setBm_enabled(rs.getString(8));
+				tmp.setBm_role(rs.getString(9));
+				
+				res.add(tmp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstm);
+			close(rs);
+			close(con);
+		}
+		return res;
 	}
 	
 	//가입 회원 정보 출력
 	public List<BDMemberDto> selectEnabled(){
-		return null;
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<BDMemberDto> res = new ArrayList<BDMemberDto>();
+		
+		String sql = " SELECT * FROM BDMEMBER WHERE BM_ENABLED='Y' ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			
+			rs = pstm.executeQuery();
+			
+			while(rs.next()) {
+				BDMemberDto tmp = new BDMemberDto();
+				tmp.setBm_no(rs.getInt(1));
+				tmp.setBm_id(rs.getString(2));
+				tmp.setBm_pw(rs.getString(3));
+				tmp.setBm_name(rs.getString(4));
+				tmp.setBm_addr(rs.getString(5));
+				tmp.setBm_phone(rs.getString(6));
+				tmp.setBm_email(rs.getString(7));
+				tmp.setBm_enabled(rs.getString(8));
+				tmp.setBm_role(rs.getString(9));
+				
+				res.add(tmp);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+			close(rs);
+			close(con);
+		}
+	
+		return res;
 	}
 	
 	

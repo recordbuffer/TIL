@@ -27,11 +27,11 @@
 <br>
 <div>
 	<div>
-		<a href="">전체 회원 정보 조회</a>
+		<a href="logincontroller.jsp?command=userlist">전체 회원 정보 조회</a>
 	</div>
 	<br>
 	<div>
-		<a href="">가입 회원 정보 조회</a>
+		<a href="logincontroller.jsp?command=userlistenabled">가입 회원 정보 조회</a>
 	</div>
 </div>
 </body>
