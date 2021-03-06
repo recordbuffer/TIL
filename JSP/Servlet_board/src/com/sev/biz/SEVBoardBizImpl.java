@@ -1,6 +1,6 @@
 package com.sev.biz;
 
-import com.jdbc.JDBCTemplate.*;
+import static com.jdbc.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.List;
 
@@ -22,8 +22,11 @@ public class SEVBoardBizImpl implements SEVBoardBiz {
 
 	@Override
 	public SEVBoardDto selectOne(int bd_no) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection con = getConnection();
+		SEVBoardDto dto = dao.selectOne(con, bd_no);
+		close(con);
+		
+		return dto;
 	}
 
 	@Override

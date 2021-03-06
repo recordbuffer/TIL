@@ -30,10 +30,10 @@
 		<!-- foreach 태그로 테이블에 값 가져오기 -->
 			<c:forEach var="dto" items="${list }">
 				<tr>
-					<td>${dto.Bd_no }</td>
-					<td>${dto.Bd_name }</td>
-					<td>${dto.Bd_title }</td>
-					<td>${dto.Bd_date }</td>
+					<td>${dto.bd_no }</td>
+					<td>${dto.bd_name }</td>
+					<td><a href="controller.do?command=one&bd_no=${dto.bd_no }">${dto.bd_title }</a></td>
+					<td>${dto.bd_date }</td>
 					<td><a href="">수정</a></td>
 					<td><a href="">삭제</a></td>
 				</tr>

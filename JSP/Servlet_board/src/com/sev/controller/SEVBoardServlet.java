@@ -38,6 +38,14 @@ public class SEVBoardServlet extends HttpServlet {
 			//main.jsp로 이동 forward 방식
 			dispatch("main.jsp", request, response);
 			
+		//만약 요청이 one라면?
+		} else if(command.equals("one")) {
+			//같이 넘겨준 bd_no도 가져옴
+			int bd_no = Integer.parseInt(request.getParameter("bd_no"));
+			SEVBoardDto dto = biz.selectOne(bd_no);
+		
+			request.setAttribute("dto", dto);
+			dispatch("selectone.jsp", request, response);
 		}
 	
 	}
