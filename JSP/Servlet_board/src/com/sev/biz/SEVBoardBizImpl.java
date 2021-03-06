@@ -1,15 +1,23 @@
 package com.sev.biz;
 
+import com.jdbc.JDBCTemplate.*;
+import java.sql.Connection;
 import java.util.List;
 
+import com.sev.dao.SEVBoardDao;
+import com.sev.dao.SEVBoardDaoImpl;
 import com.sev.dto.SEVBoardDto;
 
 public class SEVBoardBizImpl implements SEVBoardBiz {
-
+	private SEVBoardDao dao = new SEVBoardDaoImpl();
+	
 	@Override
 	public List<SEVBoardDto> selectAll() {
-		// TODO Auto-generated method stub
-		return null;
+		Connection con = getConnection();
+		List<SEVBoardDto> res = dao.selectAll(con);
+		close(con);
+		
+		return res;
 	}
 
 	@Override

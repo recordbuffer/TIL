@@ -7,6 +7,8 @@ import com.sev.dto.SEVBoardDto;
 
 public interface SEVBoardDao {
 	
+	String selectAllsql = "  ";
+	
 	//게시글 전체 출력
 	public List<SEVBoardDto> selectAll(Connection con);
 	//게시글 하나 출력

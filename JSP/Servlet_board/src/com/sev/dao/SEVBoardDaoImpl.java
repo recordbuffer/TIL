@@ -1,6 +1,9 @@
 package com.sev.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.sev.dto.SEVBoardDto;
@@ -9,7 +12,10 @@ public class SEVBoardDaoImpl implements SEVBoardDao {
 
 	@Override
 	public List<SEVBoardDto> selectAll(Connection con) {
-		// TODO Auto-generated method stub
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		List<SEVBoardDto> res = new ArrayList<SEVBoardDto>();
+		
 		return null;
 	}
 
