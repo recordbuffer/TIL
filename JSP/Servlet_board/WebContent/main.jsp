@@ -40,7 +40,7 @@
 			</c:forEach>
 			<tr>
 				<td colspan="6">
-					<input type="button" value="글쓰기" onclick="">
+					<input type="button" value="글쓰기" onclick="location.href='controller.do?command=insert'">
 				</td>
 			</tr>
 	</table>

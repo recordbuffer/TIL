@@ -1,6 +1,7 @@
 package com.sev.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -46,6 +47,24 @@ public class SEVBoardServlet extends HttpServlet {
 		
 			request.setAttribute("dto", dto);
 			dispatch("selectone.jsp", request, response);
+		
+		//만약 요청이 insert라면?
+		} else if(command.equals("insert")) {
+			response.sendRedirect("insert.jsp");
+	
+		//만약 요청이 bdinsert라면?
+		} else if(command.equals("bdinsert")) {
+			String name = request.getParameter("sevname");
+			String title = request.getParameter("sevtitle");
+			String content = request.getParameter("sevcontent");
+			
+			SEVBoardDto dto = new SEVBoardDto(name, title, content);
+			boolean res = biz.insert(dto);
+			if(res) {
+				jsResponse("글 작성 성공", "controller.do?command=main", response);
+			} else {
+				dispatch("controller.do?command=insert", request, response);
+			}
 		}
 	
 	}
@@ -61,6 +80,15 @@ public class SEVBoardServlet extends HttpServlet {
 		dispatch.forward(request, response);
 	}
 	
+	//alert 메서드
+	private void jsResponse(String msg, String url, HttpServletResponse response) throws IOException {
+		String alert = "<script type='text/javascript'>"+
+						"alert('"+msg+"');"+
+						"location.href='"+url+"';"+
+						"</script>";
+		PrintWriter out = response.getWriter();
+		out.print(alert);
+	}
 	
 	
 	

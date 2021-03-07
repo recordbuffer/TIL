@@ -64,8 +64,24 @@ public class SEVBoardDaoImpl implements SEVBoardDao {
 
 	@Override
 	public boolean insert(Connection con, SEVBoardDto dto) {
-		// TODO Auto-generated method stub
-		return false;
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		try {
+			pstm = con.prepareStatement(insertsql);
+			pstm.setString(1, dto.getBd_name());
+			pstm.setString(2, dto.getBd_title());
+			pstm.setString(3, dto.getBd_content());
+			
+			res = pstm.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+		}
+		
+		return (res>0)?true:false;
 	}
 
 	@Override

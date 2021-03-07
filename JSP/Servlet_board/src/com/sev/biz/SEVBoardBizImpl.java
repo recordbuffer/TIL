@@ -31,10 +31,18 @@ public class SEVBoardBizImpl implements SEVBoardBiz {
 
 	@Override
 	public boolean insert(SEVBoardDto dto) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection con = getConnection();
+		boolean res = dao.insert(con, dto);
+		if(res) {
+			commit(con);
+		}
+		close(con);
+		
+		return res;
 	}
 
+	
+	
 	@Override
 	public boolean update(SEVBoardDto dto) {
 		// TODO Auto-generated method stub

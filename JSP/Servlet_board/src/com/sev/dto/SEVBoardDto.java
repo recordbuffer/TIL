@@ -24,6 +24,15 @@ public class SEVBoardDto {
 		this.bd_date = bd_date;
 	}
 
+	
+	//insert
+	public SEVBoardDto(String bd_name, String bd_title, String bd_content) {
+		super();
+		this.bd_name = bd_name;
+		this.bd_title = bd_title;
+		this.bd_content = bd_content;
+	}
+
 
 	public int getBd_no() {
 		return bd_no;
