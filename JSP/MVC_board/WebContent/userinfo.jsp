@@ -46,7 +46,7 @@
 		<tr>
 			<td colspan="2">
 				<input type="button" value="수정" onclick="location.href='logincontroller.jsp?command=updatepage&bm_no=<%=dto.getBm_no()%>'">
-				<input type="button" value="탈퇴" onclick="">
+				<input type="button" value="탈퇴" onclick="location.href='logincontroller.jsp?command=deleteuser&bm_no=<%=dto.getBm_no()%>'">
 				<input type="button" value="목록" onclick="location.href='userpage.jsp'">				
 			</td>
 		</tr>

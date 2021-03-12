@@ -276,6 +276,29 @@ public class BDMemberDao {
 	
 	//탈퇴
 	public boolean deleteUser(int bm_no) {
-		return false;
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " UPDATE BDMEMBER SET BM_ENABLED='N' WHERE BM_NO=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setInt(1, bm_no);
+			
+			res = pstm.executeUpdate();
+			
+			if(res>0) {
+				commit(con);
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+			close(con);
+		}
+		
+		return (res>0)?true:false;
 	}
 }

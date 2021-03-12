@@ -110,6 +110,28 @@
 		
 		response.sendRedirect("idchk.jsp?idnotused="+idnotused);
 		
+		//만약 요청이 deleteuser라면?
+	} else if(command.equals("deleteuser")){
+		int bm_no = Integer.parseInt(request.getParameter("bm_no"));
+		
+		boolean res = dao.deleteUser(bm_no);
+		
+		if(res){
+%>
+			<script type="text/javascript">
+				alert("탈퇴 성공");
+				location.href="logincontroller.jsp?command=logout";
+			</script>
+<%				
+		} else{
+%>
+			<script type="text/javascript">
+				alert("수정 실패");
+				location.href="logincontroller.jsp?command=userinfo&bm_no=<%=bm_no%>";
+			</script>
+<%			
+		}
+		
 		//만약 요청이 updatepage라면?
 	} else if(command.equals("updatepage")){
 		int bm_no = Integer.parseInt(request.getParameter("bm_no"));
