@@ -182,6 +182,16 @@
 		List<BDMemberDto> list = dao.selectEnabled();
 		request.setAttribute("list", list);
 		pageContext.forward("userlistenabled.jsp");
+	
+		//만약 요청이 updaterolePage라면?
+	} else if(command.equals("updaterolePage")){
+		int bm_no = Integer.parseInt(request.getParameter("bm_no"));
+		
+		BDMemberDto dto = dao.selectUser(bm_no);
+		
+		request.setAttribute("selectuser", dto);
+		pageContext.forward("updaterolePage.jsp");
+		
 	}
 	
 	
