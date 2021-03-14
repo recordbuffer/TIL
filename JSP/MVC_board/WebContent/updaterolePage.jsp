@@ -14,7 +14,9 @@
 <body>
 <% BDMemberDto dto = (BDMemberDto)request.getAttribute("selectuser"); %>
 <h1>회원 등급 변경</h1>
-<form>
+<form action="logincontroller.jsp" method="post">
+	<input type="hidden" name="command" value="updaterole">
+	<input type="hidden" name="bm_no" value="<%=dto.getBm_no() %>">
 	<table border="1">
 		<col width="50"><col width="100">
 		<tr>
@@ -35,7 +37,7 @@
 				<select name="bm_role">
 					<option value="USER" <%=dto.getBm_role().equals("USER")? "selected":"" %>>일반회원</option>
 					<option value="ADMIN" <%=dto.getBm_role().equals("ADMIN")? "selected": "" %>>관리자</option>
-					<option value="MANAGER" <%=dto.getBm_role().equals("MANAGER")? "selected": "" %>>매니저</option>
+					<option value="MANAGER" <%=dto.getBm_role().equals("MANAGER")? "selected":"" %>>매니저</option>
 				</select>
 			</td>
 		</tr>

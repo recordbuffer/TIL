@@ -192,6 +192,27 @@
 		request.setAttribute("selectuser", dto);
 		pageContext.forward("updaterolePage.jsp");
 		
+		//만약 요청이 updaterole라면?
+	} else if(command.equals("updaterole")){
+		int bm_no = Integer.parseInt(request.getParameter("bm_no"));
+		
+		BDMemberDto dto = dao.updateRole(bm_no, bm_role);
+		
+		if(res>0){
+%>
+			<script type="text/javascript">
+				alert("회원 등급 조정 성공");
+				location.href="logincontroller.jsp?command=userlistenabled";
+			</script>
+<%			
+			} else{
+%>
+			<script type="text/javascript">
+				alert("회원 등급 조정 실패");
+				location.href="logincontroller.jsp?command=updaterolePage&bm_no=<%=bm_no%>";
+			</script>
+<% 
+			}
 	}
 	
 	

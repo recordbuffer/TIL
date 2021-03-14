@@ -96,7 +96,31 @@ public class BDMemberDao {
 	
 	//회원 등급 조정
 	public int updateRole(int bm_no, String bm_role) {
-		return 0;
+		Connection con = getConnection();
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		String sql = " UPDATE BDMEMBER SET BM_ROLE=? WHERE BM_NO=? ";
+		
+		try {
+			pstm = con.prepareStatement(sql);
+			pstm.setString(1, bm_role);
+			pstm.setInt(2, bm_no);
+			
+			res = pstm.executeUpdate();
+			
+			if(res>0) {
+				commit(con);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+			close(con);
+		}
+		
+		return res;
 	}
 	
 	

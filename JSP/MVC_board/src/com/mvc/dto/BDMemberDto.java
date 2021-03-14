@@ -28,6 +28,13 @@ public class BDMemberDto {
 		this.bm_enabled = bm_enabled;
 		this.bm_role = bm_role;
 	}
+	
+	//updateRole( )
+	public BDMemberDto(int bm_no, String bm_role) {
+		super();
+		this.bm_no = bm_no;
+		this.bm_role = bm_role;
+	}
 
 	public int getBm_no() {
 		return bm_no;
