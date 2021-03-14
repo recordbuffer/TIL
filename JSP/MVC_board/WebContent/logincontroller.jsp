@@ -195,8 +195,9 @@
 		//만약 요청이 updaterole라면?
 	} else if(command.equals("updaterole")){
 		int bm_no = Integer.parseInt(request.getParameter("bm_no"));
+		String bm_role = request.getParameter("bm_role");
 		
-		BDMemberDto dto = dao.updateRole(bm_no, bm_role);
+		int res = dao.updateRole(bm_no, bm_role);
 		
 		if(res>0){
 %>

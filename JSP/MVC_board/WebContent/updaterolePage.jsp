@@ -36,7 +36,6 @@
 			<td>
 				<select name="bm_role">
 					<option value="USER" <%=dto.getBm_role().equals("USER")? "selected":"" %>>일반회원</option>
-					<option value="ADMIN" <%=dto.getBm_role().equals("ADMIN")? "selected": "" %>>관리자</option>
 					<option value="MANAGER" <%=dto.getBm_role().equals("MANAGER")? "selected":"" %>>매니저</option>
 				</select>
 			</td>
