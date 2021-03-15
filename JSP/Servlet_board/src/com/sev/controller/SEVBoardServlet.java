@@ -63,6 +63,7 @@ public class SEVBoardServlet extends HttpServlet {
 			if(res) {
 				jsResponse("글 작성 성공", "controller.do?command=main", response);
 			} else {
+				
 				dispatch("controller.do?command=insert", request, response);
 			}
 		}

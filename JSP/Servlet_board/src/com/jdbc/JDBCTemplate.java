@@ -12,10 +12,10 @@ public class JDBCTemplate {
 	public static Connection getConnection() {
 	
 		try {
+			//드라이버 연결
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("01. 드라이버 연결");
 		} catch (ClassNotFoundException e) {
-			System.out.println("01. 드라이버 연결 실패");
+			//드라이버 연결실패
 			e.printStackTrace();
 		}
 		
@@ -26,12 +26,12 @@ public class JDBCTemplate {
 		Connection con = null;
 		
 		try {
+			//계정 연결
 			con = DriverManager.getConnection(url, id, pw);
-			System.out.println("02 계정 연결");
 			
 			con.setAutoCommit(false);
 		} catch (SQLException e) {
-			System.out.println("02 계정 연결 실패");
+			//계정 연결 실패
 			e.printStackTrace();
 		}
 		

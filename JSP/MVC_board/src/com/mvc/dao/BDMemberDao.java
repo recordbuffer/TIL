@@ -1,6 +1,6 @@
 package com.mvc.dao;
 
-import static com.jdbc.JDBCTemplate.close;
+import static com.jdbc.JDBCTemplate.*;
 import static com.jdbc.JDBCTemplate.commit;
 import static com.jdbc.JDBCTemplate.getConnection;
 
