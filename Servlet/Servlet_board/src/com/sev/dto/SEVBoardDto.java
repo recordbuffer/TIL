@@ -34,6 +34,15 @@ public class SEVBoardDto {
 	}
 
 
+	//update
+	public SEVBoardDto(int bd_no, String bd_title, String bd_content) {
+		super();
+		this.bd_no = bd_no;
+		this.bd_title = bd_title;
+		this.bd_content = bd_content;
+	}
+	
+	
 	public int getBd_no() {
 		return bd_no;
 	}

@@ -34,7 +34,7 @@
 					<td>${dto.bd_name }</td>
 					<td><a href="controller.do?command=one&bd_no=${dto.bd_no }">${dto.bd_title }</a></td>
 					<td>${dto.bd_date }</td>
-					<td><a href="">수정</a></td>
+					<td><a href="controller.do?command=update&bd_no=${dto.bd_no}">수정</a></td>
 					<td><a href="">삭제</a></td>
 				</tr>
 			</c:forEach>

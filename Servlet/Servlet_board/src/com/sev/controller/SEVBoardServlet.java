@@ -66,6 +66,31 @@ public class SEVBoardServlet extends HttpServlet {
 				
 				dispatch("controller.do?command=insert", request, response);
 			}
+			
+		//만약 요청이 update라면?
+		} else if(command.equals("update")) {
+			int bd_no = Integer.parseInt(request.getParameter("bd_no"));
+			
+			//게시글의 원래 데이터 값 대로 update.jsp로 보내줌
+			SEVBoardDto dto = biz.selectOne(bd_no);
+			
+			request.setAttribute("dto", dto);
+			dispatch("update.jsp", request, response);
+		
+		//만약 요청이 bdupdate라면?
+		} else if(command.equals("bdupdate")) {
+			int bd_no = Integer.parseInt(request.getParameter("bd_no"));
+			String title = request.getParameter("sevtitle");
+			String content = request.getParameter("sevcontent");
+			
+			SEVBoardDto dto = new SEVBoardDto(bd_no, title, content);
+			boolean res = biz.update(dto);
+			if(res) {
+				jsResponse("글 수정 성공", "controller.do?command=one&bd_no="+bd_no, response);
+			} else {
+				dispatch("controller.do?command=update&bd_no="+bd_no, request, response);
+			}
+			
 		}
 	
 	}
