@@ -90,7 +90,17 @@ public class SEVBoardServlet extends HttpServlet {
 			} else {
 				dispatch("controller.do?command=update&bd_no="+bd_no, request, response);
 			}
-			
+		
+		//만약 요청이 delete라면?
+		} else if(command.equals("delete")) {
+			int bd_no = Integer.parseInt(request.getParameter("bd_no"));
+
+			boolean res = biz.delete(bd_no);
+			if(res) {
+				jsResponse("글 삭제 성공","controller.do?command=main", response);
+			} else {
+				dispatch("controller.do?command=one&bd_no="+bd_no, request, response);
+			}
 		}
 	
 	}

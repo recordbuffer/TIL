@@ -108,8 +108,21 @@ public class SEVBoardDaoImpl implements SEVBoardDao {
 
 	@Override
 	public boolean delete(Connection con, int bd_no) {
-		// TODO Auto-generated method stub
-		return false;
+		PreparedStatement pstm = null;
+		int res = 0;
+		
+		try {
+			pstm = con.prepareStatement(deletesql);
+			pstm.setInt(1, bd_no);
+			
+			res = pstm.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstm);
+		}
+		return (res>0)?true:false;
 	}
 
 }

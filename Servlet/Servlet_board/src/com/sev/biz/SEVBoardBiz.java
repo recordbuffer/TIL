@@ -17,3 +17,4 @@ public interface SEVBoardBiz {
 	//글삭제
 	public boolean delete(int bd_no);
 }
+

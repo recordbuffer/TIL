@@ -57,16 +57,15 @@ public class SEVBoardBizImpl implements SEVBoardBiz {
 
 	@Override
 	public boolean delete(int bd_no) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection con = getConnection();
+		boolean res = dao.delete(con, bd_no);
+		if(res) {
+			commit(con);
+		}
+		close(con);
+		return res;
 	}
 
 }
-
-
-
-
-
-
 
 

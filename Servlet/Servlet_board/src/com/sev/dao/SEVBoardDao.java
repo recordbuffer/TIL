@@ -11,6 +11,7 @@ public interface SEVBoardDao {
 	String selectOnesql = " SELECT * FROM SEVBOARD WHERE BD_NO=? ";
 	String insertsql = " INSERT INTO SEVBOARD VALUES(SEVBD_SEQ.NEXTVAL, ?,?,?,SYSDATE) ";
 	String updatesql = " UPDATE SEVBOARD SET BD_TITLE=?, BD_CONTENT=? WHERE BD_NO=? ";
+	String deletesql = " DELETE FROM SEVBOARD WHERE BD_NO=? ";
 	
 	//게시글 전체 출력
 	public List<SEVBoardDto> selectAll(Connection con);

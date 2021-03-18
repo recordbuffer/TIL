@@ -32,7 +32,7 @@
 			<tr>
 				<td colspan="2" align="right">
 					<input type="button" value="수정" onclick="location.href='controller.do?command=update&bd_no=${dto.bd_no}'">
-					<input type="button" value="삭제" onclick="">
+					<input type="button" value="삭제" onclick="location.href='controller.do?command=delete&bd_no=${dto.bd_no}'">
 					<input type="button" value="목록" onclick="location.href='controller.do?command=main'">					
 				</td>
 			</tr>
