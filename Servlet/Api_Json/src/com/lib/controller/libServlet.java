@@ -27,6 +27,7 @@ public class libServlet extends HttpServlet {
 		//만약 요청이 list라면?
 		if(command.equals("list")) {
 			response.sendRedirect("liblist.jsp");
+			
 		//만약 요청이 listdb라면?
 		} else if(command.equals("listdb")) {
 			
