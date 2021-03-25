@@ -9,6 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="./JS/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="./JS/liblist.js"></script> <!-- liblist.js에서 작성된 걸 가져와서 쓸 수 있음-->
 </head>
 <body>
 	<form action="lib.do" method="post">
