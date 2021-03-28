@@ -30,6 +30,8 @@ public class libServlet extends HttpServlet {
 			
 		//만약 요청이 listdb라면?
 		} else if(command.equals("listdb")) {
+			//혹시 데이터가 있다면 먼저 지워줌
+			dao.delete();
 			
 		}
 		
