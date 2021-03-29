@@ -32,6 +32,9 @@ function getJson(){
 							"<td>"+str.adres+"</td>"+
 							"<td>"+str.tel_no+"</td>"+
 							"<td>"+str.hmpg_url+"</td>"+
+							//db에 값들을 '/'로 나눠서 넘겨줌
+							"<input type='hidden' name='lib' value='"+
+							str.gu_code+"/"+str.lbrry_seq_no+"/"+str.lbrry_name+"/"+str.adres+"/"+str.tel_no+"/"+str.hmpg_url+"'>"+
 						"</tr>"
 					);
 				}
