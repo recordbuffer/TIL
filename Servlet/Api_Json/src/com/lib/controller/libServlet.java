@@ -43,7 +43,8 @@ public class libServlet extends HttpServlet {
 			
 			for(int i=0; i<SeoulLibList.length; i++) {
 				String[] tmp = SeoulLibList[i].split("/"); 
-				LibDto dto = new LibDto(Integer.parseInt(tmp[0]),Integer.parseInt(tmp[1]),tmp[2],tmp[3],tmp[4],tmp[5]);
+				
+				LibDto dto = new LibDto(tmp[0],tmp[1],tmp[2],tmp[3],tmp[4],tmp[5]);
 
 				dtos.add(dto);
 			}
@@ -52,11 +53,9 @@ public class libServlet extends HttpServlet {
 		
 			
 			if(res==dtos.size()) {
-				jsResponse("db 저장 성공",response);
-				response.sendRedirect("browser.html");
+				jsResponse("db 저장 성공","lib.do?command=list",response);
 			} else {
-				jsResponse("db 저장 실패",response);
-				response.sendRedirect("liblist.jsp");
+				jsResponse("db 저장 실패","lib.do?command=list",response);
 			}
 		}
 		
@@ -68,9 +67,10 @@ public class libServlet extends HttpServlet {
 
 	
 	//alert 메서드
-	private void jsResponse(String msg, HttpServletResponse response) throws IOException {
+	private void jsResponse(String msg, String url, HttpServletResponse response) throws IOException {
 		String alert = "<script type='text/javascript'>"+
 						"alert('"+msg+"');"+
+						"location.href='"+url+"';"+
 						"</script>";
 		PrintWriter out = response.getWriter();
 		out.print(alert);

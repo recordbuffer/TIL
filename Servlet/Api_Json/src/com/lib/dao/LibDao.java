@@ -46,8 +46,8 @@ public class LibDao extends JDBCTemplate {
 			for(int i=0; i<dtos.size(); i++) {
 				LibDto dto = dtos.get(i); 	//반복을 하면서 LibDto 인덱스 i에 해당하는 dto 하나씩 가져옴
 				
-				pstm.setInt(1, dto.getGu_code());
-				pstm.setInt(2, dto.getLib_seq());
+				pstm.setString(1, dto.getGu_code());
+				pstm.setString(2, dto.getLib_seq());
 				pstm.setString(3, dto.getLib_name());
 				pstm.setString(4, dto.getAddr());
 				pstm.setString(5, dto.getTel());

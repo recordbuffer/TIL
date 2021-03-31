@@ -1,8 +1,8 @@
 package com.lib.dto;
 
 public class LibDto {
-	private int gu_code;
-	private int lib_seq;
+	private String gu_code;
+	private String lib_seq;
 	private String lib_name;
 	private String addr;
 	private String tel;
@@ -11,8 +11,7 @@ public class LibDto {
 	public LibDto() {
 		super();
 	}
-	
-	public LibDto(int gu_code, int lib_seq, String lib_name, String addr, String tel, String hpg) {
+	public LibDto(String gu_code, String lib_seq, String lib_name, String addr, String tel, String hpg) {
 		super();
 		this.gu_code = gu_code;
 		this.lib_seq = lib_seq;
@@ -21,16 +20,16 @@ public class LibDto {
 		this.tel = tel;
 		this.hpg = hpg;
 	}
-	public int getGu_code() {
+	public String getGu_code() {
 		return gu_code;
 	}
-	public void setGu_code(int gu_code) {
+	public void setGu_code(String gu_code) {
 		this.gu_code = gu_code;
 	}
-	public int getLib_seq() {
+	public String getLib_seq() {
 		return lib_seq;
 	}
-	public void setLib_seq(int lib_seq) {
+	public void setLib_seq(String lib_seq) {
 		this.lib_seq = lib_seq;
 	}
 	public String getLib_name() {
@@ -58,6 +57,5 @@ public class LibDto {
 		this.hpg = hpg;
 	}
 	
-
 	
 }
