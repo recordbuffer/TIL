@@ -54,9 +54,7 @@ public class LibDao extends JDBCTemplate {
 				pstm.setString(6, dto.getHpg());
 				
 				pstm.addBatch(); 	//모든 dto들의 배열이 메모리에 대기 
-			
 			}
-			
 			int[] result = pstm.executeBatch();		//쿼리 실행 후 결과 값 배열 result에 저장
 			
 			for(int i=0; i<result.length; i++) {	//결과 값 비교해줌
@@ -64,7 +62,6 @@ public class LibDao extends JDBCTemplate {
 					res++;
 				}
 			}
-			
 			if(res==dtos.size()) {		//dtos랑 res값 같으면(insert 모두 성공이면) 커밋
 				commit(con);
 			}
