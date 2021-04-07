@@ -3,6 +3,33 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<!-- 1. DB 정보 적은 properies 경로 알려줌 -->
+	<properties resource="db/DB.properties"></properties>
 
 
+	<!-- 2. Dto 별칭부여 -->
+	<typeAliases>
+		<typeAlias type="com.db.dto.BoardDto" alias="BoardDto"/>
+	</typeAliases>
+	
+	
+	<!-- 3. DB접속 설정 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}"/>
+				<property name="username" value="${username}"/>
+				<property name="password" value="${password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	
+	<!-- 4. mapper 경로 설정함 -->
+	<mappers>
+		<mapper resource="db/mapper.xml"/>
+	</mappers>
+	
 </configuration>
