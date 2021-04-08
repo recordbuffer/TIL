@@ -14,7 +14,7 @@
 	</resultMap>
 	
 <!-- 쿼리문 -->
-	<select id="selectAll" resultType="BoardDto">
+	<select id="selectAll" resultMap="bdmap">
 		SELECT BD_NO, BD_NAME, BD_TITLE, BD_CONTENT, BD_DATE
 		FROM BOARD
 	</select>
