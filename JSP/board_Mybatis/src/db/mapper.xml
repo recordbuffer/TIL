@@ -4,39 +4,46 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="db.board">
 	
-<!-- 쿼리 실행 후 결과값 담아줄 resultMap -->	
-	<resultMap type="com.db.dto.BoardDto" id="bdmap">
-		<result property="bd_no" column="BD_NO"/>
-		<result property="bd_name" column="BD_NAME"/>
-		<result property="bd_title" column="BD_TITLE"/>
-		<result property="bd_content" column="BD_CONTENT"/>
-		<result property="bd_date" column="BD_DATE"/>
-	</resultMap>
-	
 <!-- 쿼리문 -->
-	<select id="selectAll" resultMap="bdmap">
+	<select id="selectAll" resultType="BoardDto">
 		SELECT BD_NO, BD_NAME, BD_TITLE, BD_CONTENT, BD_DATE
 		FROM BOARD
 	</select>
 
 
-	<select id="selectOne">
+	<select id="selectOne" parameterType="int" resultType="BoardDto">
+ 		SELECT BD_NAME, BD_TITLE, BD_CONTENT
+		FROM BOARD
 	</select>
 
 	
-	<insert id="insert">
+	<insert id="insert" parameterType="BoardDto">
+		INSERT INTO BOARD
+		VALUES(BD_SEQ.NEXTVAL, #{bd_name}, #{bd_title}, #{bd_content}, SYSDATE)
 	</insert>
 
 
-	<update id="update">
+	<update id="update" parameterType="BoardDto">
+		UPDATE BOARD
+		SET BD_TITLE = #{bd_title}, BD_CONTENT = #{bd_content}
+		WHERE BD_NO =#{bd_no} 
 	</update>
 
 
-	<delete id="delete">
+	<delete id="delete" parameterType="int">
+		DELETE 
+		FROM BOARD
+		WHERE BD_NO = #{bd_no}
 	</delete>
 
 	
-	<delete id="multiDelete">
+	<delete id="multiDelete" parameterMap="map">
+		DELETE 
+		FROM BOARD
+		WHERE BD_NO IN
+		<foreach collection="bd_no" item="bd_no" open="(" separator="," close=")">
+			#{bd_no}
+		</foreach>
 	</delete>
 
 </mapper>  

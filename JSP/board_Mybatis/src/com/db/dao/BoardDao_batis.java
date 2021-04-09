@@ -1,6 +1,8 @@
 package com.db.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -30,27 +32,85 @@ public class BoardDao_batis extends SqlMapConfig {
 	
 	//게시글 선택 출력
 	public BoardDto selectOne(int bd_no) {
-		return null;
+		SqlSession session = null;
+		BoardDto res = null;
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.selectOne("db.board.selectOne",bd_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
 	}
 	
 	//글 추가
 	public int insert(BoardDto dto) {
-		return 0;
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.insert("db.board.insert",dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
 	}
 	
 	//글 수정
 	public int update(BoardDto dto) {
-		return 0;
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.update("db.board.update",dto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
 	}
 	
 	//글 삭제
 	public int delete(int bd_no) {
-		return 0;
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			res = session.delete("db.board.delete",bd_no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
 	}
 	
 	//글 여러개 삭제
 	public int multiDelete(String[] bd_no) {
-		return 0;
+		SqlSession session = null;
+		int cnt = 0;
+		
+		Map<String, String[]> map = new HashMap<String, String[]>();
+		map.put("bd_no", bd_no);
+		
+		try {
+			session = getSqlSessionFactory().openSession(true);
+			cnt = session.delete("db.board.multiDelete",map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return cnt;
 	}
 
 }
