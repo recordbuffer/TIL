@@ -153,7 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="MVC01" path="/MVC01" reloadable="true" source="org.eclipse.jst.jee.server:MVC01"/></Host>
+      <Context docBase="MVC01" path="/MVC01" reloadable="true" source="org.eclipse.jst.jee.server:MVC01"/><Context docBase="MVC02" path="/test01" reloadable="true" source="org.eclipse.jst.jee.server:MVC02"/></Host>
     </Engine>
   </Service>
 </Server>
