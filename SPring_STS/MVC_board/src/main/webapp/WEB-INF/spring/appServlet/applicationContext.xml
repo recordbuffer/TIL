@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- db.properties 읽어오기 -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:DB/db.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- dataSource에 관한 정보 -->
+	<bean class="org.apache.commons.dbcp.BasicDataSource"
+		id="dataSource">
+		<property name="driverClassName" value="${driver}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+	</bean>
+
+	<!-- mybatis -->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSession">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="WEB-INF/spring/DB/config.xml" />
+	</bean>
+	
+	<!-- mybatis-template -->
+	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSessionTemplate">
+		<constructor-arg ref="sqlSession" />
+	</bean>
+</beans>
