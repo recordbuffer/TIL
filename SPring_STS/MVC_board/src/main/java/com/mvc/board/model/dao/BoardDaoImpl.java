@@ -1,4 +1,4 @@
-package com.mvc.upgrade.model.dao;
+package com.mvc.board.model.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mvc.upgrade.model.dto.BoardDto;
+import com.mvc.board.model.dto.BoardDto;
 
 @Repository
 public class BoardDaoImpl implements BoardDao{

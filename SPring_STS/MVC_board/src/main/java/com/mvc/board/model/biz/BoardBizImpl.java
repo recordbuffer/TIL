@@ -1,12 +1,12 @@
-package com.mvc.upgrade.model.biz;
+package com.mvc.board.model.biz;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mvc.upgrade.model.dao.BoardDao;
-import com.mvc.upgrade.model.dto.BoardDto;
+import com.mvc.board.model.dao.BoardDao;
+import com.mvc.board.model.dto.BoardDto;
 
 @Service
 public class BoardBizImpl implements BoardBiz{
@@ -20,8 +20,8 @@ public class BoardBizImpl implements BoardBiz{
 	}
 
 	@Override
-	public BoardDto selectOne(int myno) {
-		return dao.selectOne(myno);
+	public BoardDto selectOne(int bd_no) {
+		return dao.selectOne(bd_no);
 	}
 
 	@Override
@@ -35,8 +35,8 @@ public class BoardBizImpl implements BoardBiz{
 	}
 
 	@Override
-	public int delete(int myno) {
-		return dao.delete(myno);
+	public int delete(int bd_no) {
+		return dao.delete(bd_no);
 	}
 
 }

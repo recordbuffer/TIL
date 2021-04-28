@@ -1,4 +1,4 @@
-package com.mvc.upgrade;
+package com.mvc.board;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -13,8 +13,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.mvc.upgrade.model.biz.BoardBiz;
-import com.mvc.upgrade.model.dto.BoardDto;
+import com.mvc.board.model.biz.BoardBiz;
+import com.mvc.board.model.dto.BoardDto;
 
 
 @Controller
@@ -44,9 +44,10 @@ public class HomeController {
 	@RequestMapping("/list.do")
 	public String list(Model model) {
 		logger.info("SELECT LIST");
+		
 		model.addAttribute("list",biz.selectList());
 		
-		return "mvclist";
+		return "main";
 	}
 	
 	@RequestMapping("/detail.do")
@@ -91,9 +92,9 @@ public class HomeController {
 		
 		int res = biz.update(dto);
 		if(res>0) {
-			return "redirect:detail.do?myno="+dto.getMyno();
+			return "redirect:detail.do?myno="+dto.getBd_no();
 		} else {
-			return "redirect:updateform.do?myno="+dto.getMyno();
+			return "redirect:updateform.do?myno="+dto.getBd_no();
 		}
 	}
 	

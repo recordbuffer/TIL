@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   <configuration>
   	<typeAliases>
-  		<typeAlias type="com.mvc.upgrade.model.dto.BoardDto" alias="boardDto" />
+  		<typeAlias type="com.mvc.board.model.dto.BoardDto" alias="boardDto" />
   	</typeAliases>
   
   <mappers>
