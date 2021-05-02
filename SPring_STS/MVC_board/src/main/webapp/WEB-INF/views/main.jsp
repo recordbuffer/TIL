@@ -27,14 +27,14 @@
 			<tr>
 				<td>${dto.bd_no }</td>
 				<td>${dto.bd_name }</td>
-				<td><a href="">${dto.bd_title }</a></td>
+				<td><a href="one.do?bd_no=${dto.bd_no }">${dto.bd_title }</a></td>
 				<td>${dto.bd_date }</td>
 			</tr>
 		</c:forEach>
 		<tr>
 			<td colspan="4" align="right">
 			<input type="button" value="글쓰기"
-				onclick="location.href=''"></td>
+				onclick="location.href='insert.do'"></td>
 		</tr>
 	</table>
 </body>

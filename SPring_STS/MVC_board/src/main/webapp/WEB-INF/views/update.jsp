@@ -7,19 +7,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="insertres.do" method="post">
+	<form action="bdupdate.do" method="post">
+	<input type="hidden" name="bd_no" value="${dto.bd_no }">
 	<table border="1">
 		<tr>
-			<th>WRITER</th>
-			<td><input type="text" name="myname"></td>
+			<th>NAME</th>
+			<td>${dto.bd_name }</td>
 		</tr>
 		<tr>
 			<th>TITLE</th>
-			<td><input type="text" name="mytitle"></td>
+			<td><input type="text" name="bd_title" value="${dto.bd_title }"></td>
 		</tr>
 		<tr>
 			<th>CONTENT</th>
-			<td><textarea rows="10" cols="60" name="mycontent"></textarea>
+			<td><textarea rows="10" cols="60" name="bd_content">${dto.bd_content }</textarea>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">

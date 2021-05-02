@@ -22,37 +22,38 @@ public class BoardDaoImpl implements BoardDao{
 		
 		try {
 			list=sqlSession.selectList(NAMESPACE+"selectList");
+			
 		} catch (Exception e) {
-			System.out.println("[error] : select list");
 			e.printStackTrace();
-		}
-		
+		}		
 		
 		return list;		//biz가 받아 controller로 리턴 넘겨줄거임
 	}
 
+	
+	
 	@Override
-	public BoardDto selectOne(int myno) {
+	public BoardDto selectOne(int bd_no) {
 		BoardDto dto = null;
 		
 		try {
-			dto = sqlSession.selectOne(NAMESPACE+"selectOne", myno);
+			dto = sqlSession.selectOne(NAMESPACE+"selectOne", bd_no);
 		} catch (Exception e) {
-			System.out.println("[error] : select one");
 			e.printStackTrace();
 		}
 		
 		return dto;
 	}
 
+	
 	@Override
 	public int insert(BoardDto dto) {
 		int res = 0;
 		
 		try {
 			res = sqlSession.insert(NAMESPACE+"insert",dto);
+			
 		} catch (Exception e) {
-			System.out.println("[error] : insert");
 			e.printStackTrace();
 		}
 		
@@ -65,8 +66,8 @@ public class BoardDaoImpl implements BoardDao{
 		
 		try {
 			res = sqlSession.update(NAMESPACE+"update",dto);
+			
 		} catch (Exception e) {
-			System.out.println("[error] : update");
 			e.printStackTrace();
 		}
 		

@@ -24,6 +24,7 @@ public class BoardBizImpl implements BoardBiz{
 		return dao.selectOne(bd_no);
 	}
 
+	
 	@Override
 	public int insert(BoardDto dto) {
 		return dao.insert(dto);

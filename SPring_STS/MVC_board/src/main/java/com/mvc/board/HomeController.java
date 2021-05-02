@@ -31,52 +31,57 @@ public class HomeController {
 	}
 	
 
-	
-	@RequestMapping("/detail.do")
-	public String detail(Model model, int myno) {
+	@RequestMapping("/one.do")
+	public String one(Model model, int bd_no) {
 		logger.info("SELECT ONE");
-		model.addAttribute("dto",biz.selectOne(myno));
 		
-		return "mvcdetail";
-	}
-	
-	@RequestMapping("/insertform.do")
-	public String insertForm() {
-		logger.info("INSERT FORM");
-		return "mvcinsert";
+		model.addAttribute("dto",biz.selectOne(bd_no));
+		
+		return "selectone";
 	}
 	
 	
-	@RequestMapping("/insertres.do")
-	public String insertRes(BoardDto dto) {
-		logger.info("INSERT RES");
+	@RequestMapping("/insert.do")
+	public String insert() {
+		logger.info("INSERT PAGE");
+		
+		return "insert";
+	}
+	
+	
+	@RequestMapping("/bdinsert.do")
+	public String insertBoard(BoardDto dto) {
+		logger.info("INSERT");
 		
 		int res = biz.insert(dto);
+		
 		if(res>0) {
 			return "redirect:list.do";
 		} else {
-		return "redirect:insertform.do";		//redirect를 통해 요청을 리턴해줄 수 있음 
+		return "redirect:insert.do";		//redirect를 통해 요청을 리턴해줄 수 있음 
 		}
 	}
 	
-	@RequestMapping("/updateform.do")
-	public String update(Model model, int myno) {
-		logger.info("UPDATE FROM");
+	
+	
+	@RequestMapping("/update.do")
+	public String update(Model model, int bd_no) {
+		logger.info("UPDATE PAGE");
 		
-		model.addAttribute("dto",biz.selectOne(myno));
+		model.addAttribute("dto",biz.selectOne(bd_no));
 		
-		return "mvcupdate";
+		return "update";
 	}
 	
-	@RequestMapping("/updateres.do")
-	public String updateRes(BoardDto dto) {
-		logger.info("UPDATE RES");
+	@RequestMapping("/bdupdate.do")
+	public String updateBoard(BoardDto dto) {
+		logger.info("UPDATE");
 		
 		int res = biz.update(dto);
 		if(res>0) {
-			return "redirect:detail.do?myno="+dto.getBd_no();
+			return "redirect:one.do?bd_no="+dto.getBd_no();
 		} else {
-			return "redirect:updateform.do?myno="+dto.getBd_no();
+			return "redirect:update.do?bd_no="+dto.getBd_no();
 		}
 	}
 	

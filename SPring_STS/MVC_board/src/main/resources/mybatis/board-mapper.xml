@@ -16,23 +16,22 @@
 	<select id="selectList" resultMap="boardMap">
 		SELECT BD_NO, BD_NAME, BD_TITLE, BD_CONTENT, BD_DATE
 		FROM STSBOARD
-		ORDER BY BD_NO DESC
 	</select>
 	
 	<select id="selectOne" resultType="boardDto" parameterType="int">
-		SELECT MYNO, MYNAME, MYTITLE, MYCONTENT, MYDATE
-		FROM MYBOARD
-		WHERE MYNO = #{myno}
+		SELECT BD_NO, BD_NAME, BD_TITLE, BD_CONTENT, BD_DATE
+		FROM STSBOARD
+		WHERE BD_NO = #{bd_no}
 	</select>
 	
-	<insert id="insert" parameterType="boardDto">
-		INSERT INTO MYBOARD
-		VALUES(MYNOSEQ.NEXTVAL, #{myname}, #{mytitle}, #{mycontent}, SYSDATE)
+	<insert id="insert" parameterType="boardDto" >
+		INSERT INTO STSBOARD
+		VALUES(STSBD_SEQ.NEXTVAL, #{bd_name}, #{bd_title}, #{bd_content}, SYSDATE)
 	</insert>
 	
 	<update id="update" parameterType="boardDto">
-		UPDATE MYBOARD
-		SET MYTITLE=#{mytitle}, MYCONTENT=#{mycontent} WHERE MYNO=#{myno}
+		UPDATE STSBOARD
+		SET BD_TITLE=#{bd_title}, BD_CONTENT=#{bd_content} WHERE BD_NO=#{bd_no}
 	</update>
 
 	<delete id="delete" parameterType="int">
