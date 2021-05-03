@@ -74,14 +74,14 @@ public class BoardDaoImpl implements BoardDao{
 		return res;
 	}
 
+	
 	@Override
-	public int delete(int myno) {
+	public int delete(int bd_no) {
 		int res = 0;
 		
 		try {
-			res = sqlSession.delete(NAMESPACE+"delete",myno);
+			res = sqlSession.delete(NAMESPACE+"delete",bd_no);
 		} catch (Exception e) {
-			System.out.println("[error] : delete");
 			e.printStackTrace();
 		}
 		
@@ -89,3 +89,7 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 }
+
+
+
+
