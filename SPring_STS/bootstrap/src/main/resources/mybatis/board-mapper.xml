@@ -16,6 +16,7 @@
 	<select id="selectList" resultMap="boardMap">
 		SELECT BD_NO, BD_NAME, BD_TITLE, BD_CONTENT, BD_DATE
 		FROM STSBOARD
+		ORDER BY BD_NO
 	</select>
 	
 	<select id="selectOne" resultType="boardDto" parameterType="int">
