@@ -5,10 +5,12 @@
   <configuration>
   	<typeAliases>
   		<typeAlias type="com.mvc.board.model.dto.BoardDto" alias="boardDto" />
+  		<typeAlias type="com.mvc.board.model.dto.MemberDto" alias="memberDto" />
   	</typeAliases>
   
   <mappers>
   	<mapper resource="/mybatis/board-mapper.xml"/>
+  	<mapper resource="/mybatis/member-mapper.xml"/>
   </mappers>
   
   
