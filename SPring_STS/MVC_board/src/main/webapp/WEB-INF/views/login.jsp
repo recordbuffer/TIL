@@ -8,16 +8,17 @@
 </head>
 <body>
 	<h1>로그인</h1>
-	<form>
+	<form action="userlogin.do" method="post">
+		<input type="hidden" value="login">
 		<table border="1">
 			<col width="100"><col width="100">
 			<tr>
 				<th>I D</th>
-				<td><input type="text" name="id"></td>
+				<td><input type="text" name="bm_id"></td>
 			</tr>
 			<tr>
 				<th>P W</th>
-				<td><input type="text" name="pw"></td>
+				<td><input type="text" name="bm_pw"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
