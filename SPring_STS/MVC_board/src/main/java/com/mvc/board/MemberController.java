@@ -33,10 +33,13 @@ public class MemberController {
 	public String userLogin(MemberDto dto, HttpServletRequest request) {
 		logger.info("LOGIN");
 		
+		//세션 생성
 		HttpSession session = request.getSession();
 		MemberDto res = biz.login(dto);
 		
 		if(res!=null) {
+			
+			//세션 저장
 			session.setAttribute("login", res);
 			return "redirect:list.do";
 		} else {
