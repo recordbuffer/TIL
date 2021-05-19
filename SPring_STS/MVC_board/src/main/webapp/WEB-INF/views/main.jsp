@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@ page import="com.mvc.board.model.dto.MemberDto" %>
+<% MemberDto dto = (MemberDto)session.getAttribute("res"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +13,7 @@
 </head>
 <body>
 	<h1>게시판 목록</h1>
+	<h4><%=dto.getBm_name() %>님 안녕하세요</h4>
 	<table border="1">
 		<colgroup>
 			<col width="50">
