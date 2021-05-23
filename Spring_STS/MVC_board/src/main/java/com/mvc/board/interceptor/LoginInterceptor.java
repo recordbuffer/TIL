@@ -1,5 +1,7 @@
 package com.mvc.board.interceptor;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -14,8 +16,23 @@ public class LoginInterceptor implements HandlerInterceptor {
 	
 	//Controller 요청 전에 실행됨	
 	@Override																			//handler 정보
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
 	
+
+		//로그인 창으로 들어가는 요청인지, 로그인 요청인지, 로그인 상태(세션)인지 확인해서 
+		if(request.getRequestURI().contains("/login.do") || request.getRequestURI().contains("/userlogin.do") || request.getSession().getAttribute("res")!=null) {
+			
+			//맞다면 true
+			return true;
+		}
+		
+		//로그인이 안되어 있다면
+		if(request.getSession().getAttribute("res")==null) {
+			
+			//로그인하라고 보내버리고 false
+			response.sendRedirect("login.do");
+			return false;
+		}
 		
 		return false;		//true면 controller로 넘어감
 	}
