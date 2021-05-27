@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+    <link href='bootstrap/bootstrap.css' rel='stylesheet' />
+    <script src='bootstrap/bootstrap.min.css'></script>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
@@ -30,6 +32,21 @@ $(document).ready(function () {
 	<h1>도서 검색</h1>
     <input id="bookName" value="" type="text">
     <button id="search">검색</button>	
-	<p></p>
+	<div class="card mb-3" style="max-width: 540px;">
+
+<!-- 결과값 담는 곳 -->
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="..." alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><p></p></h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
