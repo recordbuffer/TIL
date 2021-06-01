@@ -51,5 +51,15 @@ public class MemberController {
 			return "redirect:login.do";
 		}
 	}
+	
+	//로그아웃
+	@RequestMapping(value="/logout.do", method=RequestMethod.GET)
+	public String logout(HttpSession session) {
+		logger.info("LOGOUT");
+		
+		biz.logout(session);
+		
+		return "redirect:login.do";
+	}
 
 }

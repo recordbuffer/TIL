@@ -12,6 +12,7 @@
 <body>
 	<h1>게시판 목록</h1>
 	<h4>${res.bm_name } 님 안녕하세요</h4>
+	<input type="button" value="로그아웃" onclick="location.href='logout.do'">
 	<table border="1">
 		<colgroup>
 			<col width="50">
