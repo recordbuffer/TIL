@@ -5,27 +5,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-    <link href='bootstrap/bootstrap.min.css' rel='stylesheet' />
-    <script src='bootstrap/bootstrap.css'></script>
+<!-- bootstrap -->
+<link href='bootstrap/bootstrap.min.css' rel='stylesheet' />
+<script src='bootstrap/bootstrap.css'></script>
+
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function () {
-    $("#search").click(function () {
-        $.ajax({
+    $("#search").click(function () {	//search 버튼 클릭시 ajax 실행
+        $.ajax({						//카카오 검색 요청
             method: "GET",
-            url: "https://dapi.kakao.com/v3/search/book?target=title",
+            url: "https://dapi.kakao.com/v3/search/book",
             data: { query: $("#bookName").val() },
             headers: { Authorization: "KakaoAK a4ccc8c49af3856c0536a0310208e7fa" }
         })
-            .done(function (msg) {
-                console.log(msg.documents[0].title);
-                console.log(msg.documents[0].thumbnail);
-                $("#coverimg").append("<img src='" + msg.documents[0].thumbnail + "'/>");
-                $("h5").append("<strong>" + msg.documents[0].title + "</strong>");
-                $(".card-text").append(msg.documents[0].contents);
-                $(".card-author").append(msg.documents[0].authors);
-                $(".card-publisher").append(msg.documents[0].publisher);
+            .done(function (res) {		//검색 결과 담아줌	
+                $("#coverimg").append("<img src='" + res.documents[0].thumbnail + "'/>");
+                $("h5").append(res.documents[0].title);
+                $(".card-text").append(res.documents[0].contents);
+                $(".card-author").append(res.documents[0].authors);
+                $(".card-publisher").append(res.documents[0].publisher);
                 
             });
     });
@@ -33,15 +33,17 @@ $(document).ready(function () {
 </script>
 </head>
 <body>
-	<h1>도서 검색</h1>
-    <input id="bookName" value="" type="text">
+<br>
+	<h1>도서 검색 실습</h1>
+	
+    <input id="bookName" type="text">
     <button id="search">검색</button>	
     
    <div style="height:50px;"></div>
     
     
     <!-- 결과값 담는 곳 -->
-	<div class="card mb-3" style="max-width: 100%;">
+	<div class="card mb-3" style="max-width: 60%; border: none;">
 	<div class="row g-0">
     <div class="col-md-4" id="coverimg"></div>
     <div class="col-md-8">
