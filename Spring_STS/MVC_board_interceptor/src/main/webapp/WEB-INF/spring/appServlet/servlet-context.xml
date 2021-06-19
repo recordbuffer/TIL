@@ -23,4 +23,13 @@
 	
 	<context:component-scan base-package="com.mvc.board" />
 	
+	<!-- interceptor -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/*"/>
+			<beans:bean class="com.mvc.board.interceptor.LoginInterceptor"></beans:bean>
+		</interceptor>
+	</interceptors>
+	
+	
 </beans:beans>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  <configuration>
+  	<typeAliases>
+  		<typeAlias type="com.mvc.board.model.dto.BoardDto" alias="boardDto" />
+  		<typeAlias type="com.mvc.board.model.dto.MemberDto" alias="memberDto" />
+  	</typeAliases>
+  
+  <mappers>
+  	<mapper resource="/mybatis/board-mapper.xml"/>
+  	<mapper resource="/mybatis/member-mapper.xml"/>
+  </mappers>
+  
+  
+  </configuration>
