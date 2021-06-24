@@ -1,4 +1,4 @@
-ublic class DimensionArray_Test {
+public class DimensionArray_Test {
 	public static void main(String[] args) {
 
 		//2차원 배열
