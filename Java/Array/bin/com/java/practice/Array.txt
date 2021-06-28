@@ -1,0 +1,128 @@
+public class Array_Test {
+	public static void main(String[] args) {
+		//Array_Test.test01();
+		//Array_Test.test02();
+		//Array_Test.test03();
+		//Array_Test.test04();
+		Array_Test.test05();
+	
+	}
+	public static void test01() {
+		
+		/* 배열 : 같은 자료형의 변수 여러개를 하나의 묶음으로 만들어 
+		 * 		 하나의 이름으로 다루는 것
+		 */	
+		
+		//5칸짜리 저장공간의 배열 생성
+		int[] arr = new int[5];
+		
+		//for문으로 배열 할당
+		for (int i=0; i<arr.length; i++) {
+			arr[i]=i*10;
+			System.out.println("arr["+i+"]="+arr[i]);
+		}	
+	}
+	
+	public static void test02() {
+		//for-each문  : 여러개의 데이터 처리하기 위함
+	
+		String[] members = {"홍길동","이순신","이성계","강감찬"};
+		for (String i : members) {
+			System.out.println(i+"님이 입장했습니다.");
+		}
+	
+	}
+	
+	public static void test03() {
+		// 배열에 데이터 입력 이런식으로 출력
+	/*
+	      a b c d e f 
+	      g h i j k l
+	      m n o p q r
+	      s t u v w x
+	      y z
+	 */
+		
+		//26칸짜리 저장공간의 배열 생성
+		char[] ch = new char[26];
+		for(int i=0; i<ch.length; i++) {
+			ch[i] = (char)((int)'a'+i);
+		}
+		
+		//for문으로 배열 할당
+		for(int i=0; i<ch.length; i++) {
+			System.out.print(ch[i]+" ");
+			if(i%6==5) {
+				System.out.println();
+			}
+		}
+		
+		System.out.println();
+				
+	}
+	
+	public static void test04() {
+		//배열 역순으로 출력하기
+		/*
+		 * 	z y x w v u 
+		 * 	t s r q p o 
+		 * 	n m l k j i 
+		 * 	h g f e d c 
+		 * 	b a
+		 */
+		
+		//26칸짜리 저장공간의 배열 생성
+		char[] ch = new char[26];
+		for(int i=0; i<ch.length; i++) {
+			ch[i] = (char)((int)'a'+i);
+		}
+		
+		//for문으로 배열 할당
+		int tmp=0;
+		
+		for(int i=ch.length; i>0; i--) {
+			System.out.print(ch[i-1]+" ");
+			if(tmp%6==5) {
+				System.out.println();
+			}
+			tmp++;
+		}
+		
+		//배열 하나 더 생성, 역순으로 데이터 입력
+		tmp=0;
+		char re[] = new char[26];
+		for (int i=ch.length-1; i>=0; i--) {
+			re[tmp]=ch[i];
+		}
+	}
+	
+	public static void test05() {
+		//배열 소문자 -> 대문자로 출력하기
+		/*
+		 * 	A B C D E F 
+		 * 	G H I J K L 
+		 * M N O P Q R 
+		 * S T U V W X 
+		 * Y Z 
+		 */
+		
+		//26칸짜리 저장공간의 배열 생성
+		char[] ch = new char[26];
+		for(int i=0; i<ch.length; i++) {
+			ch[i] = (char)((int)'a'+i);
+		}
+		
+		//toUpperCase
+		for (int i=0; i<ch.length; i++) {
+			ch[i]=Character.toUpperCase(ch[i]);
+		}
+		
+		for(int i=0; i<ch.length; i++) {
+			System.out.print(ch[i]+" ");
+			if(i%6==5) {
+				System.out.println();
+			}
+		}
+		System.out.println();
+	}
+}

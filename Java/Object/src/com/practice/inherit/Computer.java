@@ -6,7 +6,7 @@ public class Computer extends Product {
 	// product 부모 클래스 상속받음
 	
 	private String cpu;
-	private int hdd;
+	private int ssd;
 	private int ram;
 	private String os;
 	
@@ -16,29 +16,25 @@ public class Computer extends Product {
 	}
 	
 	// 매개변수 생성자 >> 부모 클래스 + 자식 클래스 
-	public Computer(String brand, String productNo, String productName, int price, Date date, String cpu, int hdd,
+	public Computer(String brand, String productNo, String productName, int price, Date date, String cpu, int ssd,
 			int ram, String os) {
 		super(brand, productNo, productName, price, date);
 		this.cpu = cpu;
-		this.hdd = hdd;
+		this.ssd = ssd;
 		this.ram = ram;
 		this.os = os;
-	}
-
-	public String getCpu() {
-		return cpu;
 	}
 
 	public void setCpu(String cpu) {
 		this.cpu = cpu;
 	}
 
-	public int getHdd() {
-		return hdd;
+	public int getSsd() {
+		return ssd;
 	}
 
-	public void setHdd(int hdd) {
-		this.hdd = hdd;
+	public void setSsd(int ssd) {
+		this.ssd = ssd;
 	}
 
 	public int getRam() {
@@ -59,11 +55,9 @@ public class Computer extends Product {
 
 	@Override
 	public String toString() {
-		return "Computer [cpu=" + cpu + ", hdd=" + hdd + ", ram=" + ram + ", os=" + os + "]";
+		return super.toString()+"\n"+"Computer [cpu=" + cpu + ", ssd=" + ssd + ", ram=" + ram + ", os=" + os + "]";
 	}
-
 	
-
 	
 	
 }

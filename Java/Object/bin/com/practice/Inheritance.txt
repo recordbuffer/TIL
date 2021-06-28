@@ -1,0 +1,220 @@
+
+public class Run {
+	public static void main(String[] args) {
+
+		/* 객체 지향 프로그래밍 특징 : 추상화 / 캡슐화 / 상속 / 다형성
+		 * 
+		 * 상속 inherit : 클래스의 재사용, 다른 클래스의 필드와 메소드를 자신의 것처럼 쓸 수 있는 기능
+		 * 
+		 * 특징 1. 모든 클래스는 object클래스의 후손
+		 * 	  2. 부모 클래스의 생성자, 초기화 블록은 상속 안됨
+		 *    3. 부모의 private 멤버 상속 가능하지만 직접 접근은 불가능
+		 *    	-> getter&setter 이용해 접근
+		 * 
+		 * 표현식 : [접근제한자] class 클래스명 extends 클래스명{}
+		 */
+				
+		Television tv1 = new Television("Samsung","ss24a8","삼성스마트z",1280000,45);
+		
+		System.out.println(tv1.toString());
+		System.out.println();
+		
+		Smartphone p1 = new Smartphone("Samsung","ssnt153","삼성노트20",9860000,"amd",1024,32,"android","U+");
+		Smartphone p2 = new Smartphone("Apple","ip14","iPhone11",1190000,"M1",1024,64,"ios","KT");
+
+		System.out.println(p1.toString());
+		System.out.println(p2.toString());
+	}
+
+}
+
+//----------------------------------------------------------------------------------------------------
+
+public class Product {
+	// 공통 요소 추출해 부모 클래스 생성하기
+	
+	private String brand;
+	private String productCode;
+	private String productName;
+	private int price;
+	
+	
+	//생성자
+	public Product() {
+		super();		//부모클래스 호출할때 사용
+	}
+
+	public Product(String brand, String productCode, String productName, int price) {
+		super();
+		this.brand = brand;
+		this.productCode = productCode;
+		this.productName = productName;
+		this.price = price;
+	}
+
+	
+	//getter&setter
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public String getProductCode() {
+		return productCode;
+	}
+
+	public void setProductCode(String productCode) {
+		this.productCode = productCode;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "brand= "+brand+", prodcutCode= "+productCode+", productName= "+productName+", price= "+price;
+	}
+}
+//----------------------------------------------------------------------------------------------------
+
+public class Television extends Product {
+	//Product 클래스 상속받는 자식 클래스 (Product -> Television)
+
+	private int inch;
+
+	//기본생성자
+	public Television() {
+		super();
+	}
+
+	//부모클래스 필드 + 자식클래스 필드 모두 매개변수로 받아 초기화
+	public Television(String brand, String productCode, String productName, int price, int inch) {
+		super(brand, productCode, productName, price);
+		this.inch=inch;
+	}
+
+	public int getInch() {
+		return inch;
+	}
+
+	public void setInch(int inch) {
+		this.inch = inch;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString()+", inch= "+this.inch;
+	}
+}
+
+//----------------------------------------------------------------------------------------------------
+
+public class Computer extends Product {
+	//Product 클래스 상속받는 자식 클래스 (Product -> Computer)
+
+	private String cpu;
+	private int hdd;
+	private int ram;
+	private String os;
+
+	//기본생성자
+	public Computer() {
+		super();
+	}
+
+	//부모클래스 필드 + 자식클래스 필드 모두 매개변수로 받아 초기화
+	public Computer(String brand, String productCode, String productName, int price, String cpu, int hdd, int ram, String os) {
+		super(brand, productCode, productName, price);
+		this.cpu=cpu;
+		this.hdd=hdd;
+		this.ram=ram;
+		this.os=os;
+	}
+
+	public String getCpu() {
+		return cpu;
+	}
+
+	public void setCpu(String cpu) {
+		this.cpu = cpu;
+	}
+
+	public int getHdd() {
+		return hdd;
+	}
+
+	public void setHdd(int hdd) {
+		this.hdd = hdd;
+	}
+
+	public int getRam() {
+		return ram;
+	}
+
+	public void setRam(int ram) {
+		this.ram = ram;
+	}
+
+	public String getOs() {
+		return os;
+	}
+
+	public void setOs(String os) {
+		this.os = os;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString()+", cpu= "+this.cpu+", hdd= "+this.hdd+", ram= "+this.ram+", os= "+this.os;
+	}
+}
+
+
+//----------------------------------------------------------------------------------------------------
+
+public class Smartphone extends Computer{
+	//computer 클래스 상속받는 자식 클래스 (Product->Computer->Smartphone)
+	
+	private String agency;
+
+	//생성자
+	public Smartphone() {
+		super();
+	}
+
+	//부모클래스 필드 + 자식클래스 필드 모두 매개변수로 받아 초기화
+	public Smartphone(String brand, String productCode, String productName, int price, String cpu, int hdd, int ram,
+			String os, String agency) {
+		super(brand, productCode, productName, price, cpu, hdd, ram, os);
+		this.agency=agency;
+	}
+
+	public String getAgency() {
+		return agency;
+	}
+
+	public void setAgency(String agency) {
+		this.agency = agency;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString()+", agency= "+this.agency;
+	}
+}
