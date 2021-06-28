@@ -1,9 +1,13 @@
 package com.practice.inherit;
 
+import java.util.Date;
+
 public class Run {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		//Computer cpt = new Computer("Apple","01","macBookPro","2450000",new Date(),"M1",)
+				
 
 	}
 
