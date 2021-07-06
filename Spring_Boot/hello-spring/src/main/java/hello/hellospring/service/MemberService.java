@@ -5,10 +5,12 @@ import hello.hellospring.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 //@Service
+@Transactional      //DB 데이터 저장 사용할 떄 필요 > JPA
 public class MemberService {
 
     //MemberService & MemoryMemberRepository 다른 인스턴스 쓰고 있음
