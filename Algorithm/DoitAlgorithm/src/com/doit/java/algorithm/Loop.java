@@ -11,7 +11,7 @@ public class Loop {
 	}
 	
 	public static void whilesum() {
-	// 1ºÎÅÍ ÀÔ·Â¹ŞÀº n ±îÁö ÇÕ
+		// 1ë¶€í„° ì…ë ¥ë°›ì€ n ê¹Œì§€ í•©
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		
@@ -22,12 +22,12 @@ public class Loop {
 			sum += i;
 			i++;
 		}
-		System.out.println("1ºÎÅÍ "+n+"±îÁöÀÇ ÇÕ°è : "+sum);
+		System.out.println("1ë¶€í„° "+n+"ê¹Œì§€ì˜ í•©ê³„ : "+sum);
 	}
 	
 	
 	public static void forsum() {
-	// 1ºÎÅÍ ÀÔ·Â¹ŞÀº n ±îÁö ÇÕ
+		// 1ë¶€í„° ì…ë ¥ë°›ì€ n ê¹Œì§€ í•©
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		
@@ -36,7 +36,7 @@ public class Loop {
 		for(int i=1; i<=n; i++) {
 			sum += i;
 		}
-		System.out.println("1ºÎÅÍ "+n+"±îÁöÀÇ ÇÕ°è : "+sum);
+		System.out.println("1ë¶€í„° "+n+"ê¹Œì§€ì˜ í•©ê³„ : "+sum);
 	}
 	
 	

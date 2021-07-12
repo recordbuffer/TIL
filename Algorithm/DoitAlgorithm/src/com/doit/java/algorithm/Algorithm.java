@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Algorithm {
 
 	public static void main(String[] args) {
-		// ¾Ë°í¸®Áò : ¹®Á¦ÇØ°áÀ» À§ÇÑ ´Ü°èÀûÀÎ ÀıÂ÷
+		// ì•Œê³ ë¦¬ì¦˜ : ë¬¸ì œí•´ê²°ì„ ìœ„í•œ ë‹¨ê³„ì ì¸ ì ˆì°¨
 		
 		//Algorithm.max();
 		//Algorithm.center();
@@ -13,7 +13,7 @@ public class Algorithm {
 	}
 	
 	public static void max() {
-	// Á¤¼ö 3°³ ÀÔ·Â¹Ş¾Æ ÃÖ´ñ°ª Ãâ·Â
+		// ì •ìˆ˜ 3ê°œ ì…ë ¥ë°›ì•„ ìµœëŒ“ê°’ ì¶œë ¥
 		Scanner sc = new Scanner(System.in);
 		int a = sc.nextInt();
 		int b = sc.nextInt();
@@ -24,11 +24,11 @@ public class Algorithm {
 		if(max<b) max=b;
 		if(max<c) max=c;
 				
-		System.out.println("ÃÖ´ñ°ªÀº "+max+"ÀÌ´Ù");
+		System.out.println("ìµœëŒ“ê°’ì€ "+max+"ì´ë‹¤");
 	}
 	
 	public static void center() {
-	// Á¤¼ö 3°³ ÀÔ·Â¹Ş¾Æ Áß¾Ó°ª Ãâ·Â
+		// ì •ìˆ˜ 3ê°œ ì…ë ¥ë°›ì•„ ì¤‘ì•™ê°’ ì¶œë ¥
 		Scanner sc = new Scanner(System.in);
 		int a = sc.nextInt();
 		int b = sc.nextInt();
@@ -51,18 +51,18 @@ public class Algorithm {
 		else
 			center = b;
 			
-		System.out.println("Áß¾Ó°ªÀº "+center+"ÀÌ´Ù");
+		System.out.println("ì¤‘ì•™ê°’ì€ "+center+"ì´ë‹¤");
 	}
 	
 	public static void operation() {
-	// ÀÔ·ÂÇÑ Á¤¼ö ¾ç¼öÀÎÁö À½¼öÀÎÁö 0ÀÎÁö
+		// ì…ë ¥í•œ ì •ìˆ˜ ì–‘ìˆ˜ì¸ì§€ ìŒìˆ˜ì¸ì§€ 0ì¸ì§€
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		
-		if(n>0) System.out.println("¾ç¼öÀÔ´Ï´Ù.");
-		if(n<0) System.out.println("À½¼öÀÔ´Ï´Ù.");
+		if(n>0) System.out.println("ì–‘ìˆ˜ì…ë‹ˆë‹¤.");
+		if(n<0) System.out.println("ìŒìˆ˜ì…ë‹ˆë‹¤.");
 		else
-			System.out.println("0ÀÔ´Ï´Ù");
+			System.out.println("0ì…ë‹ˆë‹¤.");
 		
 	}
 }
