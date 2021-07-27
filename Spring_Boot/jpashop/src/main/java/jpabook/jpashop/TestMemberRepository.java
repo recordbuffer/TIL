@@ -6,17 +6,17 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Repository
-public class MemberRepository {
+public class TestMemberRepository {
 
     @PersistenceContext
     private EntityManager em;
 
-    public long save(Member member){    //Ctrl+shift+T : test단축키
+    public long save(TestMember member){    //Ctrl+shift+T : test단축키
         em.persist(member);
         return member.getId();
     }
 
-    public Member find(Long id){
-        return em.find(Member.class, id);
+    public TestMember find(Long id){
+        return em.find(TestMember.class, id);
     }
 }

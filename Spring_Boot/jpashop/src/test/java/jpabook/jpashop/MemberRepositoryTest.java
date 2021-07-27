@@ -9,25 +9,24 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MemberRepositoryTest {
 
-    @Autowired MemberRepository memberRepository;
+    @Autowired
+    TestMemberRepository memberRepository;
 
     @Test
     @Transactional
     @Rollback(value = false)
     public void testMember() throws Exception{
         //given
-        Member member = new Member();
+        TestMember member = new TestMember();
         member.setUsername("memberA");
 
         //when
         long saveId = memberRepository.save(member);    //Ctrl+Alt+V : extract > variable 뽑아오기
-        Member findMember = memberRepository.find(saveId);
+        TestMember findMember = memberRepository.find(saveId);
 
         //then
         Assertions.assertThat(findMember.getId()).isEqualTo(member.getId());
