@@ -4,7 +4,8 @@ public class Array {
 
 	public static void main(String[] args) {
 		//Array.intArray();
-		Array.cloneArray();
+		//Array.cloneArray();
+		Array.intArrayInit();
 	}
 
 	public static void intArray() {
@@ -17,6 +18,14 @@ public class Array {
 		
 		for(int i=0; i<a.length; i++) {
 			System.out.println("a["+i+"] ="+a[i]);
+		}
+	}
+	public static void intArrayInit() {
+	//배열 초기화하며 선언
+		int[] a = {1,2,3,4,5};
+		
+		for(int i=0; i<a.length; i++) {
+			System.out.println("a["+i+"] = "+a[i]);
 		}
 	}
 	
@@ -37,4 +46,6 @@ public class Array {
 			System.out.print(" "+b[j]);
 		}
 	}
+	
+
 }
