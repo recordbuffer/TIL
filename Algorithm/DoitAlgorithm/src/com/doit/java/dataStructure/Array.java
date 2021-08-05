@@ -1,11 +1,16 @@
 package com.doit.java.dataStructure;
 
+import java.util.Random;
+import java.util.Scanner;
+
 public class Array {
 
 	public static void main(String[] args) {
 		//Array.intArray();
 		//Array.cloneArray();
-		Array.intArrayInit();
+		//Array.intArrayInit();
+		//Array.max();
+		Array.enhanFor();
 	}
 
 	public static void intArray() {
@@ -47,5 +52,44 @@ public class Array {
 		}
 	}
 	
-
+	public static void max() {
+	//최댓값 구하기
+		Scanner sc = new Scanner(System.in);
+		int num = sc.nextInt();
+		
+		//배열 크기
+		int[] arr = new int[num];
+		
+		//배열 값 > 랜덤으로 받기
+		Random rd = new Random();
+		
+		for(int i=0; i<num; i++) {
+			arr[i]=100+rd.nextInt(100);
+			System.out.print(arr[i]);
+		}
+		
+		int max = arr[0];
+		
+		//최댓값 비교
+		for(int i=1; i<num; i++) {
+			if(arr[i]>max) max=arr[i];
+		}
+		System.out.println("배열 arr의 최댓값은 "+max+"이다.");
+	}
+	
+	public static void enhanFor() {
+	//향상된 for문
+		double[] a = {1.0,2.0,3.0,4.0,5.0};
+		
+		for(int i=0; i<a.length; i++) {
+			System.out.println("a["+i+"] = "+a[i]);
+		}
+		
+		double sum = 0;
+		
+		for(double i : a) sum+=i;
+		
+		System.out.println("모든 요소의 합은 "+sum);
+	}
+	
 }
