@@ -17,7 +17,8 @@ public class ItemRepository {
         if(item.getId() == null){
             em.persist(item);
         } else {
-            em.merge(item);     //있으면 머지해줌
+            em.merge(item);     //있으면 머지해줌      >> 준영속 엔터티를 영속상태로 변경
+                                //모든 속성이 변경되니 주의
         }
     }
 
