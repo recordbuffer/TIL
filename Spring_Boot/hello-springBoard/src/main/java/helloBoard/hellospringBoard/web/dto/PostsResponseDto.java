@@ -10,6 +10,7 @@ public class PostsResponseDto {
     private String content;
     private String author;
 
+    //entity를 dto화 시켜줌
     public PostsResponseDto(Posts entity) {
         this.id = entity.getId();
         this.title = entity.getTitle();

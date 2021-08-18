@@ -3,7 +3,7 @@ package helloBoard.hellospringBoard.web;
 import helloBoard.hellospringBoard.services.posts.PostsService;
 import helloBoard.hellospringBoard.web.dto.PostsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +13,8 @@ public class PostsApiController {
 
     private final PostsService postsService;
 
-    public Long save(@RequestBody PostsSaveRequestDto requestDto){
-        return postsService.save(requestDto);
+    @PostMapping("/api/v1/posts")   //요청이 들어오면
+    public Long save(@RequestBody PostsSaveRequestDto requestDto){      //dto에 내용 담겨 넘어와
+        return postsService.save(requestDto);   // postService의 save 메소드로 넘겨줌
     }
 }
