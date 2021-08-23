@@ -11,24 +11,26 @@
 </head>
 <body style="padding:30px">
 <hr>
-<h2>스프링 부트 + JPA실습</h2><hr>
-<a class="btn btn-primary" style="float: right;" href="/saveForm">게시글 등록</a>
+<h2>게시글 등록</h2><hr>
 <br><br>
-<table class="table">
-    <thead>
-    <tr class="table-primary">
-        <th scope="col" style="width: 200px;">게시글 번호</th>
-        <th scope="col">제목</th>
-        <th scope="col" style="width: 300px;">작성자</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="posts : ${posts}">
-        <td th:text="${posts.id}"></td>
-        <td th:text="${posts.title}"></td>
-        <td th:text="${posts.author}"></td>
-    </tr>
-    </tbody>
-</table>
+    <form action="/saveForm/post" th:object="${postForm}" method="post">
+        <table class="table">
+            <tr>
+                <th>TITLE</th>
+                <td><input type="text" th:field="*{title}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>NAME</th>
+                <td><input type="text" th:field="*{author}" class="form-control"></td>
+            </tr>
+            <tr>
+                <th>CONTENT</th>
+                <td><textarea rows="10" cols="60" th:field="*{content}" class="form-control"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="right"><button class="btn btn-primary" style="float: right;" type="submit">게시글 등록</button></td>
+            </tr>
+        </table>
+    </form>
 </body>
 </html>

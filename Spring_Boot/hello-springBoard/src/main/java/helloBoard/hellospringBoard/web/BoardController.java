@@ -2,6 +2,7 @@ package helloBoard.hellospringBoard.web;
 
 import helloBoard.hellospringBoard.domain.posts.Posts;
 import helloBoard.hellospringBoard.services.posts.PostsService;
+import helloBoard.hellospringBoard.web.dto.PostsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,5 +21,11 @@ public class BoardController {
         List<Posts> posts = postsService.findPosts();
         model.addAttribute("posts",posts);
         return "board";
+    }
+
+    @GetMapping("/saveForm")
+    public String savePosts(Model model){
+        model.addAttribute("postForm", new PostsSaveRequestDto());
+        return "postForm";
     }
 }
