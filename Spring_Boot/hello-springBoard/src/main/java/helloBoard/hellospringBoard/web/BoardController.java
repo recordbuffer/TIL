@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -23,9 +24,14 @@ public class BoardController {
         return "board";
     }
 
-    @GetMapping("/saveForm")
+    @GetMapping("/board/saveForm")
     public String savePosts(Model model){
         model.addAttribute("postForm", new PostsSaveRequestDto());
         return "postForm";
+    }
+
+    @PostMapping("/board/saveForm/new")
+    public String boardSaveNewPost(PostsSaveRequestDto dto){
+        return "/board";
     }
 }
