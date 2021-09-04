@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class QuickSort {
 	/*
+	 * 퀵 정렬 : 피벗을 선택하고 비교해 정렬하는 정렬
 	 * 일반적인 퀵정렬의 시간 복잡도는 O(n log n)
 	 * 
 	 */
@@ -22,11 +23,8 @@ public class QuickSort {
 		}
 		
 		//방법1. 피벗값 : 위치상 가운데 일 경우
-		//middlePv(arr, 0, n-1);
+		middlePv(arr, 0, n-1);
 
-		//방법1. 피벗값 : 가장 왼쪽 요소일 경우
-		leftPv(arr, 0, n-1);
-	
 		System.out.println("정렬 완료");
 		
 		//정렬 후 출력
@@ -46,8 +44,8 @@ public class QuickSort {
 			while(arr[pointF] < pv) pointF++;				//피벗보다 작은 그룹
 			while(arr[pointL] > pv) pointL--;				//피벗보다 큰 그룹
 			
-			if(pointF <= pointL) {					//양쪽이 만나면 파티셔닝 완료...하기전에
-				swap(arr, pointF++, pointL--);		//동일한 요소를 교차시킴
+			if(pointF <= pointL) {					
+				swap(arr, pointF++, pointL--);		
 			}
 		} while (pointF <= pointL);		//양쪽이 만나면 파티셔닝 완료
 		
@@ -62,7 +60,6 @@ public class QuickSort {
 		arr[idx2]=tmp;			//idx2 : idx2 -> idx1
 	}
 	
-	
 	// 방법2. 피벗값 = 가장 왼쪽의 요소 값
 	static void leftPv(int[] arr, int first, int last) {
 		int pointF = first;  //배열의 가장 왼쪽 (첫번째 요소)
@@ -71,5 +68,4 @@ public class QuickSort {
 		int pv = arr[pointF];	//피벗 (기준점)
 				
 	}
-
 }
