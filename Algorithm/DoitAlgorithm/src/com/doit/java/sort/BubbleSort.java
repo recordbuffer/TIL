@@ -2,11 +2,10 @@ package com.doit.java.sort;
 
 import java.util.Scanner;
 
-public class SelectionSort {
+public class BubbleSort {
 	/*
-	 * 선택 정렬 : 선택 정렬은 작은 요소부터 순서대로 선택해 앞쪽으로 위치를 옮겨 순서대로 정렬하는 알고리즘
-	 * 일반적인 선택 정렬의 시간 복잡도는 O(n²)
-	 * n개의 배열 n-1번 비교함 : 총 n(n-1)/2 번 수행
+	 * 버블 정렬 : 버블 정렬은 맨 끝단부터 이웃한 두 요소의 비교-교환의 과정을 진행하며 정렬하는 알고리즘
+	 * 일반적인 버블 정렬의 시간 복잡도는 O(n²)
 	 * 
 	 */
 	public static void main(String[] args) {
@@ -23,7 +22,7 @@ public class SelectionSort {
 		}
 		sc.close();
 				
-		selectionSort(arr, n);
+		bubbleSort(arr, n);
 						
 		System.out.println("정렬 완료");
 		
@@ -33,18 +32,14 @@ public class SelectionSort {
 		}
 	}
 	
-	static void selectionSort(int[] arr, int n) {
+	static void bubbleSort(int[] arr, int n) {		
 		//n개의 요소 -> n-1번 비교
 		for(int i=0; i<n-1; i++) {
-			//정렬되지 않은 요소 중 최솟값 찾기
-			int min = i;
-			
 			for(int j=i+1; j<n; j++) {
-				if(arr[j]<arr[min]) {
-					min = j;	//최솟값 찾아
+				if(arr[j]<arr[i]) {
+					swap(arr, j, i);
 				}
 			}
-			swap(arr, i, min);	//정렬되지 않은 요소 중 첫요소와 자리 바꿈
 		}
 	}
 	
