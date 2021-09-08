@@ -24,7 +24,7 @@ public class BubbleSort {
 				
 		bubbleSort(arr, n);
 						
-		System.out.println("정렬 완료");
+		System.out.println("버블 정렬 완료");
 		
 		//정렬 후 출력
 		for(int i=0; i<n; i++) {
