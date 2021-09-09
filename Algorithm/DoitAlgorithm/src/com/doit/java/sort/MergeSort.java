@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class MergeSort {
 	/*
 	 * 병합 정렬 : 정렬을 앞그룹, 뒷그룹으로 나눠 정렬하고 병합하는 정렬
+	 * 분할 정복법 (Divide and Conquer)
 	 * 일반적인 병합 정렬의 시간 복잡도는 O(n log n)
 	 * 
 	 */
@@ -24,7 +25,7 @@ public class MergeSort {
 		
 		mergeSort(arr, n);
 				
-		System.out.println("정렬 완료");
+		System.out.println("병합 정렬 완료");
 		
 		//정렬 후 출력
 		for(int i=0; i<n; i++) {
@@ -45,8 +46,8 @@ public class MergeSort {
 		if(first<last) {		//첫번째 요소가 마지막 요소보다 작을때 동안 반복
 			int center = (first + last)/2;
 			
-			underMergeSort(arr, tmp, first, center);	//앞 그룹을 배열 정렬함
-			underMergeSort(arr, tmp, center+1, last);	//뒷 그룹을 배열 정렬함
+			underMergeSort(arr, tmp, first, center);	//앞 그룹을 병합 정렬함
+			underMergeSort(arr, tmp, center+1, last);	//뒷 그룹을 병합 정렬함
 			
 			merge(arr, tmp, first, center, last); //병합
 		}
