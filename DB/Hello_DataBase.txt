@@ -1,0 +1,29 @@
+Data :  현실 세계에서 수집된 사실
+정보 : 데이터를 가공한(정보처리한) 결과물
+
+
+Database : 데이터를 저장하고 관리하다가 필요시 제공해주는 역할을 하는 시스템
+	-> 조직에서 필요한 데이터를 공유하고 사용할 수 있도록 통합해 저장한 운영 데이터의 집합
+
+DataWare House : 조직의 주요 업무 시스템에서 추출되어 새로 생성된 DB
+
+
+DB의 특징
+① 실시간 접근
+② 계속적인 변화
+③ 동시 공유
+④ 내용 기반 참조
+
+
+DBMS ; Database Management System : 기존 DB의 종속성, 중복성 문제를 해결하기 위해 제시된 DB 관리 소프트웨어
+
+DBMS 필수 기능
+① 정의 
+② 조작
+③ 제어
+
+
+DBMS 데이터 언어
+① DDL (Data Definition Language) 데이터 정의어 : 데이터를 정의하고 변경하고 삭제 (CREATE / ALTER / DROP)
+② DML (Data Manipulation Language) 데이터 조작어 : 데이터를 선택하고 추가하고 수정하고 식제 (SELECT / INSERT / UPDATE / DELETE)
+③ DCL (Data Control Language) 데이터 제어어 : (COMMIT / ROLLBACK / GRANT / REVOKE)
