@@ -3,7 +3,7 @@ Data :  현실 세계에서 수집된 사실
 
 
 Database : 데이터를 저장하고 관리하다가 필요시 제공해주는 역할을 하는 시스템
-	-> 조직에서 필요한 데이터를 공유하고 사용할 수 있도록 통합해 저장한 운영 데이터의 집합
+	→  조직에서 필요한 데이터를 공유하고 사용할 수 있도록 통합해 저장한 운영 데이터의 집합
 
 DataWare House : 조직의 주요 업무 시스템에서 추출되어 새로 생성된 DB
 
@@ -27,3 +27,18 @@ DBMS 데이터 언어
 ① DDL (Data Definition Language) 데이터 정의어 : 데이터를 정의하고 변경하고 삭제 (CREATE / ALTER / DROP)
 ② DML (Data Manipulation Language) 데이터 조작어 : 데이터를 선택하고 추가하고 수정하고 식제 (SELECT / INSERT / UPDATE / DELETE)
 ③ DCL (Data Control Language) 데이터 제어어 : (COMMIT / ROLLBACK / GRANT / REVOKE)
+
+
+Data Model : 현실 세계의 데이터 구조를 컴퓨터 세계로 논리적으로 표현한 것 (=추상화)
+
+
+데이터 모델 종류
+- 개념적 데이터 모델 :  현실 데이터를 객체, 관계 정의한 것
+		→ E-R Model, E-R Diagram
+
+- 논리적 데이터 모델 : 개념적 데이터를 객체, 관계 정의해 DB 구조로 표현한 것
+		→ 데이터간의 관계에 따라 구분됨
+			- 관계형 데이터 모델
+			- 계층형 데이터 모델
+			- 망형 데이터 모델 
+
