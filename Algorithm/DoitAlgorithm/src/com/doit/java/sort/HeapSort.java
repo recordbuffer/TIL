@@ -24,7 +24,7 @@ public class HeapSort {
 		
 		heapSort(arr, n);
 				
-		System.out.println("정렬 완료");
+		System.out.println("힙정렬 완료");
 		
 		//정렬 후 출력
 		for(int i=0; i<n; i++) {
@@ -50,13 +50,13 @@ public class HeapSort {
 		for(int i=1; i<last; i++) {
 			int child = i;
 			
-			while(child>0) {
+			while(child>0) {	
 				int parent = (child - 1)/2;
 				
-				if(arr[child] > arr[parent]) {
-					swap(arr, child, parent);
+				if(arr[child] > arr[parent]) { 	//부모와 비교해서 자식이 클경우엔
+					swap(arr, child, parent);	//swap
 				}
-				child = parent;
+				child = parent;		
 			}
 		}
 	}
