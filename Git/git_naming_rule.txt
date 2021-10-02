@@ -1,0 +1,12 @@
+- feat : 새로운 기능 추가
+- fix : 버그 수정
+- add : 내용 추가
+- update : 버전 업데이트
+- delete : 삭제
+- rename : 이름 변경
+- move : 파일 이동
+- modify : 수정
+- correct : 문법 오류, 오타, 타입 변경 
+- test : 테스트 코드 추가, 테스트 리팩토링
+- refactor : 리팩토링
+- docs : 문서 수정
