@@ -8,5 +8,5 @@ Today I Learned
 :heavy_check_mark: 블로그에는 날짜별로 정리 (:link: https://datamoney.tistory.com/category/IT%20%EB%8F%85%ED%95%99/TIL)
 
 ## TIL INDEX
-지금까지 공부한 내용은 WIKI 참고
-:link: https://github.com/recordbuffer/TIL/wiki
+지금까지 공부한 내용 목록은 WIKI 참고
+(:link: https://github.com/recordbuffer/TIL/wiki)
