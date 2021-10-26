@@ -1,0 +1,86 @@
+> Spring Framework 스프링 프레임워크
+프레임워크 : 개발에 필요한 뼈대를 제공하는 것, 미리 구현해놓은 라이브러리를 제공하는 것
+  → 개발 시간 단축, 코드 재사용성 증가
+
+> 스프링 주요 기능
+- IoC / DI
+빈 Bean : 스프링 컨테이너가 관리하는 객체
+→  빈의 의존성 관리법
+	① 의존 관계에 있는 객체들의 생성자 직접 호출 → 인스턴스화
+	② 룩업 패턴으로 의존성 찾아 배치 →  생성자 / setter등 = IoC 
+
+스프링 컨테이너 설정 → applicationContext.xml / 어노테이션
+
+IoC (Inversion of Control) 제어 반전 : 객체들을 미리 선언하고 프레임워크에서 제어, 관리
+DI (Dependency Injection) 의존성 주입 : 객체 설정 정보를 바탕으로 의존관계를 컨테이너에 주입
+
+- 스프링 시큐리티 Spring Security
+Authentication Manager 인증매니저
+Authentication Provider : 인증매니저가 어떻게 동작해야 하는지 결정
+UserDetailsService : 실제 최종 인증
+
+필터 체이닝 : 여러개의 필터 구조로 Request 처리
+
+→ 필터 등록 방법
+    ① web.xml 파일에 <filter> <filter-mapping> 추가
+    ② FilterRegistrationBean 만들어 설정클래스에 등록 
+
+토큰 Token : 인증 관련 정보를 토큰 객체로 만들어 전달함 
+
+스프링 시큐리티를 통한 로그인 과정
+
+① 로그인 페이지에서 아이디 패스워드 입력
+② 인증매니저가 Authentication Provider 찾아 인증 시도함 
+    - 인증 : 올바른 사용자인 경우 Authentication 타입으로 전달
+    - 인가 Autherization : 전달한 객체로 사용자가 적절한 권한이 있는지 확인
+③ 로그인 성공 or 실패 반환
+
+스프링 시큐리티 커스터마이징 
+> PasswordEncoder : 패스워드 암호화하는 것 → BCrypPasswordEncoder 해시 이용
+> fromLogin( ) : 인가/인증 절차에서 문제 발생시 로그인 화면으로 전환
+> CSRF 설정
+
+- Logback 기본 사용해 로깅 구현  
+로그 : 프로그램 개발, 유지보수, 에러 확인에 사용되는 기록 파일
+Log4j 라이브러리의 확장판 
+ → 롬복으로 적용 가능
+
+- 인터셉터 : 어떤 URI 호출 시 해당 요청 처리 전 혹은 후 작업을 위해 사용
+인터셉터 vs 필터
+        ① 인터셉터는 디스패처 서블릿과 컨트롤러 사이에 동작 / 필터는 디스패처 서블릿 앞 단에 동작
+        ② 인터셉터에서는 스프링 빈 사용 가능 
+        ③ 일반적으로 웹 전반 기능은 필터로 구현  → 문자열 인코딩 등 / 클라이언트 요청 관련 처리는 인터셉터로 처리  → 로그인, 인증, 권한 등
+
+- AOP (Aspect Oriented Programming) 관점 지향 프로그래밍 / 횡단관심사
+OOP (Object Oriented Programming) : 객체 지향 프로그래밍
+	→ 객체, 캡슐화, 코드 재사용
+    	→ AOP는 OOP를 더 OOP적으로 만들어줌
+	→ 공통적으로 사용하는 기능(로그, 권한 체크, 인증, 예외 처리 등)을 하나의 클래스로 생성해 호출함
+	→ 객체 단위가 아닌 기능의 관점 단위로 관리
+	→ 다른 객체 호출 상관없이 기능에만 집중, 필요한 지점에 기능 직접 삽입
+
+공통 기능 / 비즈니스 기능 따로 개발 후 비즈니스 로직 코드 사이에 공통 기능 코드 삽입
+기본 용어
+    → 관점 Aspect
+    → 어드바이스 Advice : 특정 관심사를 처리하는 행동
+    → 조인포인트 Joinpoint : 특정 프로그램이 실행되는 지점 → 메소드 호출
+    → 포인트컷 Pointcut : 일치하는 여러 조인 포인트 결합한 것
+    → 타깃 Target
+    → 위빙 Weaving : 다른 필수 객체와 관점 연결해 어드바이스 객체 생성
+
+- 트랜잭션 처리
+① XML 설정
+② @Transaction 어노테이션으로 설정
+	→ @Configuration기반 파일에 transactionManager 등록 사용
+	→ @Transactional 어노테이션 사용
+③ AOP 설정
+
+- 예외 처리
+① try-catch로 예외처리
+② @ExceptionHandler로 예외처리
+③ @ControllerAdvice로 전역 예외처리
+ 
+- 인코딩 필터 처리
+
+
+
