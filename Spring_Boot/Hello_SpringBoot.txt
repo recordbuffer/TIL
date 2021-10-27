@@ -82,5 +82,30 @@ OOP (Object Oriented Programming) : 객체 지향 프로그래밍
  
 - 인코딩 필터 처리
 
+> 스프링 vs 스프링부트
+- 스프링은 POM.xml로 프로젝트 관리
+	→ POM (Project Object Model) : 프로젝트 정보, 빌드 설정, 빌드 환경 등 기능 / XML 사용
+
+- 스프링부트는 Maven, gradle을 빌드 배포 도구로 사용 
+
+> 스프링 부트 Spring Boot
+장점
+① 자주 쓰는 라이브러리 미리 조합 → 최소한의 설정으로 바로 실행
+② 내장 서버 미리 설치됨 → 톰켓
+③ 바로 배포할 Jar 파일 제공
+
+구조
+- src / main / java : 자바 디렉터리 
+	→ ProjectApplication 클래스 : 애플리케이션 구성, 실행 담당 → main 시작점
+- resources 
+	→ templates : view단
+	→ static : 정적 리소스
+	→ application.properties : 프로퍼티 정의
+- build.gradle : gradle로 생성된 프로젝트 빌드 관리 / 빌드, 배포, 라이브러리 설정 
+
+스프링부트 라이브러리
+- Lombok : 클래스 생성시 getter, setter, toString 등 자동 생성해주는 라이브러리
+- Junit : 테스트 코드 라이브러리
+
 
 
