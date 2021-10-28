@@ -108,4 +108,21 @@ OOP (Object Oriented Programming) : 객체 지향 프로그래밍
 - Junit : 테스트 코드 라이브러리
 
 
+> REST
+(REpresentational State Transfer) : 잘 표현된 HTTP URI로 리소스 정의하고 HTTP 메서드로 리소스 행위 정의
 
+리소스 : 서비스를 제공하는 시스템의 자원 → REST는 리소스를 JSON, XML 등으로 정의
+URI (Uniform Resource Indentifier)
+
+URI 규칙
+1. 명칭으로 직관적인 명사 사용 
+2. / 슬래시는 계층관계 표현
+3. URI 마지막에는 슬래시 사용 안함
+4. URI는 소문자로만 작성
+5. _ 사용 안함
+
+HTTP 메서드
+1. POST : create → 파라미터를 HTTP 패킷의 바디에 담아 전송 (@RequestBody)
+2. GET : read → 파라미터를 요청 주소에 담아 전송 (@RequestParam)
+3. PUT : update
+4. DELETE  : delete
