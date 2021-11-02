@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 데이터</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+
+</head>
+<body>
+    <h1 style="color: lime;">데이터 표시하기</h1>
+    <div id="app">
+        <h2>데이터를 있는 그대로 표시하기 </h2>
+        <p> {{myText}}</p>
+    </div>
+    
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                myText: 'Hello!!! Vue'
+            }
+        })
+    </script>
+
+    <div id="app2">
+        <h2>데이터를 v-text로 표시하기</h2>   
+        <p v-text="myText"></p>
+    </div>
+    
+    <script>
+        new Vue({
+            el: '#app2',
+            data: {
+                myText: 'Hello!!! Vue~ This is v-text'
+            }
+        })
+    </script>
+
+    <div id="app3">
+        <h2>데이터를 v-html로 표시하기</h2>
+        <p>{{myText}}</p>
+        <p v-text="myText"></p>
+        <p v-html="myText"></p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app3',
+            data: {
+                myText: '<s>Hello!!! Vue~</s>'
+            }
+        })
+    </script>
+
+    <br>
+    <br>
+
+    <h1 style="color: lime;">데이터 종류</h1>
+    <div id="app4">
+        <h2>데이터 기본형</h2>
+        <p>{{myNumber}}</p>
+        <p>{{myText}}</p>
+        <p>{{myBool}}</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app4',
+            data: {
+                myNumber: 1234556,
+                myText: 'Hello!!! Vue~',
+                myBool: true
+            }
+        })
+    </script>
+
+    <div id="app5">
+        <h2>데이터를 jS 형식 이용하기</h2>
+        <p>{{myPrice * 1.08}}</p>
+        <p>{{"안녕하세요~~ "+ myName + "님"}}</p>
+        <p>{{myName.substr(0,1)}}</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app5',
+            data: {
+                myPrice: 500,
+                myName: '홍길동'
+            }
+        })
+    </script>
+
+    <div id="app6">
+        <h2>데이터 배열형</h2>
+        <p>{{myArray}}</p>
+        <p>{{myArray[1]}}</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app6',
+            data: {
+                myArray: ['홍길동','허균','허초희']
+            }
+        })
+    </script>
+
+    
+    <div id="app7">
+        <h2>데이터 오브젝트형</h2>
+        <p>{{myTea}}</p>
+        <p>{{myTea.name}} {{myTea.price}}원</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app7',
+            data: {
+                myTea: {name: '홍길동전', price: 6500}
+            }
+        })
+    </script>
+
+    <div id="app8">
+        <h2>js로 데이터 읽어오기</h2>
+        <p>{{myTea}}</p>
+        <p>{{myTea[1].name}} {{myTea[1].price}}원</p>
+    </div>
+
+    <script>
+        var teaList = [
+            {name: '홍길동전', price: 6500},
+            {name: '콩쥐팥쥐전', price: 6300},
+            {name: '여우누이전', price: 6500},
+        ];
+
+        new Vue({
+            el: '#app8',
+            data: {
+                myTea: teaList
+            }
+        })
+    </script>
+
+    <div id="app9">
+        <h2>Vue 인스턴스에서 가지고 있는 모든 데이터 보기 : $data</h2>
+        {{$data}}
+        <hr>
+        <li v-for="(item, key) in $data">{{key}} : {{item}}</li>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app9',
+            data: {
+                myText: 'Hello~~',
+                myNumber: 1234555,
+                myBool: true,
+                myArray: [1,2,3,4,5]
+            }
+        })
+    </script>
+</body>
+</html>

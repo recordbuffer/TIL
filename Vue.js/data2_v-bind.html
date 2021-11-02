@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요소 속성</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+</head>
+<style>
+    .strike-through{
+        text-decoration: line-through;
+        color: rgb(140, 131, 175);
+    }
+    .and{
+        background-color: lightcoral;
+    }
+</style>
+<body>
+    <h1>요소의 속성 / v-bind</h1>
+    <div id="app">
+        <h2>이미지 지정</h2>
+        <img src="https://i.guim.co.uk/img/media/26392d05302e02f7bf4eb143bb84c8097d09144b/446_167_3683_2210/master/3683.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=49ed3252c0b2ffb49cf8b508892e452d" style="width: 200px;">
+        <img v-bind:src="fileName" style="width: 200px;">
+        <h3>직접 src 지정 &  v-bind로 지정</h3>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                fileName:'https://cdn.britannica.com/q:60/91/181391-050-1DA18304/cat-toes-paw-number-paws-tiger-tabby.jpg'
+            }
+        })
+    </script>
+
+    <div id="app2">
+        <h2>링크 지정</h2>
+        <a href="https://www.google.com/search?q=cat&rlz=1C1IBEF_koKR976KR976&source=lnms&tbm=isch&sa=X&ved=2ahUKEwi_uOGDmvnzAhWVHXAKHSH-DNsQ_AUoAXoECAIQAw&biw=1039&bih=1047&dpr=1#imgrc=BBEQz5BdOWu86M">링크 직접 지정</a>
+        <a v-bind:href="myURL">링크 v-bind로 지정</a>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app2',
+            data: {
+                myURL: "https://www.google.com/search?q=cat&rlz=1C1IBEF_koKR976KR976&source=lnms&tbm=isch&sa=X&ved=2ahUKEwi_uOGDmvnzAhWVHXAKHSH-DNsQ_AUoAXoECAIQAw&biw=1039&bih=1047&dpr=1#imgrc=A_TJ5B4BpiRzNM"
+            }
+        })
+    </script>
+
+    
+    <div id="app3">
+        <h2>정렬 지정</h2>
+        <p align="right">우측 정렬 직접 지정</p>
+        <p v-bind:align="myAlign">우측 정렬 v-bind로 지정</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app3',
+            data: {
+                myAlign: 'right'
+            }
+        })
+    </script>
+
+    <div id="app3">
+        <h2>인라인 스타일 지정</h2>
+        <p style="color: violet">문자색 직접 지정</p>
+        <p v-bind:style="{color: myColor}">문자색 v-bind로 지정</p>
+        <hr>
+        <p style="font-size: 200%;">글자크기 직접 지정</p>
+        <p v-bind:style="{fontSize: mySize}">글자크기 v-bind로 지정</p>
+        <hr>
+        <p style="background-color: wheat;">배경색 직접 지정</p>
+        <p v-bind:style="{backgroundColor: myBackColor}">배경색 v-bind로 지정</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app3',
+            data: {
+                myColor: 'violet',
+                mySize: '200%',
+                myBackColor: 'wheat'
+            }
+        })
+    </script>
+
+    <div id="app4">
+        <h2>클래스 속성 지정</h2>
+        <p class="strike-through">직접 클래스 지정</p>
+        <p v-bind:class="myClass">v-bind로 클래스 지정</p>
+        <p v-bind:class="[myClass,otherClass]">v-bind로 복수의 클래스 지정</p>
+        <p v-bind:class="{'strike-through' : isON}">데이터로 클래스 ON/OFF</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app4',
+            data: {
+                myClass: 'strike-through',
+                otherClass: 'and',
+                isON: true
+            }
+        })
+    </script>
+
+</body>
+</html>

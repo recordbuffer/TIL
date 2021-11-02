@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유저 입력 연결</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+</head>
+<body>
+    <h1>폼 입력과 데이터 연결 / v-model</h1>
+    <div id="app">
+        <h2>input 텍스트 연결</h2>
+        <input v-model="myName" placeholder="이름">
+        <p>나는 {{myName}} 입니다.</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                myName: ''
+            }
+        })
+    </script>
+
+    <div id="app2">
+        <h2>textarea 복수행 텍스트 연결</h2>
+        <textarea v-model="myText"></textarea>
+        <p>문장은, "{{myText}}"</p>
+        <p>문장수는 {{myText.length}}자 입니다.</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app2',
+            data: {
+                myText: '오늘 날씨 짱'
+            }
+        })
+    </script>
+
+    <div id="app3">
+        <h2>input checkbox 체크박스 연결</h2>
+        <label><input type="checkbox" v-model="myCheck">체크박스 상태는?? {{myCheck}}</label>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app3',
+            data: {
+                myCheck: false
+            }
+        })
+    </script>
+
+    <div id="app4">
+        <h2>input checkbox 체크박스 연결2 - 복수의 체크박스</h2>
+        <label><input type="checkbox" value="red" v-model="myChecks">빨강</label><br>
+        <label><input type="checkbox" value="yellow" v-model="myChecks">노랑</label><br>
+        <label><input type="checkbox" value="green" v-model="myChecks">초록</label><br>
+        그래서 선택한 색은??? {{myChecks}}
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app4',
+            data: {
+                myChecks: []
+            }
+        })
+    </script>
+
+    <div id="app5">
+        <h2>button:disabled 버튼 비활성화</h2>
+        <label><input type="checkbox" v-model="myAgree">동의</label>
+        <button v-bind:disabled="myAgree==false">송신</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app5',
+            data: {
+                myAgree: false
+            }
+        })
+    </script>
+
+    <div id="app6">
+        <h2>input radio 라디오버튼</h2>
+        <label><input type="radio" value="red" v-model="picked">빨강</label><br>
+        <label><input type="radio" value="yellow" v-model="picked">노랑</label><br>
+        <label><input type="radio" value="green" v-model="picked">초록</label><br>
+        그래서 선택한 색은??? {{picked}}
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app6',
+            data: {
+                picked: 'red'
+            }
+        })
+    </script>
+
+    <div id="app7">
+        <h2>input radio 라디오버튼2 - 이미지 변경</h2>
+        <label><input type="radio" value="https://i.guim.co.uk/img/media/26392d05302e02f7bf4eb143bb84c8097d09144b/446_167_3683_2210/master/3683.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=49ed3252c0b2ffb49cf8b508892e452d" v-model="fileName">고양이1</label><br>
+        <label><input type="radio" value="https://cdn.britannica.com/q:60/91/181391-050-1DA18304/cat-toes-paw-number-paws-tiger-tabby.jpg" v-model="fileName">고양이2</label><br>
+        <p>{{fileName}} 선택</p>
+        <img v-bind:src="fileName" style="width: 200px;">
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app7',
+            data: {
+                fileName: ''
+            }
+        })
+    </script>
+
+    <div id="app8">
+        <h2>select 선택</h2>
+        <select v-model="myColor">
+            <option disabled value="">색을 선택해 주세요</option>
+            <option>red</option>
+            <option>yellow</option>
+            <option>green</option>
+            <option>blue</option>
+            <option>violet</option>
+        </select>
+        <p v-bind:style="{color: myColor}">선택한 색상은 {{myColor}} 입니다.</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app8',
+            data: {
+                myColor: ''
+            }
+        })
+    </script>
+    
+    <div id="app9">
+        <h2>select 복수 선택 배열로 처리</h2>
+        <select v-model="myColor" multiple style="width: 150px;">
+            <option>red</option>
+            <option>yellow</option>
+            <option>green</option>
+            <option>blue</option>
+            <option>violet</option>
+        </select>
+        <p>선택한 색상은 {{myColor}} 입니다.</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app9',
+            data: {
+                myColor: []
+            }
+        })
+    </script>
+
+    <div id="app10">
+        <h2>입력 완료 후 표시 : lazy</h2>
+        <input v-model.lazy="myText">
+        <p>입력 후 표시 "{{myText}}"</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app10',
+            data: {
+                myText: ''
+            }
+        })
+    </script>
+
+    <div id="app11">
+        <h2>자동으로 수식 변경</h2>
+        <input v-model.number="myNumber" type="number">
+        <p>100을 더해서 표시 "{{100 + myNumber}}"</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app11',
+            data: {
+                myNumber: 0,
+            }
+        })
+    </script>
+
+    <div id="app12">
+        <h2>자동으로 수식 변경 .number 없애면 문자로 인식</h2>
+        <input v-model="myNumber" type="number">
+        <p>100을 더해서 표시 "{{100 + myNumber}}"</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app12',
+            data: {
+                myNumber: 0,
+            }
+        })
+    </script>
+
+    <div id="app13">
+        <h2>공백 제거하고 입력</h2>
+        <input v-model.trim="myText">
+        <p>앞뒤 공백 제거 "{{myText}}"</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app13',
+            data: {
+                myText: ''
+            }
+        })
+    </script>
+
+    <div id="app14">
+        <h2>공백 제거하지 않고 입력</h2>
+        <input v-model="myText">
+        <p>앞뒤 공백 제거 "{{myText}}"</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app14',
+            data: {
+                myText: ''
+            }
+        })
+    </script>
+</body>
+</html>
