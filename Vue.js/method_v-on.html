@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메소드와 연결</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<body>
+    <h1>이벤트와 메소드 연결 / v-on</h1>
+    <div id="app1">
+        <h2>버튼 클릭시 동작</h2>
+        <p>{{count}}</p>
+        <button v-on:click="countUp">1씩 증가</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app1',
+            data: {
+                count: 0
+            },
+            methods: {
+                countUp: function(){
+                    this.count++;
+                }
+            }
+        })
+    </script>
+
+    <div id="app2">
+        <h2>버튼 클릭시 알림 & 비활성화</h2>
+        <p>한번만 누를 수 있습니다.</p>
+        <button value="good" v-bind:disabled="isClick" v-on:click="oneClick">알겠다</button>
+    </div>
+
+    <script>
+        function good(){
+            alert("확인~~~~");
+        }
+        new Vue({
+            el: '#app2',
+            data: {
+                isClick: false
+            },
+            methods: {
+                oneClick: function() {
+                    this.isClick = true;
+                    good();
+                }
+            }
+        })
+    </script>
+        
+    <div id="app3">
+        <h2>파라미터 전달해 메소드 실행</h2>
+        <p>{{count}}</p>
+        <button v-on:click="countUp(3)">3증가</button>
+        <button v-on:click="countUp(10)">10증가</button>
+        <button v-on:click="countUp(300)">300증가</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app3',
+            data: {
+                count: 0
+            },
+            methods: {
+                countUp: function(value) {
+                    this.count += value;
+                }
+            }
+        })
+    </script>
+    
+    <div id="app4">
+        <h2>enter키 누르면 알림 띄우기</h2>
+        <input v-on:keyup.enter="showAlert" v-model="myText">
+        <p>{{myText}}</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app4',
+            data: {
+                myText: 'Hey~ Enter!!!!!!!!'
+            },
+            methods: {
+                showAlert: function() {
+                    alert("Enter 키를 눌렀습니다");
+                }
+            }
+        })
+    </script>
+
+    <div id="app5">
+        <h2>shift+ enter 키 누르면 알림 띄우기</h2>
+        <input v-on:keyup.enter.shift="showAlert" v-model="myText">
+        <p>{{myText}}</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app5',
+            data: {
+                myText: 'Hey~ Shift+Enter~'
+            },
+            methods: {
+                showAlert: function() {
+                    alert("Shift+Enter 키를 눌렀습니다");
+                }
+            }
+        })
+    </script>
+
+    <div id="app6">
+        <h2>계산기 실습</h2>
+        <input type="number" v-model.number="a">
+        <input type="number" v-model.number="b"><br>
+        <button v-on:click="addcal">덧셈계산</button>        
+        <button v-on:click="minscal">뺄셈계산</button>        
+        <button v-on:click="mulcal">곱셈계산</button>        
+        <button v-on:click="divcal">나눗셈계산</button>   
+        <p>결과는 {{result}}</p>     
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app6',
+            data: {
+                a: '',
+                b: '',
+                result: 0
+            },
+            methods: {
+                addcal: function() {
+                    this.result= this.a + this.b
+                },
+                minscal: function() {
+                    this.result= this.a - this.b
+                },
+                mulcal: function() {
+                    this.result= this.a * this.b
+                },
+                divcal: function() {
+                    this.result= this.a / this.b
+                }
+            }
+        })
+    </script>
+</body>
+</html>

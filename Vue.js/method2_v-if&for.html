@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문과 조건문</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+</head>
+<body>
+    <h1>조건문 처리 / v-if</h1>
+    <div id="app">
+        <h2>만약 true면 on 아니면 off</h2>
+        <label><input type="checkbox" v-model="myVisible">표시</label>
+        <p v-if="myVisible">체크박스가 ON</p>     
+        <p v-else>체크박스가 OFF</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                myVisible: false
+            }
+        })
+    </script>
+
+    <div id="app2">
+        <h2>버튼 사라지게 하기</h2>
+        <button v-if="isShow" v-on:click="good">누르면 버튼이 사라지는 마법!</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app2',
+            data: {
+                isShow: true
+            },
+            methods: {
+                good: function(){
+                    this.isShow = false
+                }
+            }
+        })
+    </script>
+
+    <h1>반복문 처리 / v-for</h1>
+    <div id="app3">
+        <h2>배열을 리스트로 표시</h2>
+        <ul>
+            <li v-for="item in myArray">{{item}}</li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app3',
+            data: {
+                myArray: ['박효신','아이유','nct127']
+            }
+        })
+    </script>
+
+    <div id="app4">
+        <h2>오브젝트를 리스트로 표시</h2>
+        <ul>
+            <li v-for="item in objArray">{{item.name}} {{item.price}}원</li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app4',
+            data: {
+                objArray: [
+                {name: '오곡밥', price: 10000},
+                {name: '잡곡밥', price: 10000},
+                {name: '흑미밥', price: 10000}
+                ]
+            }
+        })
+    </script>
+    
+    <div id="app5">
+        <h2>구구단 5단</h2>
+        <ul>
+            <li v-for="n in 10">{{n}}x5={{n*5}}</li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app5'
+        })
+    </script>
+
+    <div id="app6">
+        <h2>배열 인덱스와 함께 리스트로 표시</h2>
+        <ul>
+            <li v-for="(item, index) in myArray">{{index}}:{{item}}</li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app6',
+            data: {
+                myArray: ['오곡밥','잡곡밥', '현미밥','흑미밥']
+            }
+        })
+    </script>
+    
+    <div id="app7">
+        <h2>배열 테이블로 표시</h2>
+        <h3><인기 있는 프로그래밍 언어></h3>
+        <table>
+            <thead>
+                <th v-for="item in header">{{item}}</th>
+            </thead>
+            <tbody>
+                <tr v-for="line in ranking">
+                    <td v-for="item in line">{{item}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app7',
+            data: {
+                header: ['프로그래밍 언어', 2018, 2013, 2008, 2003, 1998],
+                ranking: [
+                ['Java',1,2,1,1,16],
+                ['C',2,1,2,2,1],
+                ['C++',4,3,4,3,2],
+                ['Python',3,7,6,11,23],
+                ['JavaScript',7,10,7,8,20]
+                ]
+            }
+        })
+    </script>
+    
+    <div id="app8">
+            <h2>리스트 요소 추가, 변경, 삭제 시키기</h2>
+            <ul>
+                <li v-for="item in myArray">{{item}}</li>
+            </ul>
+            <button v-on:click="addLast">맨 뒤에 추가</button>
+            <button v-on:click="addObj(3)">네번째에 추가</button>
+            <button v-on:click="changeObj(0)">첫번째를 변경</button>
+            <button v-on:click="deleteObj(1)">두번째를 삭제</button>
+        </div>
+    
+    <script>
+         new Vue({
+             el: '#app8',
+             data: {
+                   myArray: ['첫번째','두번째','세번째','네번째','다섯번째']
+            },
+            methods: {
+                addLast: function(){
+                    this.myArray.push("[맨 뒤에 추가]");
+                },
+                addObj: function(index){
+                    this.myArray.splice(index,0,"[추가]");
+                },
+                changeObj: function(index){
+                    this.myArray.splice(index,1,"[변경]");
+                },
+                deleteObj: function(index){
+                    this.myArray.splice(index,1);
+                }
+            }
+        })
+        </script>
+
+    <div id="app9">
+        <h2>요소 비교해서 자리 변경하기</h2>
+        <ul>
+            <li v-for="i in myArray2">{{i}}</li>
+        </ul>
+        <button v-on:click="sortData(myArray2)">정렬</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app9',
+            data: {
+                myArray2: ['one','two','three','four','five']
+            },
+            methods: {
+                sortData: function(listdata){
+                    listdata.sort(function(a,b){
+                        return (a<b?-1:1);
+                    });
+                }
+            }
+        })
+    </script>
+
+    <div id="app10">
+        <h2>짝수만 표시</h2>
+        <ul>
+            <li v-for="it in myArray3">{{it}}</li>
+        </ul>
+        <button v-on:click="evenData()">짝수만 표시</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app10',
+            data: {
+                myArray3: [1,2,3,4,5,6]
+            },
+            methods: {
+                evenData: function(){
+                    this.myArray3 = this.myArray3.filter(
+                        function(value) {return value%2==0;}
+                    );
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
