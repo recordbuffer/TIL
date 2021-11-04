@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로퍼티</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+</head>
+
+<body>
+    <h1>데이터 변화 감지 / 산출 프로퍼티</h1>
+    <div id="app">
+        <h2>소비세(원가*1.08) 포함 금액 계산</h2>
+        <input v-model.number="price" type="number">원
+        <p>소비세 포함 금액 {{taxIncluded}} 원</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                price: 100
+            },
+            computed: {
+                taxIncluded: function () {
+                    return this.price * 1.08;
+                }
+            }
+        })
+    </script>
+
+    <div id="app2">
+        <h2>소비세(원가*1.08) 포함 금액 계산2 </h2>
+        <input v-model.number="price" type="number">원 x
+        <input v-model.number="count" type="number">원
+        <p>합계 {{sum}} 원</p>
+        <p>세금포함 {{taxIncluded}} 원</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app2',
+            data: {
+                price: 100,
+                count: 1
+            },
+            computed: {
+                sum: function () {
+                    return this.price * this.count;
+                },
+                taxIncluded: function () {
+                    return this.sum * 1.08;
+                }
+            }
+        })
+    </script>
+
+    <div id="app3">
+        <h2>남은 글자수 표시</h2>
+        <p>감상은 140자 이내로 입력해주세요.</p>
+        <textarea v-model="myText"></textarea>
+        <p v-bind:style="{color: computedColor}">남은 글자는 {{remaining}}입니다.</p>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app3',
+            data: {
+                myText: '오늘 날씨 개추웡크레용~'
+            },
+            computed: {
+                remaining: function () {
+                    return 140 - this.myText.length;
+                },
+                computedColor: function () {
+                    col = "green";
+                    if (this.remaining < 20) {
+                        col = "orange";
+                    }
+                    if (this.remaining < 1) {
+                        col = "red";
+                    }
+                    return col;
+                }
+            }
+        })
+        
+    </script>
+    <div id="app4">
+        <h2>입력된 문자 포함한 항목만 표시</h2>
+        <input v-model="findWord">
+        <ul>
+            <li v-for="item in findItems">{{item}}</li>
+        </ul>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app4',
+            data: {
+                findWord: '',
+                items: ['설악산', '한라산', '북한산', '백두산', '지리산']
+            },
+            computed: {
+                findItems: function () {
+                    if (this.findWord) {
+                        return this.items.filter(function (value) {
+                            return (value.indexOf(this.findWord) > -1);
+                        }, this);
+                    } else {
+                        return this.items;
+                    }
+                }
+            }
+        })
+    </script>
+
+    <div id="app5">
+        <h2>슬라이더로 색상 조절</h2>
+        <p v-bind:style="{backgroundColor: mixColor}">{{mixColor}}</p>
+        <input type="range" v-model="R" min="0" max="255">
+        <input type="range" v-model="G" min="0" max="255">
+        <input type="range" v-model="B" min="0" max="255">
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app5',
+            data: {
+                R: 255,
+                G: 150,
+                B: 100
+            },
+            computed: {
+                mixColor: function(){
+                    var ans = "RGB("+this.R+","+this.G+","+this.B+")";
+                    return ans;
+                }
+            }
+        })
+    </script>
+
+    <h1>데이터 변화 감지 / 감지 프로퍼티 </h1>
+    <div id="app6">
+        <h2>슬라이더로 색상 조절</h2>
+        <p>금지문자는 {{forbiddenText}}</p>
+        <textarea v-model="inputText"></textarea>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app6',
+            data: {
+                forbiddenText: '안돼',
+                inputText: '오늘은 날씨가 좋아아아아'
+            },
+            watch: {
+                inputText: function(){
+                    var pos = this.inputText.indexOf(this.forbiddenText);
+                    if(pos>=0){
+                        alert(this.forbiddenText+"는 입력할 수 없습니다.");
+                        this.inputText.this.inputText.substr(0,pos);
+                    }
+                }
+            }
+        })
+    </script>
+
+    <div id="app7">
+        <h2>타이머</h2>
+        <p>앞으로 {{restSec}}초</p>
+        <button v-on:click="startTimer">START</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app7',
+            data: {
+                restSec: 5,
+                timeObj:null,
+            },
+            methods: {
+                startTimer: function(){
+                    this.restSec=5;
+                    this.timeObj = setInterval(()=> {this.restSec--}, 1000)
+                }
+            },
+            watch: {
+                restSec: function(){
+                    if(this.restSec<=0){
+                        alert("끝!");
+                        clearInterval(this.timeObj);
+                    }
+                }
+            }
+        })
+    </script>
+
+    <h2>TweenMax 테스트</h2>
+    <button id="movebtn" type="button" onclick="myMove()">이동</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+    <script>
+        function myMove() {
+            TweenMax.to('#movebtn', 1, {x: "500px"} );
+        }
+    </script>
+
+    <div id="app8">
+        <h2>숫자 빠르게 올라가는 애니메이션 보여주는 TweenMax input 태그</h2>
+        <p>값은 {{animeNumber}}입니다.</p>
+        <input v-model.number="myNumber" type="number">
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app8',
+            data: {
+                myNumber: 0,
+                tweendNumber: 0
+            },
+            watch: {
+                myNumber: function(){
+                    TweenMax.to(this.$data, 1, {tweendNumber: this.myNumber})
+                }
+            },
+            computed: {
+                animeNumber: function(){
+                    return this.tweendNumber.toFixed(0);
+                }
+            }
+        })
+    </script>
+
+
+
+
+</body>
+</html>
