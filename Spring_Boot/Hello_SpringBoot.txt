@@ -106,6 +106,10 @@ OOP (Object Oriented Programming) : 객체 지향 프로그래밍
 스프링부트 라이브러리
 - Lombok : 클래스 생성시 getter, setter, toString 등 자동 생성해주는 라이브러리
 - Junit : 테스트 코드 라이브러리
+- spring-boot-starter-actuator : 모니터링에 도움
+- rest-assured : REST API 테스트
+- spring-boot-starter-security : 스프링 시큐리티
+- spring-security-test : 시큐리티 테스트
 
 
 > REST
