@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>컴포넌트</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <h1>컴포넌트</h1>
+    <div id="app">
+        <h2>컴포넌트 부품처럼 사용</h2>
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+    </div>
+
+    <script>
+        var MyComponent = {
+            template: '<p class="my-comp">Hello</p>'
+        }
+        new Vue({
+            el: '#app',
+            components: {
+                'my-component': MyComponent
+            }
+        })
+    </script>
+
+    <style>
+        .my-comp {
+            width: 300px;
+            background-color: #ffffe0;
+            border: solid;
+            border-color: darkorange;
+            border-radius: 8px;
+            padding: 8px;
+        }
+    </style>
+
+    <div id="app2">
+        <h2>props 값 전달</h2>
+        <my-component my-name="철수"></my-component>
+        <my-component my-name="영희"></my-component>
+        <my-component></my-component>
+    </div>
+
+    <script>
+        var MyComponent = {
+            template: '<p class="my-comp">나는 {{ myName }} 입니다.</p>',
+            props: {
+                myName: String
+            },
+            created: function () {	// 인스턴스가 작성된 후에 실행된다.
+                if (this.myName == null) {
+                    this.myName = "이름없음";
+                }
+            }
+        }
+
+        new Vue({
+            el: '#app2',
+            components: {
+                'my-component': MyComponent
+            }
+        })
+    </script>
+
+</body>
+
+</html>

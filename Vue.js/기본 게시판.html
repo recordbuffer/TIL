@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본 게시판</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+
+<body>
+    <h1>기본 게시판</h1>
+    <div id="app">
+        <p>게시판 데이터(json) 읽어오기</p>
+        <input type="file" v-on:change="loadData">
+        <button v-on:click="saveBoardList">게시판 모든 글 다운받기</button>
+
+        <my-board-list v-if="listOk" v-bind:object="dataArray['board']" v-on:board-read="boardRead"
+            v-on:board-write="boardWrite" v-on:board-delete="boardDelete"></my-board-list>
+
+        <my-board-read v-if="readOk" v-bind:object="boardInfo" v-on:board-list="boardList"></my-board-read>
+        <my-board-write v-if="writeOk" v-on:board-list="boardList" v-on:board-save="boardSave"></my-board-write>
+
+
+    </div>
+
+    <script>
+        /* 컴포넌트 작성 - 게시판 리스트 */
+        var MyBoardList = {
+            props: ['object'],
+            template: '<div><table id="list">\n' +
+                '            <tr>\n' +
+                '                <th style="width:50px">글번호</th>\n' +
+                '                <th>글제목</th>\n' +
+                '                <th style="width:50px">조회수</th>\n' +
+                '                <th style="width:70px"></th>\n' +
+                '            </tr>\n' +
+                '<tr v-for="item in object" v-bind:key="item.no">' +
+                '               <td>{{item.no}}</td>' +
+                '               <td v-on:click="boardRead(item)">{{item.title}}</td>' +
+                '               <td>{{item.view}}</td>' +
+                '               <td><button v-on:click="boardDelete(item.no)">삭제</button></td></tr>' +
+                '        </table>' +
+                '<button v-on:click="boardWrite"  style="float: right;">글쓰기</button></div>',
+            methods: {
+                /* 글 읽기, 글 쓰기, 글 삭제 > 이벤트 발생 > 상위 컴포넌트로 전달 = this.$emit() 사용 */
+                boardRead: function (info) {
+                    this.$emit('board-read', info);
+                },
+                boardWrite: function () {
+                    this.$emit('board-write');
+                },
+                boardDelete: function (no) {
+                    this.$emit('board-delete', no);
+                }
+            }
+        };
+        /* 컴포넌트 작성 - 게시글 읽기*/
+        var MyBoardRead = {
+            props: ["object"],
+            template: '<div><table id="list">\n' +
+                '        <tr>\n' +
+                '            <td style="width:50px">글제목</td>\n' +
+                '            <td>{{object.title}}</td>\n' +
+                '        </tr>\n' +
+                '        <tr style="height:300px">\n' +
+                '            <td colspan="2">{{object.content}}</td>\n' +
+                '        </tr>\n' +
+                '    </table>' +
+                '<button v-on:click="boardList" style="float: right;">목록</button></div>',
+            methods: {
+                /* 목록버튼 > 상위 인스턴스 호출 */
+                boardList: function () {
+                    this.$emit('board-list');
+                }
+            }
+        };
+        /* 컴포넌트 작성 - 게시글 쓰기 */
+        var MyBoardWrite = {
+            template: '    <div>\n' +
+                '    <table id="list">\n' +
+                '        <tr>\n' +
+                '            <td>글제목</td>\n' +
+                '            <td><input type="text" v-model="title" style="width:90%"></td>\n' +
+                '        </tr>\n' +
+                '        <tr>\n' +
+                '            <td colspan="2"><textarea v-model="content" style="width:100%"></textarea></td>\n' +
+                '        </tr>\n' +
+                '    </table>\n' +
+                '    <button v-on:click="boardList" style="float: right;">목록</button>' +
+                '   <button v-on:click="boardSave" style="float: right;">저장</button></div>',
+            methods: {
+                boardList: function () {
+                    this.$emit('board-list');
+                },
+                boardSave: function () {
+                    this.$emit('board-save', this.title, this.content);
+                }
+            },
+            data: function () {
+                return {
+                    title: "",
+                    content: ""
+                }
+            }
+        };
+
+         /* vue 인스턴스 작성 -> 작성한 컴포넌트 등록, 화면 노출 여부, 데이터 저장 위한 data 속성 선언, 컴포넌트에 전달한 이벤트 실행 */       
+        new Vue({
+            el: '#app',
+            data: {
+                /* json에서 가져온 데이터 저장 위한 data 속성 선언 */
+                dataArray: [],
+                /* 목록 화면 노출 여부 */
+                listOk: false,
+                /* 읽기 화면 노출 여부 */
+                readOk: false,
+                /* 쓰기 화면 노출 여부 */
+                writeOk: false,
+                /* 리스트에서 전달받은 글 보기 데이터 */
+                boardInfo: {}
+            },
+            /* 작성한 컴포넌트 등록 */
+            components: {
+                'my-board-list': MyBoardList,
+                'my-board-read': MyBoardRead,
+                'my-board-write': MyBoardWrite
+            },
+            methods: {
+                loadData: function (e) {
+                    file = e.target.files[0];
+                    if (file) {
+                        var reader = new FileReader();
+                        var vm = this;
+                        reader.readAsText(file);
+                        reader.onload = function (e) {
+                            vm.dataArray = JSON.parse(e.target.result);
+                        };
+                        reader.onloadend = function (e) {
+                            if (vm.dataArray != null && vm.dataArray['board'].length > 0) {
+                                vm.listOk = true;
+                            }
+                            else vm.listOk = false;
+                        }
+                    }
+                },
+                boardRead: function (info) {
+                    this.listOk = false;
+                    this.readOk = true;
+                    this.boardInfo = info;
+                    // 해당 글을 찾아서 카운트를 올려준다.
+                    for (var i = 0; i < this.dataArray['board'].length; i++) {
+                        if (this.dataArray['board'][i].no == info.no) this.dataArray['board'][i].view = parseInt(this.dataArray['board'][i].view) + 1;
+                    }
+                },
+                boardList: function () {
+                    this.readOk = false;
+                    this.writeOk = false;
+                    this.listOk = true;
+                },
+                boardWrite: function () {
+                    this.listOk = false;
+                    this.readOk = false;
+                    this.writeOk = true;
+                },
+                boardSave: function (title, content) {
+                    var no = 1;
+                    if (this.dataArray['board'].length != 0) no = parseInt(this.dataArray['board'][this.dataArray['board'].length - 1].no) + 1
+                    var board_info = {
+                        no: no,
+                        title: title,
+                        content: content,
+                        view: "1"
+                    };
+
+                    this.dataArray['board'].push(board_info);
+                    this.writeOk = false;
+                    this.readOk = false;
+                    this.listOk = true;
+                },
+                boardDelete: function (no) {
+                    // 해당 글을 찾아서 지운다
+                    for (var i = 0; i < this.dataArray['board'].length; i++) {
+                        if (this.dataArray['board'][i].no == no) this.dataArray['board'].splice(i, 1);
+                    }
+                },
+                saveBoardList: function () {
+                    var data = this.dataArray;
+
+                    if (data.length == 0) {
+                        alert('저장할 게시판 내용이 없습니다.')
+                        return;
+                    }
+                    var filename = 'board.json';
+
+                    if (typeof data === "object") {
+                        data = JSON.stringify(data, undefined, 4);
+                    }
+
+                    var blob = new Blob([data], { type: 'text/json' }),
+                        e = document.createEvent('MouseEvents'),
+                        a = document.createElement('a');
+
+                    a.download = filename;
+                    a.href = window.URL.createObjectURL(blob);
+                    a.dataset.downloadurl = ['text/json', a.download, a.href].join(':');
+                    e.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                    a.dispatchEvent(e);
+                }
+            }
+        })
+    </script>
+    <style>
+        html {
+            width: 80%;
+            margin-right: auto;
+            margin-left: auto;
+            font-family: sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        input,
+        button,
+        select,
+        optgroup,
+        textarea,
+        table {
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 6px;
+            color: #fff;
+            border: 2px;
+            background-color: #007bff;
+            transition: background-color .2s
+        }
+
+        button:hover {
+            background-color: #0069d9;
+        }
+
+        button:active {
+            background-color: #003c7c;
+        }
+
+        button:disabled {
+            opacity: .5;
+            pointer-events: none;
+        }
+
+        input {
+            padding: 6px 12px;
+            border-radius: 6px;
+            color: #495057;
+            border: 2px solid #ced4da;
+        }
+
+        textarea {
+            width: 500px;
+            height: 200px;
+        }
+
+        select {
+            border: 2px solid #ced4da;
+        }
+
+        #list {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #list td,
+        #list th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #list tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #list tr:hover {
+            background-color: #ddd;
+        }
+
+        #list th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</body>
+
+</html>
