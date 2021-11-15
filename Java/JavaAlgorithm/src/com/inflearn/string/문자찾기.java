@@ -20,8 +20,14 @@ public class 문자찾기 {
 		str = str.toUpperCase();
 		c = Character.toUpperCase(c);
 		
-		for(int i=0; i<str.length(); i++) {
-			if(str.charAt(i)==c) cnt++;
+		/*
+		 * for(int i=0; i<str.length(); i++) { 
+		 * if(str.charAt(i)==c) cnt++; 
+		 * }
+		 */
+		
+		for(char x : str.toCharArray()) {
+			if(x==c) cnt++;
 		}
 		
 		System.out.println(cnt);
