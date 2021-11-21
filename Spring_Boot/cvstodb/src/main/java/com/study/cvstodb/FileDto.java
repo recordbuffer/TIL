@@ -1,5 +1,6 @@
 package com.study.cvstodb;
 
+import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvBindByPosition;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,22 +11,22 @@ import lombok.Setter;
 @AllArgsConstructor
 public class FileDto {
 
-    @CsvBindByPosition(position = 0)
+    @CsvBindByName(column = "도서관 일련번호")
     private String no;
 
-    @CsvBindByPosition(position = 1)
+    @CsvBindByName(column = "도서관명")
     private String name;
 
-    @CsvBindByPosition(position = 2)
+    @CsvBindByName(column = "구 코드")
     private String guCode;
 
-    @CsvBindByPosition(position = 4)
+    @CsvBindByName(column = "주소")
     private String address;
 
-    @CsvBindByPosition(position = 5)
+    @CsvBindByName(column = "전화번호")
     private String tel;
 
-    @CsvBindByPosition(position = 9)
+    @CsvBindByName(column = "도서관 구분명")
     private String type;
 
     public FileDto() {

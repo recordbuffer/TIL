@@ -3,7 +3,6 @@ package com.study.cvstodb;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,19 +19,23 @@ public class ParsingController {
 
     private ParsingRepository repo;
 
-    @RequestMapping(value="/upload", method = RequestMethod.POST)
-    public String uploadCSVFile(@RequestParam("file") MultipartFile file, Model model) throws IOException {
+    public ParsingController(ParsingRepository repo) {
+        this.repo = repo;
+    }
 
-        // parse CSV file to create a list of `User` objects
+    @RequestMapping(value="/upload", method = RequestMethod.POST)
+    public String uploadCSVFile(@RequestParam("file") MultipartFile file) throws IOException {
+
+        //받아온 CSV 파일 읽음
         try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
 
-            // create csv bean reader
+            // CSV을 Bean으로 만들어줌
             CsvToBean<FileDto> csvToBean = new CsvToBeanBuilder(reader)
                     .withType(FileDto.class)
                     .withIgnoreLeadingWhiteSpace(true)
                     .build();
 
-            // convert `CsvToBean` object to list of dataList
+            // CSV Bean을 list에 for문을 통해 담아줌
             List<FileDto> dataList = csvToBean.parse();
 
             for (int i = 0; i < dataList.size(); i++) {
