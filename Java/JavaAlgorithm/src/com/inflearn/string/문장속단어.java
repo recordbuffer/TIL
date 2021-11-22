@@ -9,11 +9,12 @@ public class 문장속단어 {
 		
 		Scanner sc = new Scanner(System.in);
 		String str = sc.nextLine();
-		solution(str);
+		//solution(str);
+		solution2(str);
 	}
 	public static void solution(String str) {
 		String res = "";
-		int m = Integer.MIN_VALUE;
+		int m = Integer.MIN_VALUE;	// 일단 m을 가장 작은 값으로 초기화
 		String[] arr = str.split(" ");
 		
 		for(String x : arr) {
@@ -23,6 +24,22 @@ public class 문장속단어 {
 				res=x;
 			}
 		}
+		System.out.println(res);
+	}
+	public static void solution2(String str) {
+		String res = "";
+		int m = Integer.MIN_VALUE, pos;
+		while((pos=str.indexOf(' '))!=-1) {
+			// 더이상 없으면 -1 : 종료
+			String tmp = str.substring(0, pos);
+			int len=tmp.length();
+			if(len>m) {
+				m=len;
+				res=tmp;
+			}
+			str=str.substring(pos+1);
+		}
+		if(str.length()>m) res=str;
 		System.out.println(res);
 	}
 }
