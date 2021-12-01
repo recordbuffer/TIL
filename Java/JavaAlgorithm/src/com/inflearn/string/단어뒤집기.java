@@ -22,6 +22,7 @@ public class 단어뒤집기 {
 		}
 	}
 	
+	//StringBuilder의 reverse 이용
 	public static ArrayList<String> solution(int num, String[] arr){
 		ArrayList<String> res = new ArrayList<>();
 		for(String x : arr) {
@@ -31,6 +32,7 @@ public class 단어뒤집기 {
 		return res;
 	}
 	
+	//문자를 하나하나 잘라서 뒤집기
 	public static ArrayList<String> solution2(int num, String[ ] arr){
 		ArrayList<String> res = new ArrayList<>();
 		for(String x : arr) {
