@@ -16,8 +16,12 @@ public class 중복문자제거 {
 	
 	public static String solution(String s) {
 		String res = "";
-		
-		
+
+		for(int i=0; i<s.length(); i++) {
+			//System.out.println(s.charAt(i)+" "+i+" "+s.indexOf(s.charAt(i)));
+
+			if(s.indexOf(s.charAt(i))==i) res+=s.charAt(i);
+		}
 		
 		return res;
 	}
