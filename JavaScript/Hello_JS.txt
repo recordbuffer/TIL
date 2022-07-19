@@ -16,3 +16,20 @@ typeof 연산자로 자료형 알아 낼 수 있음
 - confirm( ) : 확인 혹은 취소 받는 알림		ex) confirm('정말 삭제하시겠습니까?');
 
 (4) 형변환
+- 문자형변환 : String( )
+- 숫자형변환 : Number( )
+- 논리형변환 : Boolean( )
+
+ex)
+	Boolean(0), Boolean(" "), Boolean(null), Boolean(undefined), Boolean(NaN) --> false
+
+	Number(null) --> 0
+	Number(undefined) --> NaN
+
+	Number(0) --> flase
+	Number('0') --> true
+
+	Number('') --> false
+	Number(' ') --> true
+
+(5) 연산자
