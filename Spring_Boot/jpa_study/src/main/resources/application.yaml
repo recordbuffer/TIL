@@ -11,3 +11,13 @@ spring:
   jpa:
     defer-datasource-initialization: true
     show-sql: true
+    properties:
+      hibernate:
+        generate_statistics: true
+        format_sql: true       #sql 보기 좋은 형식으로 변경
+
+
+logging:
+  level:
+    org.hibernate.stat: debug
+    org.hibernate.type: trace
