@@ -1,4 +1,4 @@
-package com.udemy.jpa_study.domain;
+package com.udemy.jpa_study.jdbcvsjpa.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

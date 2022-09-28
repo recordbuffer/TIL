@@ -1,6 +1,6 @@
-package com.udemy.jpa_study.jpa;
+package com.udemy.jpa_study.jdbcvsjpa.jpa;
 
-import com.udemy.jpa_study.domain.Person;
+import com.udemy.jpa_study.jdbcvsjpa.domain.Person;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 

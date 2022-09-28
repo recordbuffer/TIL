@@ -1,6 +1,6 @@
-package com.udemy.jpa_study.jdbc;
+package com.udemy.jpa_study.jdbcvsjpa.jdbc;
 
-import com.udemy.jpa_study.domain.Person;
+import com.udemy.jpa_study.jdbcvsjpa.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
