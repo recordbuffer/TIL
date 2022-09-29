@@ -28,8 +28,8 @@ public class CourseRepository {
     }
 
     public void playWithEntityManager() {
-        Course course1 = new Course("EntityManager 111");
-        em.persist(course1);
+        Course course1 = new Course("EntityManager 111");      // 객체를 생성한 상태 > 비영속
+        em.persist(course1);                                         // 객체를 저장한 상태 > 영속
 
         Course course2 = new Course("EntityManager 222");
         em.persist(course2);
@@ -50,6 +50,7 @@ public class CourseRepository {
         em.flush();
 
         //em.clear();          // 엔티티매니저의 모든 엔티티를 삭제함 > 준영속 상태
+        //em.close();          // 엔티티매니저 종료 > 준영속 상태
     }
 
 }
