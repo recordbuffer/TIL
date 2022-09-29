@@ -28,9 +28,28 @@ public class CourseRepository {
     }
 
     public void playWithEntityManager() {
-        Course course = new Course("entityManager in 100 tips");
-        em.persist(course);
-        course.setName("entityManager in 100 tips - updated");
+        Course course1 = new Course("EntityManager 111");
+        em.persist(course1);
+
+        Course course2 = new Course("EntityManager 222");
+        em.persist(course2);
+
+        Course course3 = new Course("EntityManager 333");
+        em.persist(course3);       // 엔티티매니저는 1차 캐시에 위의 엔티티를 저장하고 쓰기 지연 SQL 저장소에 쌓아 놓음
+
+        em.flush();            // flush()를 통해 쓰기 지연 SQL 저장소의 쿼리들을 DB로 보냄
+
+        // course1, course2, course3 모두 영속 상태
+        em.detach(course2);      // 엔티티매니저에서 엔티티를 분리함 (관리를 그만둠) > 준영속 상태
+
+        course1.setName("EntityManager 111 - updated");          // merge 안했는데 알아서 update됨 : 영속 상태이기 떄문 > dirty checking
+        course2.setName("EntityManager 222 - updated");          // 준영속상태의 course2는 update 안됨
+        course3.setName("EntityManager 333 - updated");
+
+        em.refresh(course3);            // 원래 영속되어 있던 원본 엔티티를 다시 불러옴
+        em.flush();
+
+        //em.clear();          // 엔티티매니저의 모든 엔티티를 삭제함 > 준영속 상태
     }
 
 }

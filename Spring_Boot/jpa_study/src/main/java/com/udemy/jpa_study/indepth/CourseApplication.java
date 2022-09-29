@@ -23,5 +23,6 @@ public class CourseApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		repository.playWithEntityManager();
 	}
 }
