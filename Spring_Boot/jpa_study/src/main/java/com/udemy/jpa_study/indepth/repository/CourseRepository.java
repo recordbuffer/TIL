@@ -28,13 +28,13 @@ public class CourseRepository {
     }
 
     public void playWithEntityManager() {
-        Course course1 = new Course("EntityManager 111");      // 객체를 생성한 상태 > 비영속
+        Course course1 = new Course("EntityManager 111", "em");      // 객체를 생성한 상태 > 비영속
         em.persist(course1);                                         // 객체를 저장한 상태 > 영속
 
-        Course course2 = new Course("EntityManager 222");
+        Course course2 = new Course("EntityManager 222", "em");
         em.persist(course2);
 
-        Course course3 = new Course("EntityManager 333");
+        Course course3 = new Course("EntityManager 333", "em");
         em.persist(course3);       // 엔티티매니저는 1차 캐시에 위의 엔티티를 저장하고 쓰기 지연 SQL 저장소에 쌓아 놓음
 
         em.flush();            // flush()를 통해 쓰기 지연 SQL 저장소의 쿼리들을 DB로 보냄
