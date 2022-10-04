@@ -53,4 +53,15 @@ public class CourseRepository {
         //em.close();          // 엔티티매니저 종료 > 준영속 상태
     }
 
+    public void createEntityDateTime() {
+        Course course1 = new Course("EntityManager 111", "em");
+        em.persist(course1);
+    }
+
+    public void updateEntityDateTime() {
+        Course course1 = em.find(Course.class, 1L);
+        course1.setName("EntityManager 111 - updated");
+        em.flush();
+    }
+
 }

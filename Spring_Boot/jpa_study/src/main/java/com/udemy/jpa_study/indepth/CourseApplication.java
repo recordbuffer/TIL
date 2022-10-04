@@ -1,7 +1,6 @@
 package com.udemy.jpa_study.indepth;
 
 import com.udemy.jpa_study.indepth.repository.CourseRepository;
-import com.udemy.jpa_study.jdbcvsjpa.jpa.PersonJpaRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +24,6 @@ public class CourseApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		repository.playWithEntityManager();
+		repository.createEntityDateTime();
 	}
 }
