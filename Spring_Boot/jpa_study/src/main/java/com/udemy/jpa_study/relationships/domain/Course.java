@@ -10,7 +10,10 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,6 +30,9 @@ public class Course {
 
     private String author;
 
+    @OneToMany(mappedBy = "course")
+    private List<Review> reviews = new ArrayList<>();
+
     @CreationTimestamp
     private Timestamp creationTimestamp;
 
@@ -37,6 +43,10 @@ public class Course {
     public Course(String name, String author) {
         this.name = name;
         this.author =author;
+    }
+
+    public void addReview(Review review) {
+        this.reviews.add(review);
     }
 
     @Override

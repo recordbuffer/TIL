@@ -42,9 +42,9 @@ values(20002,'아이유', 40002);
 insert into student(id,name, passport_id)
 values(20003,'김태리', 40003);
 
-insert into review(id,rating,description)
-values(50001,'FIVE', 'Great Course');
-insert into review(id,rating,description)
-values(50002,'FOUR', 'Wonderful Course');
-insert into review(id,rating,description)
-values(50003,'FIVE', 'Awesome Course');
+insert into review(id,rating,description, course_id)
+values(50001,'FIVE', 'Great Course', 10002);
+insert into review(id,rating,description, course_id)
+values(50002,'FOUR', 'Wonderful Course', 10003);
+insert into review(id,rating,description, course_id)
+values(50003,'FIVE', 'Awesome Course', 10003);

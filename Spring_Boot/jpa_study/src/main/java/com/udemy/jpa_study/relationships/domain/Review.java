@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.sql.Timestamp;
 
 @Getter
@@ -26,6 +27,9 @@ public class Review {
     private String description;
 
     private String rating;
+
+    @ManyToOne
+    private Course course;
 
 
     public Review(String description, String rating) {

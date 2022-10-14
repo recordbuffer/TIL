@@ -1,6 +1,6 @@
 package com.udemy.jpa_study.relationships;
 
-import com.udemy.jpa_study.indepth.repository.CourseRepository;
+import com.udemy.jpa_study.relationships.repository.CourseRepository;
 import com.udemy.jpa_study.relationships.repository.StudentRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,12 +18,17 @@ public class RelationshipsApplication implements CommandLineRunner {
 	@Autowired
 	StudentRepository studentRepository;
 
+	@Autowired
+	CourseRepository courseRepository;
+
+
 	public static void main(String[] args) {
 		SpringApplication.run(RelationshipsApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		studentRepository.saveStudentWithPassport();
+		//studentRepository.saveStudentWithPassport();
+		courseRepository.addReviewsCourse();
 	}
 }
