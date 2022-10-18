@@ -67,5 +67,11 @@ public class StudentRepositoryTest {
         logger.info("student -> {}", passport.getStudent());    //passport에는 student_id 컬럼이 없지만 가져올 수 있음 (양방향 연관관계이기때문)
     }
 
+    @Test
+    @Transactional
+    public void oneToOneFetchTest() {
+        Student student = repository.findById(20001L);
+        logger.info("student's passport -> {}", student.getPassport());
+    }
 
 }

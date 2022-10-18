@@ -1,5 +1,6 @@
 package com.udemy.jpa_study.relationships;
 
+import com.udemy.jpa_study.relationships.domain.Review;
 import com.udemy.jpa_study.relationships.repository.CourseRepository;
 import com.udemy.jpa_study.relationships.repository.StudentRepository;
 import org.slf4j.Logger;
@@ -9,6 +10,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class RelationshipsApplication implements CommandLineRunner {
@@ -29,6 +33,11 @@ public class RelationshipsApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		//studentRepository.saveStudentWithPassport();
-		courseRepository.addReviewsCourse();
+		//courseRepository.addHardCodingReviewsCourse();
+
+		List<Review> reviews = new ArrayList<>();
+		reviews.add(new Review("Goooood","5"));
+		reviews.add(new Review("Best ever","5"));
+		courseRepository.addReviewsCourse(10003L, reviews);
 	}
 }

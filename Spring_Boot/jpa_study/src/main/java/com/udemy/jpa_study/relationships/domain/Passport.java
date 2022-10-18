@@ -1,6 +1,9 @@
 package com.udemy.jpa_study.relationships.domain;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -17,7 +20,7 @@ public class Passport {
 
     private String number;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "passport")    // owning side of the relationships
+    @OneToOne(mappedBy = "passport")    // owning side of the relationships
     private Student student;
 
     public Passport(String number) {
