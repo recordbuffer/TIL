@@ -36,8 +36,8 @@ public class RelationshipsApplication implements CommandLineRunner {
 		//courseRepository.addHardCodingReviewsCourse();
 
 		List<Review> reviews = new ArrayList<>();
-		reviews.add(new Review("Goooood","5"));
-		reviews.add(new Review("Best ever","5"));
+		reviews.add(new Review("Goooood","FIVE"));
+		reviews.add(new Review("Best ever","FIVE"));
 		courseRepository.addReviewsCourse(10003L, reviews);
 	}
 }
