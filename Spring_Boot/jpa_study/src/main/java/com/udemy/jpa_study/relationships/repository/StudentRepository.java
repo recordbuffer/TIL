@@ -1,5 +1,6 @@
 package com.udemy.jpa_study.relationships.repository;
 
+import com.udemy.jpa_study.relationships.domain.Course;
 import com.udemy.jpa_study.relationships.domain.Passport;
 import com.udemy.jpa_study.relationships.domain.Student;
 import org.slf4j.Logger;
@@ -45,6 +46,18 @@ public class StudentRepository {
         Student student = new Student("김혜수");
         student.setPassport(passport);
         em.persist(student);
+    }
+
+    public void addHardCodingStudentCourse() {
+        Student student = new Student("천우희");
+        Course course = new Course("java with Spring", "허초희");
+
+        em.persist(student);
+        em.persist(course);
+
+        student.addCourse(course);
+        course.addStudent(student);
+        em.persist(student);    //owning side
     }
 
 }

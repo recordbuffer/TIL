@@ -30,12 +30,14 @@ public class Course {
     @OneToMany(mappedBy = "course")
     private List<Review> reviews = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "courses")       // student_courses 연관 관계 테이블이 생성됨
+    private List<Student> students = new ArrayList<>();
+
     @CreationTimestamp
     private Timestamp creationTimestamp;
 
     @UpdateTimestamp
     private Timestamp updateTimestamp;
-
 
     public Course(String name, String author) {
         this.name = name;
@@ -44,6 +46,10 @@ public class Course {
 
     public void addReview(Review review) {
         this.reviews.add(review);
+    }
+
+    public void addStudent(Student student) {
+        this.students.add(student);
     }
 
     @Override

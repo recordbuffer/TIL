@@ -74,4 +74,13 @@ public class StudentRepositoryTest {
         logger.info("student's passport -> {}", student.getPassport());
     }
 
+    @Test
+    @Transactional
+    public void manyToManyFetchTest() {
+        Student student = repository.findById(20001L);
+        logger.info("student -> {}", student);
+        logger.info("student's courses -> {}", student.getCourses());           // fetch EAGER이면 한번에 가져오지만 추천하지 않음
+    }
+
+
 }
