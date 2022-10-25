@@ -42,5 +42,12 @@ public class CourseRepositoryTest {
         logger.info("{}", review.getCourse());
     }
 
+    @Test
+    @Transactional
+    public void oneToManyFetchTest() {
+        Course course = repository.findById(10003L);
+        logger.info("course's reviews -> {}", course.getReviews());
+    }
+
 
 }
