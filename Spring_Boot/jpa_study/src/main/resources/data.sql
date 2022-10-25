@@ -49,11 +49,11 @@ values(50002,'FOUR', 'Wonderful Course', 10003);
 insert into review(id,rating,description, course_id)
 values(50003,'FIVE', 'Awesome Course', 10003);
 
-insert into relation_student_and_course(Studnet_id, course_id)
+insert into student_and_course(student_id, course_id)
 values(20001, 10001);
-insert into relation_student_and_course(Studnet_id, course_id)
+insert into student_and_course(student_id, course_id)
 values(20002, 10001);
-insert into relation_student_and_course(Studnet_id, course_id)
+insert into student_and_course(student_id, course_id)
 values(20003, 10001);
-insert into relation_student_and_course(Studnet_id, course_id)
+insert into student_and_course(student_id, course_id)
 values(20001, 10003);

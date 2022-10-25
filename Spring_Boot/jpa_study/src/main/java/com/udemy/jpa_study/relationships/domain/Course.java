@@ -30,7 +30,7 @@ public class Course {
     @OneToMany(mappedBy = "course")
     private List<Review> reviews = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "courses")       // student_courses 연관 관계 테이블이 생성됨
+    @ManyToMany(mappedBy = "courses")
     private List<Student> students = new ArrayList<>();
 
     @CreationTimestamp

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -25,10 +26,10 @@ public class Student {
     private Passport passport;
 
     @ManyToMany
-    @JoinTable(name = "relation_student_and_course",            //연관 관계 테이블 정의
-    joinColumns = @JoinColumn(name = "Studnet_id"),             //연관관계 테이블의 외래키 컬럼
+    @JoinTable(name = "student_and_course",            //연관 관계 테이블 정의
+    joinColumns = @JoinColumn(name = "student_id"),             //연관관계 테이블의 외래키 컬럼
     inverseJoinColumns = @JoinColumn(name = "course_id"))       //반대 방향 엔티티 참조 외래키 컬럼
-    private List<Course> courses;
+    private List<Course> courses = new ArrayList<>();
 
     public Student(String name) {
         this.name = name;

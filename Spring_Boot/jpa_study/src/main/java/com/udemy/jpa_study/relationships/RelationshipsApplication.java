@@ -35,9 +35,11 @@ public class RelationshipsApplication implements CommandLineRunner {
 		//studentRepository.saveStudentWithPassport();
 		//courseRepository.addHardCodingReviewsCourse();
 
-		List<Review> reviews = new ArrayList<>();
+/*		List<Review> reviews = new ArrayList<>();
 		reviews.add(new Review("Goooood","FIVE"));
 		reviews.add(new Review("Best ever","FIVE"));
-		courseRepository.addReviewsCourse(10003L, reviews);
+		courseRepository.addReviewsCourse(10003L, reviews);*/
+
+		//courseRepository.addHardCodingStudentCourse();
 	}
 }

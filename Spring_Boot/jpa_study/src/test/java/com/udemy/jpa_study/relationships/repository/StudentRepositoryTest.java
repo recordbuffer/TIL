@@ -1,6 +1,7 @@
 package com.udemy.jpa_study.relationships.repository;
 
 import com.udemy.jpa_study.relationships.RelationshipsApplication;
+import com.udemy.jpa_study.relationships.domain.Course;
 import com.udemy.jpa_study.relationships.domain.Passport;
 import com.udemy.jpa_study.relationships.domain.Student;
 import org.junit.Test;
@@ -77,9 +78,9 @@ public class StudentRepositoryTest {
     @Test
     @Transactional
     public void manyToManyFetchTest() {
-        Student student = repository.findById(20001L);
+        Student student = em.find(Student.class, 20001L);
         logger.info("student -> {}", student);
-        logger.info("student's courses -> {}", student.getCourses());           // fetch EAGER이면 한번에 가져오지만 추천하지 않음
+        logger.info("student's courses -> {}", student.getCourses());
     }
 
 

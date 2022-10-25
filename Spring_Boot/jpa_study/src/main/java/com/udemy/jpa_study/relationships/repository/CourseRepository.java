@@ -2,6 +2,7 @@ package com.udemy.jpa_study.relationships.repository;
 
 import com.udemy.jpa_study.relationships.domain.Course;
 import com.udemy.jpa_study.relationships.domain.Review;
+import com.udemy.jpa_study.relationships.domain.Student;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,18 @@ public class CourseRepository {
             review.setCourse(course);
             em.persist(review);
         }
+    }
+
+    public void addHardCodingStudentCourse() {
+        // hard coding
+        Course course = new Course("Typescript lesson", "이순신");
+        Student student = new Student("김고은");
+
+        em.persist(course);
+        em.persist(student);
+
+        course.addStudent(student);
+        student.addCourse(course);
     }
 
 }
