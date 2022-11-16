@@ -26,10 +26,10 @@ public class ProductInfoImpl extends ProductInfoGrpc.ProductInfoImplBase{
     public void getProduct(ProductInfoOuterClass.ProductID request, StreamObserver<ProductInfoOuterClass.Product> responseObserver) {
         String id = request.getValue();
         if (productMap.containsKey(id)) {
-            responseObserver.onNext((ProductInfoOuterClass.Product) productMap.get(id));
-            responseObserver.onCompleted();
+            responseObserver.onNext((ProductInfoOuterClass.Product) productMap.get(id));            // 클라이언트에 응답
+            responseObserver.onCompleted();                                                         // 클라이언트 호출 종료
         } else {
             responseObserver.onError(new StatusException(Status.NOT_FOUND));
-        }        
+        }
     }
 }
