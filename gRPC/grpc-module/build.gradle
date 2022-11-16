@@ -21,10 +21,6 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
-}
-
 protobuf {
 	protoc { artifact = "com.google.protobuf:protoc:${protobufVersion}" }
 	plugins {
