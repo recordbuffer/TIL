@@ -7,7 +7,6 @@ plugins {
 
 group = 'com.google'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
 
 def grpcVersion = '1.44.1'
 def protobufVersion = '3.19.2'
