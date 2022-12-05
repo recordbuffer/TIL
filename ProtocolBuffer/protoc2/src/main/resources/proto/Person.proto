@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package com.test.protoc2.domain;
+
+option java_outer_classname = "PersonInfo";
+
+message Person {
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
+}
+
+message AddPerson {
+  repeated Person people = 1;
+}
+
+// protoc --java_out=src/main/java src/main/resources/proto/Person.proto
