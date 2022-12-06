@@ -1,0 +1,14 @@
+server:
+  port: 8002
+  
+spring:
+  application:
+    name: second-service 
+    
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultzon: http://127.0.0.1:8761/eureka
+    

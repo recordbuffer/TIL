@@ -1,0 +1,11 @@
+server:
+  port: 8001
+  
+spring:
+  application:
+    name: first-service
+    
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
