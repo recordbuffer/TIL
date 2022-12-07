@@ -1,15 +1,21 @@
 server:
-  port: 0
+  port: 9000
   
 spring:
   application:
     name: user-service
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
     
 eureka:
   instance: 
     instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
   client:
-    register-with-eureka: true
-    fetch-registry: true
+    register-with-eureka: false
+    fetch-registry: false
     service-url:
       defaultzon: http://127.0.0.1:8761/eureka
+
+greeting: hello user service
