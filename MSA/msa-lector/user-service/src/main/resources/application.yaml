@@ -8,6 +8,14 @@ spring:
     console:
       path: /h2-console
       enabled: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:~/test;MODE=MySQL
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
     
 eureka:
   instance: 
@@ -19,3 +27,7 @@ eureka:
       defaultzon: http://127.0.0.1:8761/eureka
 
 greeting: hello user service
+
+token:
+  expiration_time: 86400000
+  secret: user_token
