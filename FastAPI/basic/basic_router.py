@@ -1,11 +1,11 @@
-from fastapi import Query
+from fastapi import APIRouter, Query
 
 from typing import Union, Annotated
 
 from basic.basic_schema import ModelName, Item
 
 
-router = APIRouter(
+app = APIRouter(
     prefix="/api/basic",
 )
 
@@ -48,10 +48,6 @@ async def read_user_item(
             {"description": "This is an amazing item that has a long description"}
         )
     return item
-
-
-
-
 
 
 @app.post("/items/")
