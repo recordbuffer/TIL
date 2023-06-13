@@ -6,4 +6,4 @@ from dependencies import depend_router
 app = FastAPI()
 
 app.include_router(basic_router.app, tags=["basic"])
-app.include_router(basic_router.app, tags=["basic"])
+app.include_router(depend_router.app, tags=["dependencies"])
