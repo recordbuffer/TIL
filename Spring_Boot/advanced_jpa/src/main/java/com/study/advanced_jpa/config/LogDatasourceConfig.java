@@ -20,7 +20,6 @@ import javax.sql.DataSource;
 )
 @Configuration
 public class LogDatasourceConfig {
-    @Primary
     @Bean
     public LocalContainerEntityManagerFactoryBean secondEntityManager() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -30,14 +29,12 @@ public class LogDatasourceConfig {
         return em;
     }
 
-    @Primary
     @Bean
     @ConfigurationProperties(prefix = "spring.log-datasource")
     public DataSource secondDataSource() {
         return DataSourceBuilder.create().build();
     }
 
-    @Primary
     @Bean
     public PlatformTransactionManager secondTransactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
