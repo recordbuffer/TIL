@@ -12,4 +12,18 @@ class PostList(BaseModel):
   no: int
   writer: str
   title: str
-  date: str
+  date: datetime
+
+
+class Post(BaseModel):
+  no: int
+  writer: str
+  title: str
+  content: Optional[str] = None
+  date: datetime
+
+
+class UpdatePost(BaseModel):
+  no: int
+  title: str
+  content: Optional[str] = None
