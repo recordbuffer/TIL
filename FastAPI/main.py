@@ -4,15 +4,6 @@ import models
 from database import engine
 models.Base.metadata.create_all(bind=engine)
 
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-SECRET_KEY = os.getenv("SECRET_KEY")
-ALGORITHM = os.getenv("ALGORITHM")
-ACCESS_TOKEN_EXPIRE_MINUTES = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")
-
-
 from board import board_router
 from user import user_router
 

@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 load_dotenv()
 SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = os.getenv("ALGORITHM")
-ACCESS_TOKEN_EXPIRE_MINUTES = os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES")
+ACCESS_TOKEN_EXPIRE_MINUTES = float(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
 
 app = APIRouter(
   prefix="/user"
@@ -61,9 +61,11 @@ async def login(login_form: OAuth2PasswordRequestForm = Depends(), db: Session =
 
     # 토큰 생성
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    access_token = user_crud.create_access_token(data={"sub": user.username}, expires_delta=access_token_expires)
+    access_token = create_access_token(data={"sub": user.user_name}, expires_delta=access_token_expires)
+
+    print(access_token)
 
     if not res:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid user or password")
 
-    return HTTPException(status_code=status.HTTP_200_OK, detail="Login successful", access_token= {})
+    return {"access_token":access_token}
