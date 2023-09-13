@@ -34,3 +34,8 @@ class NewUserForm(BaseModel):
           raise HTTPException(status_code=422, detail="비밀번호는 8자리 이상 영문과 숫자를 포함하여 작성해 주세요.")
 
       return v
+  
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
