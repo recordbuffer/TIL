@@ -1,5 +1,7 @@
 
 from sqlalchemy.orm import Session
+from starlette.responses import JSONResponse
+
 from database import get_db
 
 from datetime import datetime
@@ -37,7 +39,7 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
 @app.post(path="/signup")
 async def signup(new_user: user_schema.NewUserForm, db: Session = Depends(get_db)):    
     # 회원 존재 여부 확인
-    user = user_crud.get_user(new_user.email, db)
+    user = user_crud.get_user(db, new_user.email)
 
     if user:
         raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="User already exists")
@@ -45,13 +47,14 @@ async def signup(new_user: user_schema.NewUserForm, db: Session = Depends(get_db
     # 회원 가입
     user_crud.create_user(new_user, db)
 
-    return HTTPException(status_code=status.HTTP_200_OK, detail="Signup successful")
+    response_body = {"message": "Signup successful"}
+    return JSONResponse(status_code=status.HTTP_200_OK, content=response_body)
 
 
 @app.post(path="/login")
 async def login(response: Response, login_form: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     # 회원 존재 여부 확인
-    user = user_crud.get_user(login_form.username, db)
+    user = user_crud.get_user(db, login_form.username)
 
     if not user:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid user or password")
@@ -69,7 +72,8 @@ async def login(response: Response, login_form: OAuth2PasswordRequestForm = Depe
     if not res:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid user or password")
 
-    return user_schema.Token(access_token=access_token, token_type="bearer")
+    response_body = user_schema.Token(access_token=access_token, token_type="bearer")
+    return JSONResponse(status_code=status.HTTP_200_OK, content=response_body)
 
 
 @app.get(path="/logout")
@@ -79,4 +83,5 @@ async def logout(response: Response, request: Request):
     # 쿠키 삭제
     response.delete_cookie(key="access_token")
 
-    return HTTPException(status_code=status.HTTP_200_OK, detail="Logout successful")
+    response_body = {"message": "Logout successful"}
+    return JSONResponse(status_code=status.HTTP_200_OK, content=response_body)

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Naver OAuth Callback</title>
+</head>
+<body>
+    <h2>Processing Naver OAuth...</h2>
+
+    <script>
+        window.onload = function() {
+            // URL에서 code, state, error, error_description 파라미터 추출
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            const state = urlParams.get('state');
+            const error = urlParams.get('error');
+            const errorDescription = urlParams.get('error_description');
+    
+            
+        if (code) {
+            // 성공적으로 code를 추출한 경우, 서버로 전송
+            fetch('http://127.0.0.1:8000/oauth/naver', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ code: code })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+                // 응답이 200인 경우 처리
+                if (data.message === 'oauth login successful' || data.message === 'oauth register successful') {
+                    const userName = encodeURIComponent(data.name);  // 사용자 이름을 URL에 맞게 인코딩
+                    window.location.href = `http://127.0.0.1:5500/main.html?name=${userName}`;
+                } else {
+                    // 실패 시 오류 처리
+                    throw new Error('Unexpected response message');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                // 실패 시에도 main.html로 이동
+                window.location.href = `http://127.0.0.1:5500/main.html?error=${encodeURIComponent(error.message)}`;
+            });
+        } else if (error) {
+            // error 파라미터가 있는 경우, 에러 처리
+            console.error(`Error: ${error}, Description: ${errorDescription}`);
+            window.location.href = `http://127.0.0.1:5500/main.html?error=${encodeURIComponent(error)}&error_description=${encodeURIComponent(errorDescription)}`;
+        } else {
+            // code와 error가 모두 없는 경우, 기본 리디렉션
+            console.error('No code or error found in URL');
+            window.location.href = 'http://127.0.0.1:5500/main.html';
+        }
+    };
+    </script>
+</body>
+</html>

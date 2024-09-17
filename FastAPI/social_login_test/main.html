@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="loginStatus">Loading...</h2>
+        <div id="username"></div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const userName = urlParams.get('name');
+            
+            const loginStatus = document.getElementById('loginStatus');
+            const usernameDiv = document.getElementById('username');
+
+            if (!userName) {
+                loginStatus.textContent = 'Login Fail';
+                loginStatus.style.color = 'red';
+                usernameDiv.textContent = '';
+            } else {
+                loginStatus.textContent = 'Login Success!!';
+                loginStatus.style.color = 'blue';
+                usernameDiv.textContent = 'Hello '+userName;
+            }
+        };
+    </script>
+</body>
+</html>
