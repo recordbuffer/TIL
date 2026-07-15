@@ -1,2 +1,10 @@
 
 *.log
+.DS_Store
+.idea/
+.metadata/
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+/Redis/redisenv/
