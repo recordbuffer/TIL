@@ -1,0 +1,20 @@
+spring:
+  application:
+  name: "springboot-rabbitmq"
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    username: "guest"
+    password: "guest"
+
+rabbitmq:
+  queue:
+    name: "sample"
+    json:
+      name: "sample_json"
+  exchange:
+    name: "sample_exchange"
+  routing:
+    key: "sample_routing_key"
+    json:
+      key: "sample_routing_json_key"
